@@ -1,14 +1,48 @@
-Tasks Achieved:
+Tasks Planned:
+=============
 - Back-end Requirement Gathering
-- Use Casess for back-end involvement
+- Back-end components
+- Scenarios to be handled by the back-end  
 - Back-end architecture conceving
 
-Value Chosed (Communication):
-- Working in silos is a big blocker for the success of any team. 
-  In order to break that we need open communication and frequent meetings. 
-  We have set-up a slack channel as well as a social media mechanism to keep communicating our ideas, progress and blockers.
-  Additionally we are meeting minimum twice a week to check of we are on target. If not, we re-adjust our goals or time-to-invest or
-  priorities etc.
+Task Research Updates:
+=====================
+- There are manily two major scenarios scenarios to be handled:
+  a) single-player:
+     This needs:
+     i)   session mgmt
+     ii)  user authentication
+     iii) database for user details, score details (per user and per level of game)
+     iv)  TBD
+  
+  b) multi-player :
+     This needs:
+     i)   session mgmt
+     ii)  user authentication
+     iii) database for user details, score details (per user and per level of game)
+     iv)  start the game at the same time, throw the same questions and stop when the timer hits or any of the player finishes.
+     v)   TBD
+- This architecture needs:
+  a) REST-based web-server
+  b) database
+  c) cloud host
+  d) etc. (TBD)
+  
+  
+Exhibition of the XP Core Value - "Feedback":
+============================================
+Feedback is really important in order to:
+  - understand the correctness of our work.
+  - understand if there is any better way to improve our performance.
+  - understand if there is any redundant work happening.
+  - understand others persepective
 
-
-
+For this we have come up with a simple feedback mechanism. We are taking up ownership of individual tasks, 
+coming up with the desired output (design flows, use cases etc) and commiting them in the 'user' folder 
+under the 'misc' folder in github.
+Therafter, we call for a peer review meeting where all the works are critically reviewed 
+and approved by the complete team.Without this approval this work is not allowed to be committed to
+the main project folder.
+This ensures the project correctness, lack of bugs in the future, rapid progress and definitely knowledge
+sharing for our own benifits.
+ 
