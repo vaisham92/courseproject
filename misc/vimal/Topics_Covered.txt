@@ -7,3 +7,5 @@ Topics Covered
 	. Faster Convertion.
 	. Bit Manipulation
 2. Single Player vs MultiPlayer Game
+
+3. Game Design
