@@ -1,8 +1,9 @@
 CMPE202
 Journal Week2
 
+	As we know, communication is very important factor which helps in improving the efficiency of a team. Taking this into account, we decided during week 1 that we will have weekly team meetings. We agreed on having team meeting twice a week. This week, we met first on 20th September and then again on 22nd September. Along with these meetings, we also discuss our ideas in slack and emails.
 	
-The first meeting for this week was held on 20 Sept. 
-We discussed about the various possible scenarios of multiplayer game.
-The first meeting for this week was held on 22 Sept. 
-We finalized one of the ideas and decided to go forward with it.
+	During the first meeting for this week, we discussed about the various possible scenarios of multiplayer game.During the second meeting of this week, we finalized one of the ideas and decided to go forward with it.Initially, each team member had a different idea on how the game should be presented. During the second meeting, we took ideas from all the team members and collaborated it into a single game flow. We agreed that the home page should have the option to sign up /login, have a link to a tutorial page, and also have a button to go to challenge. We should have 3 levels of challenge with different levels of difficulty. You should have a score board for each of the challenge which will display the user ids or email ids of those who are in the first three places in a particular game. Once you choose the difficulty level you can start playing the game. Once the game ends, the results page can display the accuracy, total time taken and the users rank as per the score for the current game. In the home page we have a common scoreboard where you can see highest scorers in the game till now.
+	
+	I am working on the task of designing the training page. This page is provided so that the students can be taught what is the importance of binary numbers in the computer science field and how to convert decimal numbers to binary numbers. After providing the theory part about the binary number conversion we should provide some examples. Also, we should have a small section dealing with how the game can be played. We hope to continue to have the weekly meetings at least twice a week.
+
