@@ -9,3 +9,7 @@ Topics Covered
 2. Single Player vs MultiPlayer Game
 
 3. Game Design
+
+4. Completed Requirement Analysis.
+
+	. Collected all the requirements and completed user flow.
