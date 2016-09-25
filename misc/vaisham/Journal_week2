@@ -20,3 +20,8 @@ can be used to start the game by all the users when playing the game. Everybody 
 game by entering hte code. This is again based on time (3, 5, 10 minutes). The scores here will
 be shared at the end of the game.
 
+
+Courage: 
+As events progressed a lot of complication came in implementation. The reason for this is the game play scenarios were updated from the previous week. These were combined with the feedback / inputs received from Professor Paul. Throughout the design discussion we maintained the same tempo as that of previous week and did have a fruitful discussion.
+
+This week we fixed on the design flows. We came up the way the game progresses in our website or application. The game starts with a home screen showinig the various challanges that we cacn play in the game. These games. We also will show the Hall of fame. This is the universal scoreboard for the entire game where we show the top members who scored the maximum. The scores will be based on the number of gold, silver and bronze points a person wins. 
