@@ -1,8 +1,5 @@
 After a long discussion, we finally nailed down to a scenario in which the game is played. The scenario is as follows,
-
-Single player:
-
-start the game. you will be logged in already. (A way can be to have user not logged in play
+Single player: start the game. you will be logged in already. (A way can be to have user not logged in play
 but they give their names at the end of the game.) A time period or 3(short) 5(medium) 10(long) 
 minutes be selected for the games. Based on the selection the questions will be issued from the
 question bank. A person can solve as many questions as he can in that time.
@@ -12,16 +9,12 @@ a. No of questions answered
 b. Average time for each question
 c. Accuracy for all the questions answered
 
-
-Multi player:
-
-start the game by invoking our multiplayer option. A 8 character secret code is generated. This
+Multi player: start the game by invoking our multiplayer option. A 8 character secret code is generated. This
 can be used to start the game by all the users when playing the game. Everybody will start the 
 game by entering hte code. This is again based on time (3, 5, 10 minutes). The scores here will
 be shared at the end of the game.
 
-
 Courage: 
 As events progressed a lot of complication came in implementation. The reason for this is the game play scenarios were updated from the previous week. These were combined with the feedback / inputs received from Professor Paul. Throughout the design discussion we maintained the same tempo as that of previous week and did have a fruitful discussion.
 
-This week we fixed on the design flows. We came up the way the game progresses in our website or application. The game starts with a home screen showinig the various challanges that we cacn play in the game. These games. We also will show the Hall of fame. This is the universal scoreboard for the entire game where we show the top members who scored the maximum. The scores will be based on the number of gold, silver and bronze points a person wins. Then we proceed to have the levels of games. They are easy, medium and hard. These will be based on the toughness of questions. Then the game starts automatically after every certain period of time. Once you score in the game your scores get updated. A login mechanism will be needed inorder to have your results aggregated. Another option that we thought is that we will also have play as a guest option to play the game without the need to login or registering.  
+This week we fixed on the design flows. We came up the way the game progresses in our website or application. The game starts with a home screen showinig the various challanges that we cacn play in the game. These games. We also will show the Hall of fame. This is the universal scoreboard for the entire game where we show the top members who scored the maximum. The scores will be based on the number of gold, silver and bronze points a person wins. Then we proceed to have the levels of games. They are easy, medium and hard. These will be based on the toughness of questions. Then the game starts automatically after every certain period of time. Once you score in the game your scores get updated. A login mechanism will be needed inorder to have your results aggregated. Another option that we thought is that we will also have play as a guest option to play the game without the need to login or registering. We had lot or constructive criticisms and arguments throughout the design discussion of 2 hours. everybody showed the courage and the impact towards having a better output. The design is mostly finalized and at the end of the design dicussion.  
