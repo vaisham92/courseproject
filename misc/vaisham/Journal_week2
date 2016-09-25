@@ -1,0 +1,22 @@
+After a long discussion, we finally nailed down to a scenario in which the game is played. The scenario is as follows,
+
+Single player:
+
+start the game. you will be logged in already. (A way can be to have user not logged in play
+but they give their names at the end of the game.) A time period or 3(short) 5(medium) 10(long) 
+minutes be selected for the games. Based on the selection the questions will be issued from the
+question bank. A person can solve as many questions as he can in that time.
+
+The following things can be calculated from that:
+a. No of questions answered
+b. Average time for each question
+c. Accuracy for all the questions answered
+
+
+Multi player:
+
+start the game by invoking our multiplayer option. A 8 character secret code is generated. This
+can be used to start the game by all the users when playing the game. Everybody will start the 
+game by entering hte code. This is again based on time (3, 5, 10 minutes). The scores here will
+be shared at the end of the game.
+
