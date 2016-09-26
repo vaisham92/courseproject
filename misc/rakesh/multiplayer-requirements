@@ -1,0 +1,13 @@
+1. Manually sort questions and maintain a DB of questions.
+   Three collections:
+   - easy
+   - medium
+   - hard
+   
+2. Group challenges are created by the server.
+3. Group challenges are tagged by the server as easy/medium/hard
+4. User can check the currently running challenge based on the level, and also can see how many people are playing so far
+5. User can join a groupchallenge as a Guest or as a Logged-In user.
+   With Guest login, scores will not be persistent.
+6. User gets a practise test before joining the GroupChallenge
+7. User can check the scoreboard and find it's own rank and overall statistics.
