@@ -85,4 +85,4 @@ function sendHttpResp(response, respStr, err){
 };
 
 server.listen(port);
-console.log("My Server Started in port "+port);
+console.log("Node Server Started on port "+port);
