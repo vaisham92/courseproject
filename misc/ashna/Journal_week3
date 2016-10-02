@@ -1,15 +1,6 @@
 CMPE 202
 Journal week 3
 
-As planned we had our weekly meeting on Wednesday. But since all were busy, we had to do an online meeting at night. The technologies have helped people to have effective communication even if we can’t be present physically in a meeting.
-
-Next meeting is planned on Friday. We could not meet on Friday, so we had a meeting after the Silicon Valley code camp.
-
-Highlights for this week:
-Decided to go forward with MEAN stack. 
-Database side will be designed by Neha, Server side will be designed by Vimal and Rakesh and me and Vaish will work on the front-end.
-
-My task:
-The coming week we should find a good way of implementing the graphics required for the game.
 
 
+Core Value: CommunicationCommunication is one of the most important value in Agile manifesto. It helps in improving the efficiency of a team. The most important way of maintaining communication is by having meetings where we can openly express our ideas and come to a single opinion. Our team decided to have two meetings every week for status update and planning for next week. This week also we had two meetings successfully. As planned we had our weekly meeting on Wednesday 28 September. But since all were busy, we had to do an online meeting at night. The technologies have helped people to have effective communication even if we can’t be present physically in a meeting. the second meeting was held on October 1st after the Silicon Valley code camp.The first was held to finalize the technologies we will be using for the project. We have agreed to go forward with MEAN stack(MongoDB, Express, Angular js and Nodejs). The main advantage of using MEAN stack is that we can use a single language (javascript) in both front end and back end. Nodejs is event driven and much faster than most other technologies. MongoDB is a no SQL database which is schema less and supports document oriented storage. Replication and availability of mongo db is much higher compared to the traditional MySQL database. Angular Js helps in creating the front end and supports two-way binding, and in developing a single page application with client side routing. For our binary conversion game, the most important part is to have a good front end. We are planning to have a flip card for representing 0 and 1. If the number is 4 bit, there will be 4 flip cards. Initially all bits are 0s. If any position is 1 then the player should be able to click the card and flip it to 1. Once all the flip cards are set to the desired bit, the player should be able to sumbit the answer and go to the next question. The home page should have the hall of fame score board which should be updated dynamically using AJAX calls. The new challenges should also be posted during regular intervals.By next week, the design will be complete and we will start coding. Database side will be designed by Neha, Server side will be designed by Vimal and Rakesh and me and Vaish will work on the front-end. In the front end side, the coming week we will find a good way of implementing the graphics required for the game. Other than the meeting with the whole team, me and Vaish will meet for discussing about the front end design.
