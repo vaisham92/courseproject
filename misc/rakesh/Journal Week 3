@@ -22,9 +22,21 @@ Core Value: Feedback:
   us went through the code.After the discussion we came out with numerous best-practises and use-cases
   we never have thought of before.The team-member who is designing the mongo framework told me how exatly
   she wants the REST endpoint to be. Based on all these inputs I designed the second version of the 
-  REST end-point. This second version is much more mature than the first one. It handles more functional
-  and non-functinal cases (scalibility, static analysis etc). It also handles edge-cases better than
-  the first version.Clearly the review discussion where the feedbacks are shared and valued are very 
+  REST end-point. This second version is
+   - much more mature than the first one. 
+   - It handles more functional and non-functinal cases (scalibility, static analysis etc). 
+   - It also handles edge-cases better than the first version.
+  
+  Clearly the review discussion where the feedbacks are shared and valued are very 
   helpful and productive.It really helped us increase the quality of our design and meet the
   requirements more correctly.
+  
+  In another instance, where one of the team members was designing the database in mysql, we suggested
+  her to do it in mongodb. She took the feedback positively and started a healthy discussion. We debated
+  and exchanged ideas, provided her lots of reviews about the pros and cons of nosql vs mysql. At the
+  end of the discussion she clearly understood what is the best for the project. In a feedback-based
+  system, the receiving end is as much as important as the sending end. In this instance, she clearly
+  has shown the positive attitude to take a feedback and do a value judgement for the purposes of the 
+  project.This is another good exhibition of the xp core value 'feedback'
 
+  
