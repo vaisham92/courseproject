@@ -1,0 +1,25 @@
+db.createCollection("UserInfo", {autoIndexID : true } )
+
+db.UserInfo.insert({
+   FirstName : 'Neha'
+   LastName: 'Kumar',
+   UserName: 'Neha.kumar',
+   Password: '@password123'
+})
+
+
+db.createCollection("Scoreboard", {autoIndexID : true } )
+db.Scoreboard.insert({
+   UserName: 'Neha.kumar',
+   Score: '100',
+   Difficulty_level: 'Medium',
+   No_Of_Attempts: '2'
+})
+
+
+db.createCollection("QuestionBank", {autoIndexID : true } )
+db.QuestionBank.insert({
+   Difficulty_level: 'Medium',
+   Question: 'What is the binary number of 19?',
+   Answer: '10011'
+})
