@@ -1,6 +1,9 @@
 var express = require('express');
 var app = express();
 
+var bodyParser = require('body-parser');
+var eligibility_core = require('./routes/eligibility-core');
+
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
@@ -9,6 +12,7 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(bodyParser.json())
+app.post("/api/savedata", eligibility_core.add);
 
 app.use('/', function(request, response) {
 	// Use response.sendfile, as it streams instead of reading the file into memory.
