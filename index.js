@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 
+var bodyParser = require('body-parser');
+
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
@@ -8,7 +10,7 @@ app.use(express.static(__dirname + '/public'));
 // views is directory for all template files
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 app.use('/', function(request, response) {
 	// Use response.sendfile, as it streams instead of reading the file into memory.
