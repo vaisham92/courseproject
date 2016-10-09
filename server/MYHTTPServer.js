@@ -5,6 +5,9 @@
 var http = require("http");
 var url  = require("url");
 var port = "5000";
+//mlab connection string
+var URI = "https://api.mlab.com/api/1/databases/heroku_f2wnrr7c/collections/application?apiKey=Gop-RmmiDZYteuAJCttyTwuerv6uJcZ6";
+
 
 var mongomodule = require("./mongomodule.js");
 
