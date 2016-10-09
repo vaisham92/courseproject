@@ -1,41 +1,51 @@
 
 Core Value: Feedback:
 ====================
-- Updates
-  We have divided the whole work into the a category of top-level features. After that we have 
-  divided the work in terms of back-end and front-end. For this week, the back-end team decided to 
-  design a REST end-point.This REST endpoint will use mongo as the database.This database will hold
-  several collections like quiz-questions, user-info, etc.
+- UPDATES:
+  The whole idea of this project is to have a cloud based solution.
+  This not only helps us in scaling the solution but also minimize the opex and capex.
+  If the solution is designed over cloud, we have less dependncy over team resource
+  and it will be running autonomically for a longer time.
   
-  My individual contribution in last week was to design the nodejs based REST server 
-  which will connect to mongo and allow all the REST calls like (GET, POST, DELETE).
-  We created a database called questions, which has a bunch of game questions.
-  Each question has a field called 'level', which indicates wheter it is an 'easy', 'moderate'
-  or 'tough' question. While storing a question into the database we manually decide the level
-  and feed into the DB. While fetching the question as per the level, the REST endpoint has to be queried 
-  as: http://localhost:5000/game?level=<easy|moderate|tough>. This REST endpoint is up and running
-  and we are currently testing it and intergrating it with remote mongo.
+  Keeping this is mind we divided the whole project into components like :
+  - server to host the app
+  - server to host the back-end REST end-points and services
+  - server to have the centralized database and it's replica
   
+  After our extensive research we found several options to cloudify these components.
+  However, we wanted everything to be free resources so that the project runs indefinitely.
+  With that in mind, we decided to use:
+  - Heroku for the App deployment, 
+  - AWS (free-tier) for the back-end webserver
+  - mlab (cloudified mongodb) for our database server.
   
+  All these components have a free subscription.
   
-- Exhibition of the Core Value:
-  After I have finished the REST end-point design, I have called for a peer review session, where all of
-  us went through the code.After the discussion we came out with numerous best-practises and use-cases
-  we never have thought of before.The team-member who is designing the mongo framework told me how exatly
-  she wants the REST endpoint to be. Based on all these inputs I designed the second version of the 
-  REST end-point. This second version is
-   - much more mature than the first one. 
-   - It handles more functional and non-functinal cases (scalibility, static analysis etc). 
-   - It also handles edge-cases better than the first version.
+  Individually I have deployed the heroku setup for this project. We also wanted to 
+  leverage the 'continuous integration' feature provided by heroku. I have connected 
+  the github project repository with the heorku project in such a way that,whenever
+  there is any change pushed to github, heroku will be notified. Thereafter, heorku 
+  will build the new code and deploy it. This will help the developers to develop and test
+  simulatenously without any hassle. This will also help the evaluators to find out the latest
+  state of the app at any point of time.
+
   
-  Clearly the review discussion where the feedbacks are shared and valued are very 
-  helpful and productive.It really helped us increase the quality of our design and meet the
-  requirements more correctly.
+- EXHIBITION OF THE CORE VALUE:
+  With the current REST end-point design, we are deploying both the webserver and database
+  inside the same EC2 instance. The team felt that, although this makes sense, it is a better 
+  to design to have a clear seperation between the web-sever and database server. This helps in 
+  situation like auto-scaling. When the web-server needs to auto-scale, database server does 
+  not need to. Scaling database server will lead to fatal replication issue. This peer review
+  discussion and feed-back really helped us brain-storm and come up with a mature design.
+  We went to multiple AWS deployment websites and understood the real-life deployment scenarios.
+  I took the feedback constructively and we decided to seperate out the web-server and the database.
   
-  In another instance, where one of the team members was designing the database in mysql, we suggested
-  her to do it in mongodb. She took the feedback positively and started a healthy discussion. We debated
-  and exchanged ideas, provided her lots of reviews about the pros and cons of nosql vs mysql. At the
-  end of the discussion she clearly understood what is the best for the project. In a feedback-based
-  system, the receiving end is as much as important as the sending end. In this instance, she clearly
-  has shown the positive attitude to take a feedback and do a value judgement for the purposes of the 
-  project.This is another good exhibition of the xp core value 'feedback'
+  The feedback led me to think more and I researched to find out that we have a clodified mongodb called mlab.
+  We dont event need to have a server and maintain mongodb in it. mlab provides a cloud solution
+  for this purpose. This brought us to our latest design where EC2 instance is used for the webserver and
+  mlab is used for the database server. 
+  
+  Completing the the project is not the ultimate goal. Learning through the project, cricially thinking and
+  coming up with an industry-level solution should be the ultimate goal. In this particular case
+  the team think critically and came up with good review comments, which actually led to a much better
+  and scalable design.This is a great example of the xp core value 'feedback'
