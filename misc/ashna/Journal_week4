@@ -1,6 +1,12 @@
 CMPE 202
-Journal week 3
+Journal week 4
 
 
 
-Core Value: Communication
+Core Value: Communication
+
+Communication is a life skill which helps us to connect with our team mates. It plays a vital role in building respect and trust among team members. It creates a platform to resolve the difference I our opinions or for clearing our doubts or even for sharing knowledge. As mentioned in my previous journals, we agreed to have two meetings every week. This week also we successfully conducted two team meetings. The first meeting was held on 5th October and was an online meeting. Technologies like hangouts, slack, etc are helping us in effective communication. The next meeting was held on 8th October after the class.
+
+We have already decided that we will be developing a game for teaching binary conversions. We have also decided the technologies to be used. As mentioned in my previous journal, we are planning to use MEAN stack. Mongo DB for backend, Angular Js for frontend and Node js with express framework as the server side. The database and server side work will be done by Neha, Rakesh and Vimal. The frontend side will be done by me and Vaish. For any game it is very important to have a good frontend so that play would want to play it. In the frontend side, there are two main aspects. One is designing a page for providing training on binary conversion and then the actual game which includes challenge difficult selection, the questions, score board etc. We have already designed a wireframe on how the pages should look like. This week I was researching on how we can implement the flip animation for selecting 0 or 1 in a position by clicking a card. I have written a simple html page with a css which can flip an image on click. For the game we ca use a similar stylesheet. Vaish has already uploaded a sample hello world application in github and we will be finalizing how we are going to implement the animations by next week. We are planning to start writing the html pages next week and start testing the css combinations to have a good UX.
+
+Even though we have already divided the work, we always discuss what exactly each member is doing each week and doing a status evaluation. My team members always look forward for suggestions from other team members to improve their ideas and when in doubt. Even in backend side if I have any opinion the team members doing the backend side considers my opinion also. Therefore, I feel that communication has helped us in maintaining the project schedule we planned during the initial meeting. 
