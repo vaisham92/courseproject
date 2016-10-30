@@ -1,0 +1,11 @@
+This week, we met and discussed on connecting the background and UI pages. Since, there are some pages in UI which are developed by UI team i,e
+Ashna and Vaisham so now it is time to merge and connect our changes. I started implementing the functionalities to be implemented in the backend like doing a user validation by checking username, password from database. We also dicussed on implementing hub setup for database was also done. The implementation for user authentication was done in Node js and password for user 
+was fetch from values stored in MongoDb. We will be implemting google sign in too.
+
+Xp - Simplicity
+For sign in, we discussed we can use google sign in or any other sign in 
+like sign-in using facebook. Since, this was a feature which is used by most of the websites these days and eases sign on functionality, but we 
+were getting deviated from our original problem of connecting pages. So, we decided to implement the normal authentication using
+username password. So, by sticking to this XP quality, Simplicity, we are focussed on actual problem than getting deviated.
+Now, that we have only 40hrs each team member to implement the total project including all the documentation and code and testing, we cannot devote our time to other 
+thing which won't be counted for validating the project.
