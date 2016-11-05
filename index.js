@@ -17,14 +17,14 @@ app.use(bodyParser.json());
 //	// Use response.sendfile, as it streams instead of reading the file into memory.
 //	response.sendfile(__dirname + '/public/index.html');
 //});
-
-
+app.post('/api/login',auth.login);
+app.post("/api/userRegister",auth.register);
 //app.post("/api/savedata", eligibility_core.add);
 /*
  * app.get('/', function(request, response) { response.render('pages/index');
  * });
  */
-//app.get('/api/login',auth.login);
+app.post('/api/login',auth.login);
 //app.use('/', function(request, response) {
 //	// Use response.sendfile, as it streams instead of reading the file into memory.
 //	response.sendfile(__dirname + '/public/index.html');
