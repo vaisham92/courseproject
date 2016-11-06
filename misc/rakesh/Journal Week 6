@@ -1,0 +1,43 @@
+UPDATES:
+
+In order to capture the score of a game, it is imperative that an identity is 
+assigned to the player. This identity will be used to decide various features of the 
+game , vis-a-vis to store the score in the database or not etc.
+
+There are two ways of capturing the player scores:
+ 1) User plays as a guest and the scores are stored in non-persistent browser memory
+    till the time the session is on. The moment the session is killed, this 
+    data would not exist.
+ 2) User authenticates itself and logs in. The scores in this case are stored in the database and 
+    attached to the user. Irrespective of the session, player can check the historical score whenever
+    he wants.
+    
+For the 2nd option, we have chosen single-sign-on mechanism. User can optiinally create a new login
+with this new app. However, he can also use an indentity server like (gmail, facebook etc)
+to authenticate them. This eradicates the hassle of creating a new login.
+
+In order to implement the SSO mechanism, I have started exploring and using passport.js.
+Passport.js gives teh boilerplate to use various well-known identity verification servers
+like gmail, twitter etc.
+
+We decided to start with the passport-facebook strategy followed by passport-google strategy.
+For that I have started working on implementing it by referring to
+the boilerplate https://github.com/jaredhanson/passport-facebook.
+
+XP Value (Feedback):
+
+Passport.js has dependancies on nodejs express module. Also, in order to use passport we
+need to first determine the strategy of our application, which is nothing but the type of 
+authentication our app wants to implement.
+
+To decided this all the team members met and brainstormed. Although it is necessary that 
+a SSO allows multiple authentication, it is a good approach to start with one strategy
+and keep implementing others recursivley. The team provided interesting feedbacks on the strategy
+I was adopting. We discussed on popularity of the identity serrver, the target users of our app etc.
+Out of this review session we boiled down to the strategy called passport-facebook. So, to start with 
+we decided to intergrate with passport-facebook.This will allow the users authenticate with existing facebook 
+account instead of creating a new username and password.It was quite an interesting
+task so far on the project as we were really thinking like the user not as the developer and provinding
+review comments accordingly. In my opinion this is so far the best exhibition of the XP value 'feedback'.
+
+
