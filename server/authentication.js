@@ -40,16 +40,25 @@ exports.register = function(request,response){
 	user.school = request.body.school;
 	mongo.connect(mongoURL, function() {
 	var userDetails = mongo.collection('userDetails');
-	mongoDbHelper.insertIntoCollection(userDetails, user, function() {
-		mongodb.MongoClient.connect('mongodb://localhost:27017/binaryGame', function(error, db) {		
-			if(error){
-				response.send({"Status":500,
-					"Message": "Unable to Register"});
-				}else{
-					response.send({"Status":200,
-						"message":"Registration Successfull"});
-				}
-		});
+	mongoDbHelper.readOne(userDetails,{'email':user.email},null,function(data){
+		if(data==undefined){//}
+			mongoDbHelper.insertIntoCollection(userDetails, user, function() {
+			mongodb.MongoClient.connect('mongodb://localhost:27017/binaryGame', function(error, db) {
+					
+					if(error){
+						response.send({"Status":500,
+							"Message": "Unable to Register"});
+						}else{
+							response.send({"Status":200,
+								"message":"Registration Successfull"});
+						}
+				});
+			});
+			}//if condition end
+		else
+		{ 
+			response.send({Status:500,"Message":"User already registered with this email, Try another email!"})
+		}
 	});
 	});
 };
