@@ -24,7 +24,7 @@ app.post("/api/userRegister",auth.register);
  * app.get('/', function(request, response) { response.render('pages/index');
  * });
  */
-app.post('/api/login',auth.login);
+//app.post('/api/login',auth.login);
 //app.use('/', function(request, response) {
 //	// Use response.sendfile, as it streams instead of reading the file into memory.
 //	response.sendfile(__dirname + '/public/index.html');
