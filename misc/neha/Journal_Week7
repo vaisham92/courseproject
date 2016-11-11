@@ -1,0 +1,1 @@
+I continued to work on developing services for Binary Test. Fetching the questions of a particular difficulty like medium from database and presentint it to user in Binary Test. Also, capturing the response from user and saving value in database. 
