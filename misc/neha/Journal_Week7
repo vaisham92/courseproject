@@ -1,1 +1,5 @@
-I continued to work on developing services for Binary Test. Fetching the questions of a particular difficulty like medium from database and presentint it to user in Binary Test. Also, capturing the response from user and saving value in database. 
+I continued to work on developing services for Binary Test. 
+Fetching the questions of a particular difficulty like medium from database and presenting it to user in Binary Test. 
+Also, capturing the response from user and saving value in database. 
+Once the all the responses for a test/quiz is captured, the users score is calculated based on correct responses. After calculating the score,
+rank is calculated and if his scores falls in best 10 scores, his score and username is displayed on Score board.
