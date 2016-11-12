@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var auth = require('./server/authentication');
-
+var test = require('./server/BinaryTest')
 var bodyParser = require('body-parser');
 
 app.set('port', (process.env.PORT || 5000));
@@ -19,6 +19,9 @@ app.use(bodyParser.json());
 //});
 app.post('/api/login',auth.login);
 app.post("/api/userRegister",auth.register);
+app.post('/api/BinaryTest' , test.BinaryTest);
+app.post('/api/CreateQs' , test.CreateQs);
+app.get('/api/SubmitAns', test.SubmitAns);
 //app.post("/api/savedata", eligibility_core.add);
 /*
  * app.get('/', function(request, response) { response.render('pages/index');

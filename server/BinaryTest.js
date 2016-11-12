@@ -3,52 +3,44 @@ var mongoURL = 'mongodb://localhost:27017/binaryGame';
 var mongoDbHelper = require('./mongo-db-helper');
 var mongodb = require('mongodb');
 
-exports.login = function(request,response){	
-	var email = request.body.email;
-	var passord = request.body.password;
+exports.BinaryTest = function(request,response){	
+	var level = request.body.level;
 	mongo.connect(mongoURL, function() {
-		var userDetails = mongo.collection('userDetails');
-		mongoDbHelper.readOne(userDetails,{'email':email},null, function(data) {
+		var qsDetails = mongo.collection('QuestionBank');
+		mongoDbHelper.readOne(qsDetails,{'level':level},null, function(data) {
 				if(data==undefined){
 					response.send({"Status":500,
-						"Message": "No user Exists"});
+						"Message": "No qs Exists"});
 					}else{
-						var getPassword = data.password;
-						if(passord===getPassword){
-							response.send({
-								"Status":200,
-								"Message":"Validation Successfull"
-							});
-						}else{
-							response.send({
-								"Status":401,
-								"Message":"Unauthorized"
-							});
-						}
+						var getQs = data.qs;
+						response.send({"Status":200,
+							"Message":"Qs fetched from db","qs is":getQs});
 					}
 			});
 		});
 };
 
-exports.register = function(request,response){
-	var user = {};
-	user.fname = request.body.fname;
-	user.lname = request.body.lname;
-	user.email = request.body.email;
-	user.password = request.body.password;
-	user.school = request.body.school;
+
+exports.CreateQs = function(request,response){
+	var qsBank = {};
+	qsBank.qs = request.body.qs;
+	qsBank.ans = request.body.ans;
+	qsBank.level = request.body.level;
 	mongo.connect(mongoURL, function() {
-	var userDetails = mongo.collection('userDetails');
-	mongoDbHelper.insertIntoCollection(userDetails, user, function() {
+	var qsDetails = mongo.collection('QuestionBank');
+	mongoDbHelper.insertIntoCollection(qsDetails, qsBank, function() {
 		mongodb.MongoClient.connect('mongodb://localhost:27017/binaryGame', function(error, db) {		
 			if(error){
 				response.send({"Status":500,
-					"Message": "Unable to Register"});
+					"Message": "Unable to create Quiz Qs"});
 				}else{
 					response.send({"Status":200,
-						"message":"Registration Successfull"});
+						"message":"Quiz Qs created Successfully"});
 				}
 		});
 	});
 	});
 };
+
+
+
