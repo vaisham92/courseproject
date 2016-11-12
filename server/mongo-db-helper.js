@@ -1,5 +1,6 @@
 /**
  * New node file
+ *
  */
 var assert = require('assert');
 
