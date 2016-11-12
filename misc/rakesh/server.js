@@ -1,3 +1,5 @@
+require('./config/passport')(passport, config);
+
 var express = require('express')
   , fs = require('fs')
   , passport = require('passport');
@@ -17,7 +19,7 @@ fs.readdirSync(models_path).forEach(function (file) {
   require(models_path+'/'+file);
 });
 
-require('./config/passport')(passport, config);
+
 
 var app = express();
 
