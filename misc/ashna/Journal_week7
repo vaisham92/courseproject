@@ -1,0 +1,11 @@
+CMPE 202
+Journal week 5
+
+
+
+Core Value: Communication
+
+The second part for Project started this week and this time we are following the Agile methodology Scrum. In a typical scrum, there are lots of meetings which are the Sprint Planning meeting, the Daily Scrum meeting, Sprint review meeting and the Sprint Retrospective meeting. All these meetings are conducted for effective communication among the team members. This helps in delivering a high value deliverable in a relatively short period of time. Scrum aims at continuous improvement with some part of the final product delivered at the end of each of the sprint.
+
+As already decided in the part 1 of project, we all agreed to continue with the practice of 2 status meeting a week. We also agreed to have a weekly meeting to review the work done each week and to plan the work for coming week. So this week we met on Tuesday and Saturday after class for status discussion.  We are implementing the game using the MEAN stack. Me and Vaish are doing the front end part which is the Angular Js and the other 3 members Neha, Rakesh and Vimal are working on back-end services which uses Nodejs, express and mongo db. They have already designed the database and created the mongo db collections. They have now started working on the nodejs services. We are planning to implement single sign on using google account by using nodejs package passportjs.
+This week me and Vaish created the html pages for login/register and game level selection. We are using materializecss for designing the html pages. Materializecss is almost similar to bootstrap but has many additional styling features which is useful for creating interactive websites like games. I designed the game level selection html page and have tried to make it look very colorful and attractive which I feel is essential for games. We have also created a template for writing the angular code which we plan to write once all the pages are created. We are learning new technologies and improving our technical skills as well communication skills by following the Agile practices. Overall, the project is going ahead as planned and I think we can complete the project within the deadline.
