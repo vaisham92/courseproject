@@ -1,17 +1,7 @@
 Core value: Courage
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 1ed291bef28f5e21b4db824003878f55d34a6548
 As we are nearning our deadline, the progress of our work is also rapid. We are meeting once a week and we plan to increase this to multiple times (3 times) a week as the integration of our works need to happen. Following the mid term the second part of the project development needs to be done following the scrum methologies. So, we are expected to conduct all the scrum meetings like daily scrum, review, retrospective etc. The important core value of courage should be maintained by all members of the team in all these meetings.
 
 During this week, me and ashna are continuing the UX development of the other remaining screens. The UI wire frames for the other screens are planned well during the week. AS materialize has lot of open websites developed me and ashan browsed to them to find evevn more intersting features to create our game website. This is to ensure that people visiting our website for the game will get attracted with the UX and get stuck to it. This R&D work needed lot of courage to tell before my team mates as the project work time is being spent for research of new topics while the project work is not progressing from our end. Ultimately after lot of consideration and discussion, we have decided to spend two hours on this and go ahead with the creation of pages. There were couple of fixes that are to be made. Me and Ashna sat together and fixed the issues together. She pushed the code. This week we finished the four important pages, landing page, login page, sign up page, game difficulty level page. The next week we plan to work on main Game page. 
 
 Vimal, Rakesh and Neha are working on the backend development. They have done considerable progress with the backend development. Rakesh is working on an interesting feature called single sign on or simply called the "Three legged Oauth2" login. This will enable us to use existing technologies for login/register and making sure that the critical component of logging is done securely using hte libraries provided by standard oauth2 providers like Google, Facebook, Microsoft, Yahoo etc.
-
-<<<<<<< HEAD
-=======
->>>>>>> 2a400eb9e29741be26e0d8008427f8bf410e23c3
->>>>>>> 1ed291bef28f5e21b4db824003878f55d34a6548
-~                                                                                          
