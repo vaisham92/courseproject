@@ -1,0 +1,39 @@
+UPDATES:
+=======
+This week I have designed a login app that implements the bloew modules:
+ - login local
+ - login facebook
+ - login google
+ - session management remote
+ 
+These are designed using node.js, passport.js, express.js and bootstrap.I have created
+a node module called gamelogin that will initialize and provide the above mentioned features.
+It has dependancies on other standard node modules mentioned in the package.json.
+For local login, the app creates a user collection in the mongodb, using the mongoose 
+client. The register module allows the user to create the credentials. Local login 
+ensures that the the user is authenticated as per this database.For this we used
+passport-local strategy.
+For Facebook & Google login I have used passport-facebook and passport-google strategy.
+In both the cases I had to create an appID in the facebook and google. It gave me
+a authentication ID and key which is used in the login app. This ensures that our
+login app is allowed to use the Facebook and Google login database.
+Passport.js helps to maintain the session.
+
+XP Value (Feedback):
+===================
+This week we have setup demonstration of indovidual work so far. Everybody was assigned
+some time to demonstrate his/her work along with code walkthrough. Then we brainstormed 
+and provided feedback to the module owners. This not only helped the module owners
+verify the correctness of their work, but also made the team aware of the current health 
+of the project, burning blockers and any redundant work if any. All the team members
+took the fedback constructively.And we decided to have one further round of demonstration
+after incorporating the changes.One of the module owners made the design little complex.
+A demonstration in front of the team and a follow-up demonstration really made the design 
+very simple and reduced the complexity. This peer review session increased the overall quality 
+of our app and I believe this is an excellent exhibition of the XP Core value feedback. 
+Since we have reached the end phase of the project, we have decided to increase the
+frequency of this demo and peer-review sessions. This will ensure that the module owners are on 
+the right track, we meet the deadlines and we deliver and absolutely quality product.This XP value
+is now one of the most crucial points at this phase.
+
+
