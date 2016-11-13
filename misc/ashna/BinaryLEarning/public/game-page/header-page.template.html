@@ -1,0 +1,62 @@
+
+
+<div class="header container-fluid" >
+   <div class="content" style="padding-top:5px;" >
+   		
+      <div class="pull-left">
+      	
+         <ul>				
+               <span>Hi!</span>
+               <a href="#home"><span> {{username}} </span></a>
+                <span> |</span>
+               	<button type="button" class="btn btn-link" ng-click="signout()">Logout</button>
+         	
+          <span>| </span>
+               <a href="#sell"><span> Sell </span></a>
+               <a ng-repeat="ad in Ads" >
+            {{ad.adv_id}}
+            </a>
+
+         </ul>
+      </div>
+      
+      <div class="pull-right" >
+         <ul>
+
+               <a href="#myaccount" style="padding-right:20px;">My eBay</a>
+
+               <!--  <a href="#mynotification" style="padding-right:20px;"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span></a> -->
+
+               <a href="#mycart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+				<a ng-if="$root.profile.cart_quant>0" style="background-color: orange;" href="#mycart" >
+		             {{$root.profile.cart_quant}}
+		        </a>
+         </ul>
+      </div>
+   </div>
+</div>
+<div class="container-fluid" >
+   <div class="row" >
+      <div class="col-md-1 ">
+      </div>
+      <div class="col-md-1 "  style="padding-left:25px;display:block;padding-right:0px;">
+         <button  class="btn_transaparent" ><font size="7" style="letter-spacing:-4px;"><span style="color:red;">e</span><span style="color:blue;">b</span><span style="color:orange;">a</span><span style="color:green;">y</span></font></button>
+      </div>
+      <div class="col-md-1 " >
+         <button class="btn_transaparent" style="padding-top:25px;">Shop by category</button>
+      </div>
+      <div class="col-md-7" style="margin-top:25px;">
+         <form>
+            <div class="form-group">
+               <input type="email" class="form-control" placeholder="search item" id="searchitem"></input>
+            </div>
+         </form>
+      </div>
+      <div class="col-md-2" style="margin-top:25px;">
+         <button class="btn btn-primary">Search</button>
+      </div>
+   </div>
+   <div class="row content-body" >
+      <div class="col-md-12">
+         <hr></hr>
+      </div>
