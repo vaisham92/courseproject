@@ -5,9 +5,9 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 
 module.exports = function(passport) {
 	passport.use(new FacebookStrategy({
-    		clientID: '1722289798092382',
-    		clientSecret: 'aec5235d637ee2d5f5a053434d925366',
-    		callbackURL: "https://binarylearning.herokuapp.com//auth/facebook/callback"
+    		clientID: configAuth.facebookAuth.clientID,
+    		clientSecret: configAuth.facebookAuth.clientSecret,
+    		callbackURL: configAuth.facebookAuth.callbackURL
   	},
 
   	function(accessToken, refreshToken, profile, done) {
