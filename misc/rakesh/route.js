@@ -1,4 +1,3 @@
-var configAuth = require('./auth')
 	
 app.get('/auth/facebook', passport.authenticate('facebook'));
 
