@@ -1,0 +1,173 @@
+<html>
+   <head>
+		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+		<base href="/"/>
+		<link type="text/css" rel="stylesheet" href="css/icon.css" media="screen,projection"/>
+		<link type="text/css" rel="stylesheet" href="css/style.css" media="screen,projection"/>
+		<link type="text/css" rel="stylesheet" href="css/sticky-footer.css" media="screen,projection"/>
+		<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.css" media="screen,projection"/>
+
+		<!--Let browser know website is optimized for mobile-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="images/favicon.icoo" type="image/vnd.microsoft.icon"/>
+		<link rel="icon" href="images/favicon.ico" type="image/vnd.microsoft.icon"/>
+
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-route.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-route.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.3/angular-sanitize.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+
+		<!-- <script type="text/javascript" src="angular/housingtrust.js"></script> -->
+   </head>
+   <body background="images/background2.jpg"> <!-- bgcolor="#E9F5FC"> <!-- ng-app="housingtrustApp"> -->
+		<!-- <div ng-view>
+			<div ui-view="">
+				<div id="wrapper" class=""></div>
+			</div>
+		</div> -->
+   <nav>
+	   <div class="nav-wrapper blue accent-2 ">
+		   <a href="#" class="brand-logo center"><b>BINARY MANIA</b></a>
+		   <ul id="nav-mobile" class="right hide-on-med-and-down">
+			   <li><a href="/register"><b>Register</b></a></li>
+			   <li><a href="/login"><b>Login</b></a></li>
+		   </ul>
+	   </div>
+   </nav>
+   <br>
+   <!--<div class="row">-->
+	   <!--<div class="card-panel">-->
+		   <!--<blockquote>-->
+			   <!--This is a Binary Game. Convert as many decimals to binary as possible and earn your rank in the <b>Hall of Fame</b>-->
+		   <!--</blockquote>-->
+	   <!--</div>-->
+   <!--</div>-->
+   <div class = "main">
+	   <div class="row">
+		   <div class = "col s5">
+			   <div class="card-panel z-depth-3">
+				   <div class="row">
+					   <a class="waves-effect waves-light btn-large blue"><h5><b>Tutorials</b></h5></a>
+				   </div>
+				   <span class="blue-text">I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+          </span>
+			   </div>
+			   <div class="card-panel z-depth-3">
+				   <div class="row">
+					   <a class="waves-effect waves-light btn-large blue"><h5><b>Challenge</b></h5></a>
+
+				   </div>
+				   <span class="blue-text">I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+          </span>
+			   </div>
+			   <div class="card-panel z-depth-3">
+				   <div class="row">
+					   <a class="waves-effect waves-light btn-large blue"><h5><b>Group Challenge</b></h5></a>
+				   </div>
+				   <span class="blue-text">I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+          </span>
+			   </div>
+		   </div>
+		   <div class = "col s7">
+			   <div class="card-panel z-depth-3">
+				   <h2 class="center flow-text"><b>Hall of Fame</b></h2>
+				   <table class="bordered">
+					   <thead>
+						   <tr>
+							   <th class="blue lighten-1" data-field="id">Rank</th>
+							   <th class="blue lighten-1" data-field="name">Name</th>
+							   <th class="blue lighten-1" data-field="gold">Gold</th>
+							   <th class="blue lighten-1" data-field="silver">Silver</th>
+							   <th class="blue lighten-1" data-field="bronze">Bronze</th>
+							   <th class="blue lighten-1" data-field="country">Country</th>
+						   </tr>
+					   </thead>
+					   <tbody>
+						   <tr class="blue lighten-4">
+							   <td>1</td>
+							   <td>Alvin</td>
+							   <td style='color:#FFD700'><b>9</b></td>
+							   <td style='color:#C0C0C0'><b>9</b></td>
+							   <td style='color:#C9AE5D'><b>9</b></td>
+							   <td>India</td>
+						   </tr>
+						   <tr class="blue lighten-4">
+							   <td>2</td>
+							   <td>Alan</td>
+							   <td style='color:#FFD700'><b>9</b></td>
+							   <td style='color:#C0C0C0'><b>9</b></td>
+							   <td style='color:#C9AE5D'><b>9</b></td>
+							   <td>India</td>
+						   </tr>
+						   <tr class="blue lighten-4">
+							   <td>3</td>
+							   <td>Jonathan</td>
+							   <td style='color:#FFD700'><b>9</b></td>
+							   <td style='color:#C0C0C0'><b>9</b></td>
+							   <td style='color:#C9AE5D'><b>9</b></td>
+							   <td>India</td>
+						   </tr>
+						   <tr>
+							   <td>4</td>
+							   <td>John</td>
+							   <td style='color:#FFD700'><b>9</b></td>
+							   <td style='color:#C0C0C0'><b>9</b></td>
+							   <td style='color:#C9AE5D'><b>9</b></td>
+							   <td>India</td>
+						   </tr>
+						   <tr>
+							   <td>5</td>
+							   <td>Mathew</td>
+							   <td style='color:#FFD700'><b>9</b></td>
+							   <td style='color:#C0C0C0'><b>9</b></td>
+							   <td style='color:#C9AE5D'><b>9</b></td>
+							   <td>India</td>
+						   </tr>
+						   <tr>
+							   <td>6</td>
+							   <td>Micheal</td>
+							   <td style='color:#FFD700'><b>9</b></td>
+							   <td style='color:#C0C0C0'><b>9</b></td>
+							   <td style='color:#C9AE5D'><b>9</b></td>
+							   <td>India</td>
+						   </tr>
+						   <tr>
+							   <td>7</td>
+							   <td>Micheal</td>
+							   <td style='color:#FFD700'><b>9</b></td>
+							   <td style='color:#C0C0C0'><b>9</b></td>
+							   <td style='color:#C9AE5D'><b>9</b></td>
+							   <td>India</td>
+						   </tr>
+						   <tr>
+							   <td>8</td>
+							   <td>Micheal</td>
+							   <td style='color:#FFD700'><b>9</b></td>
+							   <td style='color:#C0C0C0'><b>9</b></td>
+							   <td style='color:#C9AE5D'><b>9</b></td>
+							   <td>India</td>
+						   </tr>
+						   <tr>
+							   <td>9</td>
+							   <td>Micheal</td>
+							   <td style='color:#FFD700'><b>9</b></td>
+							   <td style='color:#C0C0C0'><b>9</b></td>
+							   <td style='color:#C9AE5D'><b>9</b></td>
+							   <td>India</td>
+						   </tr>
+					   </tbody>
+				   </table>
+			   </div>
+		   </div>
+	   </div>
+   </div>
+   </body>
+</html>

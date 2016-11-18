@@ -15,10 +15,10 @@ app.use(bodyParser.json());
 
 //app.use('/', function(request, response) {
 //	// Use response.sendfile, as it streams instead of reading the file into memory.
-//	response.sendfile(__dirname + '/public/index.html');
+//	response.sendfile(__dirname + '/public/index2.html');
 //});
 app.post('/api/login',auth.login);
-app.post("/api/userRegister",auth.register);
+app.post('/api/userRegister',auth.register);
 app.post('/api/BinaryTest' , test.BinaryTest);
 app.post('/api/CreateQs' , test.CreateQs);
 //app.get('/api/SubmitAns', test.SubmitAns);
@@ -30,7 +30,7 @@ app.post('/api/CreateQs' , test.CreateQs);
 //app.post('/api/login',auth.login);
 //app.use('/', function(request, response) {
 //	// Use response.sendfile, as it streams instead of reading the file into memory.
-//	response.sendfile(__dirname + '/public/index.html');
+//	response.sendfile(__dirname + '/public/index2.html');
 //});
 
 app.listen(app.get('port'), function() {
