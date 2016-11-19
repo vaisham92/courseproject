@@ -1,10 +1,10 @@
 var configAuth = require('./auth')
 
-var passport = require('passport')
+var passp = require('passport')
 var FacebookStrategy = require('passport-facebook').Strategy;
 
-module.exports = function(passport) {
-	passport.use(new FacebookStrategy({
+module.exports = function(passp) {
+	passp.use(new FacebookStrategy({
     		clientID: configAuth.facebookAuth.clientID,
     		clientSecret: configAuth.facebookAuth.clientSecret,
     		callbackURL: configAuth.facebookAuth.callbackURL
