@@ -15,3 +15,5 @@ Topics Covered
 	. Collected all the requirements and completed user flow.
 5. Service for Game flow.
 	.REST Services Development
+
+6. Score Calculation
