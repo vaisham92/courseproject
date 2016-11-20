@@ -7,3 +7,4 @@ app.get('/auth/facebook/callback',
 
 #TBR
 app.get('/')
+app.get('/login')
