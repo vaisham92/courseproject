@@ -1,12 +1,10 @@
 CMPE 202
-Journal week 7
+Journal week 8
 
 
 Core Value: Communication
 
-This week once gain I want to emphasize on the importance of Communication in Scrum Agile methodology. In Scrum, communication happens mostly face to face through different meetings like the Scrum meeting, Sprint Planning Meeting, Sprint Review Meeting and the Sprint retrospective meeting. Effective communication by asking relevant questions at the appropriate time is very important in Scrum. This is because if there is no communication gap among the team members and between the product owner and the development team, the end product will be as expected with all the features as expected by the product owner. The meeting also provides an opportunity to give a peer review feedback and suggestions which helps the team members to improve their technical and design skills. We are in 7th week of the Team Project and is following the Scrum methodology. As decided, we had 2 weekly status meetings and also another meeting which helped us to integrate and test all the new features developed this week.
 
-This week, during the status meetings we discussed about the design patterns that be implemented in our game design. We need to select atlas 5 design patterns which can be used for our application. The first design pattern selected in the Observer pattern. In a UI based application there can be lot of events and event handlers which should be called based on the events. This can be done using Observer pattern. We can also use Composite design pattern because we have some functionalities wrapper around other. We can also make use of the Proxy pattern, Factory pattern and Decorator pattern. 
 
 
 
