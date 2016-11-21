@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 
 //app.use('/', function(request, response) {
 //	// Use response.sendfile, as it streams instead of reading the file into memory.
-//	response.sendfile(__dirname + '/public/index2.html');
+//	response.sendfile(__dirname + '/public/index.html');
 //});
 app.post('/api/login',auth.login);
 app.post('/api/userRegister',auth.register);
@@ -30,7 +30,7 @@ app.get('/api/SubmitAns', test.SubmitAns);
 //app.post('/api/login',auth.login);
 //app.use('/', function(request, response) {
 //	// Use response.sendfile, as it streams instead of reading the file into memory.
-//	response.sendfile(__dirname + '/public/index2.html');
+//	response.sendfile(__dirname + '/public/index.html');
 //});
 
 app.listen(app.get('port'), function() {
