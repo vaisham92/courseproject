@@ -21,13 +21,24 @@ exports.BinaryTest = function(request,response){
 };
 
 
-exports.CreateQs = function(request,response){
-	var qsBank = {};
-	qsBank.qs = request.body.qs;
-	qsBank.ans = request.body.ans;
+exports.SaveAns = function(request,response){
+
+	var qsBank = {};	
+	qsBank.userId = request.body.userId;
+	qsBank.testId = request.body.testId;
 	qsBank.level = request.body.level;
+	qsBank.response = request.body.response;
+	console.log(request.response);
+	var count = 0;
+	for(var i=0; i < request.body.response.length;i++){	  
+	  if(request.body.response[i].question.toString(2)==request.body.response[i].answer){
+	    count++;
+	  }
+	}
+	qsBank.correctCount = count;
+		
 	mongo.connect(mongoURL, function() {
-	var qsDetails = mongo.collection('QuestionBank');
+	var qsDetails = mongo.collection('resultDirectory');
 	mongoDbHelper.insertIntoCollection(qsDetails, qsBank, function() {
 		mongodb.MongoClient.connect('mongodb://localhost:27017/binaryGame', function(error, db) {		
 			if(error){
@@ -43,7 +54,7 @@ exports.CreateQs = function(request,response){
 };
 
 //need to modify--comment it before testing
-exports.SaveAns = function(request,response){
+exports.CreateQs = function(request,response){
 	var qsBank = {};
 	qsBank.qs = request.body.qs;
 	qsBank.ans = request.body.ans;
