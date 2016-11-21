@@ -42,5 +42,27 @@ exports.CreateQs = function(request,response){
 	});
 };
 
+//need to modify--comment it before testing
+exports.SaveAns = function(request,response){
+	var qsBank = {};
+	qsBank.qs = request.body.qs;
+	qsBank.ans = request.body.ans;
+	qsBank.level = request.body.level;
+	mongo.connect(mongoURL, function() {
+	var qsDetails = mongo.collection('QuestionBank');
+	mongoDbHelper.insertIntoCollection(qsDetails, qsBank, function() {
+		mongodb.MongoClient.connect('mongodb://localhost:27017/binaryGame', function(error, db) {		
+			if(error){
+				response.send({"Status":500,
+					"Message": "Unable to create Quiz Qs"});
+				}else{
+					response.send({"Status":200,
+						"message":"Quiz Qs created Successfully"});
+				}
+		});
+	});
+	});
+};
+
 
 
