@@ -1,4 +1,7 @@
 var configAuth = require('./auth')
+#TBR
+var route = require('./route')
+
 
 var passp = require('passport')
 var FacebookStrategy = require('passport-facebook').Strategy;
