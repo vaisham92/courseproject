@@ -22,6 +22,7 @@ app.post('/api/userRegister',auth.register);
 app.post('/api/BinaryTest' , test.BinaryTest);
 app.post('/api/CreateQs' , test.CreateQs);
 app.post('/api/SubmitAns', test.SaveAns);
+app.get('/api/getRank/:testId/:level',test.getRank);
 //app.post("/api/savedata", eligibility_core.add);
 /*
  * app.get('/', function(request, response) { response.render('pages/index');

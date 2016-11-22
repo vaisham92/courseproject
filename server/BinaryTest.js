@@ -26,9 +26,9 @@ exports.SaveAns = function(request,response){
 	var qsBank = {};	
 	qsBank.userId = request.body.userId;
 	qsBank.testId = request.body.testId;
+	qsBank.time = request.body.time;
 	qsBank.level = request.body.level;
 	qsBank.response = request.body.response;
-	console.log(request.response);
 	var count = 0;
 	for(var i=0; i < request.body.response.length;i++){	  
 	  if(request.body.response[i].question.toString(2)==request.body.response[i].answer){
@@ -72,7 +72,22 @@ exports.CreateQs = function(request,response){
 				}
 		});
 	});
-	});
+	});		
+};
+
+exports.getRank = function(request,response){
+	
+	var testId = parseInt(request.params.testId);
+	var level = request.params.level;
+	var query = {'testId': testId,'level':level};
+	console.log(query);
+	var options = {"sort": [['correctCount','desc'], ['time','asc']]}
+	mongo.connect(mongoURL, function() {
+		var collection = mongo.collection('resultDirectory');
+		mongoDbHelper.read(collection,query,null,options,function(data) {
+				response.send({"message":data});
+			});
+		});
 };
 
 
