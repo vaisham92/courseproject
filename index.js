@@ -23,6 +23,9 @@ app.post('/api/BinaryTest' , test.BinaryTest);
 app.post('/api/CreateQs' , test.CreateQs);
 app.post('/api/SubmitAns', test.SaveAns);
 app.get('/api/getRank/:testId/:level',test.getRank);
+app.get('/api/getScoreboard/:level',test.getScoreboard_level);
+app.get('/api/getUserRank/:testId/:level/:userId',test.getUserRank);
+app.get('/api/getHallOfFame',test.getHallOfFame);
 //app.post("/api/savedata", eligibility_core.add);
 /*
  * app.get('/', function(request, response) { response.render('pages/index');

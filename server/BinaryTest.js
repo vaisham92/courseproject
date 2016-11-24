@@ -78,17 +78,159 @@ exports.CreateQs = function(request,response){
 exports.getRank = function(request,response){
 	
 	var testId = parseInt(request.params.testId);
-	var level = request.params.level;
+	var level =  request.params.level;
+	//var userId = parseInt(request.params.userId);
 	var query = {'testId': testId,'level':level};
 	console.log(query);
 	var options = {"sort": [['correctCount','desc'], ['time','asc']]}
 	mongo.connect(mongoURL, function() {
 		var collection = mongo.collection('resultDirectory');
 		mongoDbHelper.read(collection,query,null,options,function(data) {
+			if(data==null){
+				console.log("No entry found");
+			}
+			else
 				response.send({"message":data});
 			});
 		});
 };
+
+exports.getUserRank = function(request,response){
+	
+	var testId = parseInt(request.params.testId);
+	var level =  request.params.level;
+	var userId = parseInt(request.params.userId);
+	var query = {'testId': testId,'level':level};
+	console.log(query);
+	var rank = 0;
+	var options = {"sort": [['correctCount','desc'], ['time','asc']]}
+	mongo.connect(mongoURL, function() {
+		var collection = mongo.collection('resultDirectory');
+		mongoDbHelper.read(collection,query,null,options,function(data) {
+			if(data==null){
+				console.log("No entry found");
+			}
+			else
+				//response.send({"data":data});
+			for(var i=0 ; i < data.length;i++){
+				if(data[i].userId==userId){
+					rank = i+1;
+				}
+			}
+				response.send({"User Rank":rank});
+			});
+		});
+	
+	
+};
+
+exports.getHallOfFame = function(request,response){
+
+	var options = {"sort": [['correctCount','desc'], ['time','asc']], "group":['level'] }
+	mongo.connect(mongoURL, function() {
+		var collection = mongo.collection('resultDirectory');
+		mongoDbHelper.read(collection,null,null,options,function(data) {
+			if(data==null){
+				console.log("No entry found");
+			}
+			else
+				//response.send({"data":data});
+			
+
+			var res = new Array();
+			var count = 0;
+			var count_med = 0;
+			var Arr_easy = new Array();
+			var Arr_med = new Array();
+			var res_easy = new Array();
+			var res_med = new Array();
+			for(var i=0 ; i < data.length;i++)
+			{
+				var level=data[i].level;
+				if(level==="easy")
+				{					
+					var temp = data[i].userId;    
+					var index = Arr_easy.indexOf(temp);      
+					if(index==-1)
+					   {
+							res_easy[count] = ({"Userid: " : data[i].userId, "Best Score: " : data[i].correctCount, " Time : " : data[i].time })
+						    Arr_easy[count] = temp;
+						         count++;
+					   }
+				}
+				
+				else if(level==="medium")
+					{
+						var temp = data[i].userId;    
+						var index = Arr_med.indexOf(temp);      
+						if(index==-1)
+						   {
+							     res_med[count_med] = ({"Userid: " : data[i].userId, "Best Score: " : data[i].correctCount, " Time : " : data[i].time });
+							     Arr_med[count_med] = temp;
+							     	count_med++;
+						
+						   }
+					}
+			}
+				
+			res= ({"Easy":res_easy,"Medium":res_med});
+			response.send({"HallOfFame":res});
+			
+			
+			});
+		});
+	
+	
+};
+
+
+
+
+
+exports.getScoreboard_level = function(request,response){
+	
+	var level =  request.params.level;
+	var query = {'level':level};
+	var rank = 0;
+	var options = {"sort": [['correctCount','desc'], ['time','asc']], "group":['level'] }
+	mongo.connect(mongoURL, function() {
+		var collection = mongo.collection('resultDirectory');
+		mongoDbHelper.read(collection,query,null,options,function(data) {
+			if(data==null){
+				console.log("No entry found");
+			}
+			else
+				//response.send({"data":data});
+			
+			var Arr = new Array();
+			var res = new Array();
+			var count = 0;
+
+			for(var i=0 ; i < data.length;i++)
+			{
+
+				var temp = data[i].userId;    
+				var index = Arr.indexOf(temp);      
+				if(index==-1)
+				   {
+				     res[count] = ({"Userid: " : data[i].userId, "Best Score: " : data[i].correctCount, " Time : " : data[i].time });
+				     Arr[count] = temp;
+				         count++;
+			   }
+			}
+			
+			
+			console.log(Arr);
+			response.send({"scoreboard":res});
+			
+		
+			});
+		});
+	
+	
+};
+
+
 
 
 
