@@ -6,7 +6,10 @@ var binary = angular.module('binary', ['ngRoute']);
 binary.config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider, $routeParams) {
         $routeProvider
-            .when('/login', {
+            .when('/', {
+                templateUrl: 'landing.html',
+                controller: 'mainController'
+            }).when('/login', {
                 templateUrl: 'login.html',
                 controller: 'loginController'
             }).when('/register', {
@@ -21,7 +24,7 @@ binary.config(['$routeProvider', '$locationProvider',
 ]);
 
 binary.controller('mainController', function($scope, $http, $routeParams) {
-    window.location = "/login";
+    
 });
 
 
