@@ -33,7 +33,6 @@ app.get('/api/getScoreboard/:level',test.getScoreboard_level);
 app.get('/api/getUserRank/:testId/:level/:userId',test.getUserRank);
 app.get('/api/getHallOfFame',test.getHallOfFame);
 
-app.use(express.static(path.join(__dirname, 'public')));
 //app.post("/api/savedata", eligibility_core.add);
 /*
  * app.get('/', function(request, response) { response.render('pages/index');
