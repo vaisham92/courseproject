@@ -16,6 +16,7 @@ exports.login = function(request,response){
 					}else{
 						var getPassword = data.password;
 						if(passord===getPassword){
+							request.session.user = data;
 							response.send({
 								"Status":200,
 								"Message":"Validation Successfull"

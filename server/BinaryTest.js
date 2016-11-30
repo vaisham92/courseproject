@@ -95,6 +95,22 @@ exports.getRank = function(request,response){
 		});
 };
 
+exports.addToSesssion = function(request,response){
+	var level = request.params.level;
+	request.session.level = level;
+	response.send({
+		"status":200,
+		"message":request.session.level
+	});
+}
+
+exports.getFromSession = function(request,response){
+	response.send({
+		"status":200,
+		"message":request.session
+	});
+}
+
 exports.getUserRank = function(request,response){
 	
 	var testId = parseInt(request.params.testId);
