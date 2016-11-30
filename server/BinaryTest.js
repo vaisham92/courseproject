@@ -41,7 +41,7 @@ exports.ConfirmLevel= function(request,response){
 exports.SaveAns = function(request,response){
 
 	var qsBank = {};	
-	qsBank.username = request.body.username; // modify to username
+	qsBank.username = request.body.username; 
 	qsBank.testId = request.body.testId;
 	qsBank.time = request.body.time;
 	qsBank.level = request.body.level;
@@ -71,7 +71,6 @@ exports.SaveAns = function(request,response){
 	});
 };
 
-//need to modify--comment it before testing
 exports.CreateQs = function(request,response){
 	var qsBank = {};
 	qsBank.qs = request.body.qs;
@@ -180,10 +179,13 @@ exports.getHallOfFame = function(request,response){
 			var res = new Array();
 			var count = 0;
 			var count_med = 0;
+			var count_diff =0;
 			var Arr_easy = new Array();
 			var Arr_med = new Array();
 			var res_easy = new Array();
 			var res_med = new Array();
+			var Arr_diff = new Array();
+			var res_diff = new Array();
 			for(var i=0 ; i < data.length;i++)
 			{
 				var level=data[i].level;
@@ -193,7 +195,10 @@ exports.getHallOfFame = function(request,response){
 					var index = Arr_easy.indexOf(temp);      
 					if(index==-1)
 					   {
-							res_easy[count] = ({"UserName: " : data[i].userId, "Score: " : data[i].correctCount, " Time : " : data[i].time })
+
+							//res_easy[count] = ({"UserName: " : data[i].userId, "Score: " : data[i].correctCount, " Time : " : data[i].time })
+						    res_easy[count] = ({"UserName" : data[i].username, "Score" : data[i].correctCount, "Time" : data[i].time });
+
 						    Arr_easy[count] = temp;
 						         count++;
 					   }
@@ -205,15 +210,29 @@ exports.getHallOfFame = function(request,response){
 						var index = Arr_med.indexOf(temp);      
 						if(index==-1)
 						   {
-							     res_med[count_med] = ({"UserName: " : data[i].userId, "Score: " : data[i].correctCount, " Time : " : data[i].time });
+
+							     //s_med[count_med] = ({"UserName: " : data[i].userId, "Score: " : data[i].correctCount, " Time : " : data[i].time });
+							     res_med[count_med] = ({"UserName" : data[i].username, "Score" : data[i].correctCount, "Time" : data[i].time});
 							     Arr_med[count_med] = temp;
 							     	count_med++;
 						
 						   }
 					}
+				else if(level==="difficult")
+				{
+					var temp = data[i].userId;    
+					var index = Arr_diff.indexOf(temp);      
+					if(index==-1)
+					   {
+						     res_diff[count_diff] = ({"UserName" : data[i].username, "Score" : data[i].correctCount, "Time" : data[i].time });
+						     Arr_diff[count_diff] = temp;
+						     	count_diff++;
+					
+					   }
+				}
 			}
 				
-			res= ({"Easy":res_easy,"Medium":res_med});
+			res= ({"Easy":res_easy,"Medium":res_med,"Difficult":res_diff});
 			response.send({"Status":200,"HallOfFame":res});
 			
 			
@@ -255,7 +274,7 @@ exports.getScoreboard_level = function(request,response){
 				var index = Arr.indexOf(temp);      
 				if(index==-1)
 				   {
-					//// modify to username
+					
 				     res[count] = ({"UserName" : data[i].username, "Score" : data[i].correctCount, "Time" : data[i].time, "School" : data[i].School });
 				     Arr[count] = temp;
 				         count++;
