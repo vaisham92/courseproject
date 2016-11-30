@@ -3,11 +3,12 @@ var mongoURL = 'mongodb://localhost:27017/binaryGame';
 var mongoDbHelper = require('./mongo-db-helper');
 var mongodb = require('mongodb');
 
+
 exports.BinaryTest = function(request,response){	
 	var level = request.body.level;
 	mongo.connect(mongoURL, function() {
 		var qsDetails = mongo.collection('QuestionBank');
-		mongoDbHelper.readOne(qsDetails,{'level':level},null, function(data) {
+		mongoDbHelper.readTen(qsDetails,{'level':level},null, function(data) {
 				if(data==undefined){
 					response.send({"Status":500,
 						"Message": "No qs Exists"});
@@ -20,14 +21,31 @@ exports.BinaryTest = function(request,response){
 		});
 };
 
+exports.ConfirmLevel= function(request,response){	
+	var level = request.body.level;
+	mongo.connect(mongoURL, function() {
+		var qsDetails = mongo.collection('QuestionBank');
+		mongoDbHelper.readTen(qsDetails,{'level':level},null, function(data) {
+				if(data==undefined){
+					response.send({"Status":500,
+						"Message": "No qs Exists"});
+					}else{
+						var getQs = data.qs;
+						response.send({"Status":200,
+							"Message":"Qs fetched from db","qs is":getQs});
+					}
+			});
+		});
+};
 
 exports.SaveAns = function(request,response){
 
 	var qsBank = {};	
-	qsBank.userId = request.body.userId;
+	qsBank.username = request.body.username; 
 	qsBank.testId = request.body.testId;
 	qsBank.time = request.body.time;
 	qsBank.level = request.body.level;
+	qsBank.School = request.body.School;
 	qsBank.response = request.body.response;
 	var count = 0;
 	for(var i=0; i < request.body.response.length;i++){	  
@@ -43,17 +61,16 @@ exports.SaveAns = function(request,response){
 		mongodb.MongoClient.connect('mongodb://localhost:27017/binaryGame', function(error, db) {		
 			if(error){
 				response.send({"Status":500,
-					"Message": "Unable to create Quiz Qs"});
+					"Message": "Unable to save Ans"});
 				}else{
 					response.send({"Status":200,
-						"message":"Quiz Qs created Successfully"});
+						"message":"Ans saved Successfully"});
 				}
 		});
 	});
 	});
 };
 
-//need to modify--comment it before testing
 exports.CreateQs = function(request,response){
 	var qsBank = {};
 	qsBank.qs = request.body.qs;
@@ -88,6 +105,8 @@ exports.getRank = function(request,response){
 		mongoDbHelper.read(collection,query,null,options,function(data) {
 			if(data==null){
 				console.log("No entry found");
+				response.send({"Status":500,
+					"Message": "Unable to get rank"});
 			}
 			else
 				response.send({"message":data});
@@ -125,6 +144,8 @@ exports.getUserRank = function(request,response){
 		mongoDbHelper.read(collection,query,null,options,function(data) {
 			if(data==null){
 				console.log("No entry found");
+				response.send({"Status":500,
+					"Message": "Unable to get user rank"});
 			}
 			else
 				//response.send({"data":data});
@@ -133,7 +154,7 @@ exports.getUserRank = function(request,response){
 					rank = i+1;
 				}
 			}
-				response.send({"User Rank":rank});
+				response.send({"Status":200,"User Rank":rank});
 			});
 		});
 	
@@ -148,6 +169,8 @@ exports.getHallOfFame = function(request,response){
 		mongoDbHelper.read(collection,null,null,options,function(data) {
 			if(data==null){
 				console.log("No entry found");
+				response.send({"Status":500,
+					"Message": "Unable to get Hall Of Fame!"});
 			}
 			else
 				//response.send({"data":data});
@@ -156,10 +179,13 @@ exports.getHallOfFame = function(request,response){
 			var res = new Array();
 			var count = 0;
 			var count_med = 0;
+			var count_diff =0;
 			var Arr_easy = new Array();
 			var Arr_med = new Array();
 			var res_easy = new Array();
 			var res_med = new Array();
+			var Arr_diff = new Array();
+			var res_diff = new Array();
 			for(var i=0 ; i < data.length;i++)
 			{
 				var level=data[i].level;
@@ -169,7 +195,10 @@ exports.getHallOfFame = function(request,response){
 					var index = Arr_easy.indexOf(temp);      
 					if(index==-1)
 					   {
-							res_easy[count] = ({"Userid: " : data[i].userId, "Best Score: " : data[i].correctCount, " Time : " : data[i].time })
+
+							//res_easy[count] = ({"UserName: " : data[i].userId, "Score: " : data[i].correctCount, " Time : " : data[i].time })
+						    res_easy[count] = ({"UserName" : data[i].username, "Score" : data[i].correctCount, "Time" : data[i].time });
+
 						    Arr_easy[count] = temp;
 						         count++;
 					   }
@@ -181,16 +210,30 @@ exports.getHallOfFame = function(request,response){
 						var index = Arr_med.indexOf(temp);      
 						if(index==-1)
 						   {
-							     res_med[count_med] = ({"Userid: " : data[i].userId, "Best Score: " : data[i].correctCount, " Time : " : data[i].time });
+
+							     //s_med[count_med] = ({"UserName: " : data[i].userId, "Score: " : data[i].correctCount, " Time : " : data[i].time });
+							     res_med[count_med] = ({"UserName" : data[i].username, "Score" : data[i].correctCount, "Time" : data[i].time});
 							     Arr_med[count_med] = temp;
 							     	count_med++;
 						
 						   }
 					}
+				else if(level==="difficult")
+				{
+					var temp = data[i].userId;    
+					var index = Arr_diff.indexOf(temp);      
+					if(index==-1)
+					   {
+						     res_diff[count_diff] = ({"UserName" : data[i].username, "Score" : data[i].correctCount, "Time" : data[i].time });
+						     Arr_diff[count_diff] = temp;
+						     	count_diff++;
+					
+					   }
+				}
 			}
 				
-			res= ({"Easy":res_easy,"Medium":res_med});
-			response.send({"HallOfFame":res});
+			res= ({"Easy":res_easy,"Medium":res_med,"Difficult":res_diff});
+			response.send({"Status":200,"HallOfFame":res});
 			
 			
 			});
@@ -211,9 +254,11 @@ exports.getScoreboard_level = function(request,response){
 	var options = {"sort": [['correctCount','desc'], ['time','asc']], "group":['level'] }
 	mongo.connect(mongoURL, function() {
 		var collection = mongo.collection('resultDirectory');
-		mongoDbHelper.read(collection,query,null,options,function(data) {
+		mongoDbHelper.readTopThree(collection,query,null,options,function(data) {
 			if(data==null){
 				console.log("No entry found");
+				response.send({"Status":500,
+					"Message": "Unable to get Scoreboard for the level"});
 			}
 			else
 				//response.send({"data":data});
@@ -229,7 +274,8 @@ exports.getScoreboard_level = function(request,response){
 				var index = Arr.indexOf(temp);      
 				if(index==-1)
 				   {
-				     res[count] = ({"Userid: " : data[i].userId, "Best Score: " : data[i].correctCount, " Time : " : data[i].time });
+					
+				     res[count] = ({"UserName" : data[i].username, "Score" : data[i].correctCount, "Time" : data[i].time, "School" : data[i].School });
 				     Arr[count] = temp;
 				         count++;
 			   }
@@ -237,7 +283,7 @@ exports.getScoreboard_level = function(request,response){
 			
 			
 			console.log(Arr);
-			response.send({"scoreboard":res});
+			response.send({"Status":200,"scoreboard":res});
 			
 		
 			});
