@@ -18,10 +18,7 @@ app.use(bodyParser.json());
 //	// Use response.sendfile, as it streams instead of reading the file into memory.
 //	response.sendfile(__dirname + '/public/index.html');
 //});
-app.use('/', function(request, response) {
-	// Use response.sendfile, as it streams instead of reading the file into memory.
-	response.sendfile(__dirname + '/public/index.html');
-});
+
 
 app.post('/api/login',auth.login);
 app.post('/api/userRegister',auth.register);
@@ -32,6 +29,11 @@ app.get('/api/getRank/:testId/:level',test.getRank);
 app.get('/api/getScoreboard/:level',test.getScoreboard_level);
 app.get('/api/getUserRank/:testId/:level/:userId',test.getUserRank);
 app.get('/api/getHallOfFame',test.getHallOfFame);
+
+app.use('/', function(request, response) {
+	// Use response.sendfile, as it streams instead of reading the file into memory.
+	response.sendfile(__dirname + '/public/index.html');
+});
 
 //app.post("/api/savedata", eligibility_core.add);
 /*

@@ -24,7 +24,13 @@ binary.config(['$routeProvider', '$locationProvider',
 ]);
 
 binary.controller('mainController', function($scope, $http, $routeParams) {
-    
+    $scope.loginModalActivate = function() {
+        $('#loginmodal').modal('open');
+    };
+
+    $scope.registerModalActivate = function() {
+        $('#registermodal').modal('open');
+    };
 });
 
 
