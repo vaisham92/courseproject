@@ -3,6 +3,7 @@ var app = express();
 var auth = require('./server/authentication');
 var test = require('./server/BinaryTest')
 var bodyParser = require('body-parser');
+var path = require('path')
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -17,6 +18,11 @@ app.use(bodyParser.json());
 //	// Use response.sendfile, as it streams instead of reading the file into memory.
 //	response.sendfile(__dirname + '/public/index.html');
 //});
+app.use('/', function(request, response) {
+	// Use response.sendfile, as it streams instead of reading the file into memory.
+	response.sendfile(__dirname + '/public/index.html');
+});
+
 app.post('/api/login',auth.login);
 app.post('/api/userRegister',auth.register);
 app.post('/api/BinaryTest' , test.BinaryTest);
@@ -26,6 +32,8 @@ app.get('/api/getRank/:testId/:level',test.getRank);
 app.get('/api/getScoreboard/:level',test.getScoreboard_level);
 app.get('/api/getUserRank/:testId/:level/:userId',test.getUserRank);
 app.get('/api/getHallOfFame',test.getHallOfFame);
+
+app.use(express.static(path.join(__dirname, 'public')));
 //app.post("/api/savedata", eligibility_core.add);
 /*
  * app.get('/', function(request, response) { response.render('pages/index');

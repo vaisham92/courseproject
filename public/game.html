@@ -1,0 +1,129 @@
+<div id="wrapper" class="row ng-scope">
+    <!-- <script type="text/javascript" src="angular/housingtrust.js"></script> -->
+    <script type="application/javascript">
+        function flip() {
+            $('.card').toggleClass('flipped');
+        }
+
+    </script>
+    <style>
+        .container {
+            width: 100px;
+            height: 130px;
+            position: relative;
+            -webkit-perspective: 800px;
+            -moz-perspective: 800px;
+            -o-perspective: 800px;
+            perspective: 800px;
+        }
+        .card {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            -webkit-transition: -webkit-transform 1s;
+            -moz-transition: -moz-transform 1s;
+            -o-transition: -o-transform 1s;
+            transition: transform 1s;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -o-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transform-origin: 50% 50%;
+        }
+        .card div {
+            display: block;
+            height: 100%;
+            width: 100%;
+            line-height: 30px;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            position: absolute;
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            -o-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+        .card .front {
+            background: red;
+        }
+        .card .back {
+            background: blue;
+            -webkit-transform: rotateY( 180deg );
+            -moz-transform: rotateY( 180deg );
+            -o-transform: rotateY( 180deg );
+            transform: rotateY( 180deg );
+        }
+        .card.flipped {
+            -webkit-transform: rotateY( 180deg );
+            -moz-transform: rotateY( 180deg );
+            -o-transform: rotateY( 180deg );
+            transform: rotateY( 180deg );
+        }
+    </style>
+    <br>
+    <div class="row">
+        <div class="row">
+            <div class="card-panel">
+                <blockquote>
+                    <b> Question 1: </b> Convert the number '36' to binary from decimal
+                </blockquote>
+            </div>
+        </div>
+        <div class="col s12">
+            <div class="card-panel">
+                <div class="row">
+                    <div class = "col s2">
+                        <section class="container">
+                            <div class="card" onclick="flip()">
+                                <div class="front">0</div>
+                                <div class="back">1</div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class = "col s2">
+                        <section class="container">
+                            <div class="card" onclick="flip()">
+                                <div class="front">0</div>
+                                <div class="back">1</div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class = "col s2">
+                        <section class="container">
+                            <div class="card" onclick="flip()">
+                                <div class="front">0</div>
+                                <div class="back">1</div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class = "col s2">
+                        <section class="container">
+                            <div class="card" onclick="flip()">
+                                <div class="front">0</div>
+                                <div class="back">1</div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class = "col s2">
+                        <section class="container">
+                            <div class="card" onclick="flip()">
+                                <div class="front">0</div>
+                                <div class="back">1</div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class = "col s2">
+                        <section class="container">
+                            <div class="card" onclick="flip()">
+                                <div class="front">0</div>
+                                <div class="back">1</div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
