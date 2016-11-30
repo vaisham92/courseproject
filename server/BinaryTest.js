@@ -193,7 +193,7 @@ exports.getHallOfFame = function(request,response){
 					var index = Arr_easy.indexOf(temp);      
 					if(index==-1)
 					   {
-							res_easy[count] = ({"Userid: " : data[i].userId, "Best Score: " : data[i].correctCount, " Time : " : data[i].time })
+							res_easy[count] = ({"UserName: " : data[i].userId, "Score: " : data[i].correctCount, " Time : " : data[i].time })
 						    Arr_easy[count] = temp;
 						         count++;
 					   }
@@ -205,7 +205,7 @@ exports.getHallOfFame = function(request,response){
 						var index = Arr_med.indexOf(temp);      
 						if(index==-1)
 						   {
-							     res_med[count_med] = ({"Userid: " : data[i].userId, "Best Score: " : data[i].correctCount, " Time : " : data[i].time });
+							     res_med[count_med] = ({"UserName: " : data[i].userId, "Score: " : data[i].correctCount, " Time : " : data[i].time });
 							     Arr_med[count_med] = temp;
 							     	count_med++;
 						
