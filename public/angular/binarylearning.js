@@ -3,6 +3,11 @@
  */
 var binary = angular.module('binary', ['ngRoute']);
 
+$(document).ready(function() {
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+});
+
 binary.config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider, $routeParams) {
         $routeProvider
@@ -24,13 +29,10 @@ binary.config(['$routeProvider', '$locationProvider',
 ]);
 
 binary.controller('mainController', function($scope, $http, $routeParams) {
-    $scope.loginModalActivate = function() {
-        $('#loginmodal').modal('open');
-    };
-
-    $scope.registerModalActivate = function() {
-        $('#registermodal').modal('open');
-    };
+    $(document).ready(function(){
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        $('.modal-trigger').leanModal();
+    });
 });
 
 

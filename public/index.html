@@ -1,13 +1,13 @@
 <html>
    <head>
 		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 		<base href="/"/>
 		<link type="text/css" rel="stylesheet" href="css/icon.css" media="screen,projection"/>
 		<link type="text/css" rel="stylesheet" href="css/style.css" media="screen,projection"/>
 		<link type="text/css" rel="stylesheet" href="css/sticky-footer.css" media="screen,projection"/>
-		<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.css" media="screen,projection"/>
+		<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.css" media="screen,projection"/>
 
 		<!--Let browser know website is optimized for mobile-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -22,38 +22,78 @@
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.3/angular-sanitize.min.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
 
+
         <script type="text/javascript" src="angular/binarylearning.js"></script>
         <script type="text/javascript" src="angular/login.js"></script>
         <script type="text/javascript" src="angular/register.js"></script>
         <script type="text/javascript" src="angular/404page.js"></script>
+	    <style>
+			.modal { width: 25% !important ; max-height: 100% !important ; overflow-y: hidden !important ;}
+		</style>
    </head>
    <body background="images/background2.jpg" ng-app="binary"> <!-- bgcolor="#E9F5FC"> <!-- ng-app="housingtrustApp"> -->
    <nav>
 	   <div class="nav-wrapper blue accent-2 ">
 		   <a href="#" class="brand-logo center"><b>BINARY MANIA</b></a>
 		   <ul id="nav-mobile" class="right hide-on-med-and-down">
-			   <li><a class="modal-trigger waves-effect waves-light btn" ng-click="loginModalActivate()"><b>Login</b></a></li>
-			   <li><a class="modal-trigger waves-effect waves-light btn" ng-click="registerModalActivate()"><b>Register</b></a></li>
+			   <li><a class="waves-effect waves-light blue lighten-1 btn modal-trigger" href="#loginmodal"><b>Login</b></a></a></li>
+			   <li><a class="waves-effect waves-light blue lighten-1 btn modal-trigger" href="#registermodal"><b>Register</b></a></a></li>
 		   </ul>
 	   </div>
    </nav>
    <!-- Modal Structure -->
-   <div id="loginmodal" class="modal modal-fixed-footer">
+   <div id="loginmodal" class="modal">
 	   <div class="modal-content">
-		   <h4>Modal Header</h4>
-		   <p>A bunch of text</p>
-	   </div>
-	   <div class="modal-footer">
-		   <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+		   <h5 align="center">Login</h5>
+			   <form class="col s12">
+				   <div class="row">
+					   <div class="input-field col s12">
+						   <input id="email" type="email" class="validate" ng-model="email">
+						   <label for="email">Email</label>
+					   </div>
+				   </div>
+				   <div class="row">
+					   <div class="input-field col s12">
+						   <input id="password" type="password" class="validate" ng-model="password">
+						   <label for="password">Password</label>
+					   </div>
+				   </div>
+				   <div class="row">
+					   <div class="input-field col s6">
+						   <a href="" class="waves-effect waves-light red btn">Cancel</a>
+					   </div>
+					   <div class="input-field col s6">
+						   <a href="" class="waves-effect waves-light green btn">Green</a>
+					   </div>
+				   </div>
+			   </form>
 	   </div>
    </div>
-   <div id="registermodal" class="modal modal-fixed-footer">
+   <div id="registermodal" class="modal">
 	   <div class="modal-content">
-		   <h4>Modal Header</h4>
-		   <p>A bunch of text</p>
-	   </div>
-	   <div class="modal-footer">
-		   <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+		   <h5 align="center">Register</h5>
+		   <form class="col s12">
+			   <div class="row">
+				   <div class="input-field col s12">
+					   <input id="remail" type="email" class="validate" ng-model="email">
+					   <label for="remail">Email</label>
+				   </div>
+			   </div>
+			   <div class="row">
+				   <div class="input-field col s12">
+					   <input id="rpassword" type="password" class="validate" ng-model="password">
+					   <label for="rpassword">Password</label>
+				   </div>
+			   </div>
+			   <div class="row">
+				   <div class="input-field col s6">
+					   <a href="" class="waves-effect waves-light red btn">Cancel</a>
+				   </div>
+				   <div class="input-field col s6">
+					   <a href="" class="waves-effect waves-light green btn">Green</a>
+				   </div>
+			   </div>
+		   </form>
 	   </div>
    </div>
    <br>
