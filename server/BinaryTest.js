@@ -105,6 +105,8 @@ exports.getRank = function(request,response){
 		mongoDbHelper.read(collection,query,null,options,function(data) {
 			if(data==null){
 				console.log("No entry found");
+				response.send({"Status":500,
+					"Message": "Unable to get rank"});
 			}
 			else
 				response.send({"message":data});
@@ -142,6 +144,8 @@ exports.getUserRank = function(request,response){
 		mongoDbHelper.read(collection,query,null,options,function(data) {
 			if(data==null){
 				console.log("No entry found");
+				response.send({"Status":500,
+					"Message": "Unable to get user rank"});
 			}
 			else
 				//response.send({"data":data});
@@ -150,7 +154,7 @@ exports.getUserRank = function(request,response){
 					rank = i+1;
 				}
 			}
-				response.send({"User Rank":rank});
+				response.send({"Status":200,"User Rank":rank});
 			});
 		});
 	
@@ -165,6 +169,8 @@ exports.getHallOfFame = function(request,response){
 		mongoDbHelper.read(collection,null,null,options,function(data) {
 			if(data==null){
 				console.log("No entry found");
+				response.send({"Status":500,
+					"Message": "Unable to get Hall Of Fame!"});
 			}
 			else
 				//response.send({"data":data});
@@ -207,7 +213,7 @@ exports.getHallOfFame = function(request,response){
 			}
 				
 			res= ({"Easy":res_easy,"Medium":res_med});
-			response.send({"HallOfFame":res});
+			response.send({"Status":200,"HallOfFame":res});
 			
 			
 			});
@@ -231,6 +237,8 @@ exports.getScoreboard_level = function(request,response){
 		mongoDbHelper.read(collection,query,null,options,function(data) {
 			if(data==null){
 				console.log("No entry found");
+				response.send({"Status":500,
+					"Message": "Unable to get Scoreboard for the level"});
 			}
 			else
 				//response.send({"data":data});
@@ -255,7 +263,7 @@ exports.getScoreboard_level = function(request,response){
 			
 			
 			console.log(Arr);
-			response.send({"scoreboard":res});
+			response.send({"Status":200,"scoreboard":res});
 			
 		
 			});
