@@ -1,4 +1,45 @@
-<div id="wrapper" class="row ng-scope">
+
+<html>
+   <head>
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+        <base href="/"/>
+        <link type="text/css" rel="stylesheet" href="css/icon.css" media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="css/style.css" media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="css/sticky-footer.css" media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.css" media="screen,projection"/>
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="images/favicon.icoo" type="image/vnd.microsoft.icon"/>
+        <link rel="icon" href="images/favicon.ico" type="image/vnd.microsoft.icon"/>
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-route.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-route.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.3/angular-sanitize.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+
+        <script type="text/javascript" src="angular/binarylearning.js"></script>
+                 <script type="text/javascript" src="angular/levels.js"></script>
+        <script type="text/javascript" src="angular/login.js"></script>
+        <script type="text/javascript" src="angular/register.js"></script>
+        <script type="text/javascript" src="angular/404page.js"></script>
+   </head>
+   <body background="images/background2.jpg" ng-app="binary"> <!-- bgcolor="#E9F5FC"> <!-- ng-app="housingtrustApp"> -->
+   <nav>
+       <div class="nav-wrapper blue accent-2 ">
+           <a href="#" class="brand-logo center"><b>BINARY MANIA</b></a>
+           <ul id="nav-mobile" class="right hide-on-med-and-down">
+               <li><a class="modal-trigger waves-effect waves-light btn" ng-click="login()"><b>Login</b></a></li>
+               <li><a class="modal-trigger waves-effect waves-light btn" ng-click="register()"><b>Register</b></a></li>
+           </ul>
+       </div>
+   </nav>
+<div id="wrapper" class="row ng-scope" ng-controller="levelController">
     <div class ="row"></div>
     <div class ="row"></div>
     <div class ="row"></div>
@@ -7,19 +48,18 @@
             <div class="card-panel" style ="background-color:white ;width: 100% !important;max-width: 350px;">
                 <div class ="row" style="text-align:center; color:green;font-size:20px;"> EASY</div>
                 <div style="padding-left:50px">
-                    <button class="btn-large waves-effect waves-light" type="submit" name="action">Start Challenge
+                    <button class="btn-large waves-effect waves-light" type="submit" name="action" ng-click="challenge('easy');">Start Challenge
                     </button>
                     <br>
                 </div>
                 <table class="bordered" style="width: 100% !important;max-width: 150px;">
                     <thead>
                     <tr>
-                        <th style="color: #448aff" data-field="id"> #</th>
+                         <th style="color: #448aff" data-field="id"> #</th>
                         <th style="color: #448aff" data-field="name">Name</th>
-                        <th style="color: #448aff" data-field="gold">Gold</th>
-                        <th style="color: #448aff" data-field="silver">Silver</th>
-                        <th style="color: #448aff" data-field="bronze">Bronze</th>
-                        <th style="color: #448aff" data-field="country">Country</th>
+                        <th style="color: #448aff" data-field="score">Score</th>
+                        <th style="color: #448aff" data-field="time">Time</th>
+                        <th style="color: #448aff" data-field="school">School</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -28,7 +68,7 @@
                         <td>Alvin</td>
                         <td style='color:#FFD700'><b>9</b></td>
                         <td style='color:#C0C0C0'><b>9</b></td>
-                        <td style='color:#C9AE5D'><b>9</b></td>
+                     
                         <td>India</td>
                     </tr>
                     <tr bgcolor="#e1f5fe">
@@ -36,7 +76,7 @@
                         <td>Alan</td>
                         <td style='color:#FFD700'><b>9</b></td>
                         <td style='color:#C0C0C0'><b>9</b></td>
-                        <td style='color:#C9AE5D'><b>9</b></td>
+               
                         <td>India</td>
                     </tr>
                     <tr bgcolor="#e1f5fe">
@@ -44,7 +84,7 @@
                         <td>Jonathan</td>
                         <td style='color:#FFD700'><b>9</b></td>
                         <td style='color:#C0C0C0'><b>9</b></td>
-                        <td style='color:#C9AE5D'><b>9</b></td>
+   
                         <td>India</td>
                     </tr>
                     </tbody>
@@ -55,7 +95,7 @@
             <div class="card-panel" style ="background-color:white ;width: 100% !important;max-width: 350px;">
                 <div class ="row" style="text-align:center; color:orange;font-size:20px;"> MEDIUM</div>
                 <div style="padding-left:50px;">
-                    <button class="btn-large orange waves-effect waves-light" type="submit" name="action">Start Challenge
+                    <button class="btn-large orange waves-effect waves-light"   ng-click="challenge('medium');">Start Challenge
                     </button>
                     <br>
                 </div>
@@ -64,10 +104,9 @@
                     <tr>
                         <th style="color: #448aff" data-field="id"> #</th>
                         <th style="color: #448aff" data-field="name">Name</th>
-                        <th style="color: #448aff" data-field="gold">Gold</th>
-                        <th style="color: #448aff" data-field="silver">Silver</th>
-                        <th style="color: #448aff" data-field="bronze">Bronze</th>
-                        <th style="color: #448aff" data-field="country">Country</th>
+                        <th style="color: #448aff" data-field="score">Score</th>
+                        <th style="color: #448aff" data-field="time">Time</th>
+                        <th style="color: #448aff" data-field="school">School</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -76,7 +115,8 @@
                         <td>Alvin</td>
                         <td style='color:#FFD700'><b>9</b></td>
                         <td style='color:#C0C0C0'><b>9</b></td>
-                        <td style='color:#C9AE5D'><b>9</b></td>
+
+
                         <td>India</td>
                     </tr>
                     <tr bgcolor="#e1f5fe">
@@ -84,7 +124,7 @@
                         <td>Alan</td>
                         <td style='color:#FFD700'><b>9</b></td>
                         <td style='color:#C0C0C0'><b>9</b></td>
-                        <td style='color:#C9AE5D'><b>9</b></td>
+
                         <td>India</td>
                     </tr>
                     <tr bgcolor="#e1f5fe">
@@ -92,7 +132,7 @@
                         <td>Jonathan</td>
                         <td style='color:#FFD700'><b>9</b></td>
                         <td style='color:#C0C0C0'><b>9</b></td>
-                        <td style='color:#C9AE5D'><b>9</b></td>
+
                         <td>India</td>
                     </tr>
                     </tbody>
@@ -103,19 +143,18 @@
             <div class="card-panel" style ="background-color:white ;width: 100% !important;max-width: 350px;">
                 <div class ="row" style="text-align:center; color:red;font-size:20px;"> HARD</div>
                 <div style="padding-left:50px">
-                    <button class="btn-large red waves-effect waves-light" type="submit" name="action">Start Challenge
+                    <button class="btn-large red waves-effect waves-light" type="submit" name="action" ng-click="challenge('difficult');">Start Challenge
                     </button>
                     <br>
                 </div>
                 <table class="bordered" style="width: 100% !important;max-width: 150px;">
                     <thead>
                     <tr>
-                        <th style="color: #448aff" data-field="id"> #</th>
+                         <th style="color: #448aff" data-field="id"> #</th>
                         <th style="color: #448aff" data-field="name">Name</th>
-                        <th style="color: #448aff" data-field="gold">Gold</th>
-                        <th style="color: #448aff" data-field="silver">Silver</th>
-                        <th style="color: #448aff" data-field="bronze">Bronze</th>
-                        <th style="color: #448aff" data-field="country">Country</th>
+                        <th style="color: #448aff" data-field="score">Score</th>
+                        <th style="color: #448aff" data-field="time">Time</th>
+                        <th style="color: #448aff" data-field="school">School</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -124,7 +163,7 @@
                         <td>Alvin</td>
                         <td style='color:#FFD700'><b>9</b></td>
                         <td style='color:#C0C0C0'><b>9</b></td>
-                        <td style='color:#C9AE5D'><b>9</b></td>
+                     
                         <td>India</td>
                     </tr>
                     <tr bgcolor="#e1f5fe">
@@ -132,7 +171,7 @@
                         <td>Alan</td>
                         <td style='color:#FFD700'><b>9</b></td>
                         <td style='color:#C0C0C0'><b>9</b></td>
-                        <td style='color:#C9AE5D'><b>9</b></td>
+               
                         <td>India</td>
                     </tr>
                     <tr bgcolor="#e1f5fe">
@@ -140,7 +179,7 @@
                         <td>Jonathan</td>
                         <td style='color:#FFD700'><b>9</b></td>
                         <td style='color:#C0C0C0'><b>9</b></td>
-                        <td style='color:#C9AE5D'><b>9</b></td>
+              
                         <td>India</td>
                     </tr>
                     </tbody>
@@ -149,3 +188,5 @@
         </div>
     </div>
 </div>
+</body>
+</html>

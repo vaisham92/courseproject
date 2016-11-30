@@ -20,6 +20,9 @@ binary.config(['$routeProvider', '$locationProvider',
             }).when('/register', {
                 templateUrl: 'register.html',
                 controller: 'registrationController'
+            }).when('/levels', {
+                templateUrl: 'levels.html',
+                controller: 'levelController'
             }).otherwise({
                 templateUrl: '404.html',
                 controller: '404Controller'
@@ -32,7 +35,65 @@ binary.controller('mainController', function($scope, $http, $routeParams) {
     $(document).ready(function(){
         // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
         $('.modal-trigger').leanModal();
+
+
+      $scope.doLogin = function() {
+        console.log("login");
+                    $http({
+                        method: 'POST',
+                        url: '/api/login',
+                        data:{
+                            "email" : $scope.email,
+                            "password" : $scope.password
+                        }
+                    }).success(function(data) {
+                        // checking the response data for statusCode
+                        if (data.Status == 200) {
+                             window.location.assign("/levels");
+                            
+                        } else if (data.Status == 401){
+                            $scope.inval_mess = data.Message;
+                        }
+                        else{
+                            $scope.inval_mess = "An unexpected error occured. Try again.";
+                        }
+
+                    }).error(function(error) {
+                            $scope.inval_mess = "An unexpected error occured. Try again.";
+                    });
+                
+            };
     });
+
+     $scope.doSignUp = function() {
+        console.log("register");
+                    $http({
+                        method: 'POST',
+                        url: '/api/userRegister',
+                        data:{
+                            "email" : $scope.email,
+                            "password" : $scope.password,
+                            "fname" : $scope.first_name,
+                            "lname" : $scope.last_name,
+                            "school" : $scope.school
+                        }
+                    }).success(function(data) {
+                        // checking the response data for statusCode
+                        if (data.Status == 200) {
+                             window.location.assign("/levels");
+                            
+                        } else if (data.Status == 500){
+                            $scope.inval_mess = data.Message;
+                        }
+                        else{
+                            $scope.inval_mess = "An unexpected error occured. Try again.";
+                        }
+
+                    }).error(function(error) {
+                            $scope.inval_mess = "An unexpected error occured. Try again.";
+                    });
+                
+            };
 });
 
 

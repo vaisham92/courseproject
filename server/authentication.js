@@ -32,6 +32,7 @@ exports.login = function(request,response){
 };
 
 exports.register = function(request,response){
+	console.log("register");
 	var user = {};
 	user.fname = request.body.fname;
 	user.lname = request.body.lname;
@@ -50,7 +51,7 @@ exports.register = function(request,response){
 							"Message": "Unable to Register"});
 						}else{
 							response.send({"Status":200,
-								"message":"Registration Successfull"});
+								"Message":"Registration Successfull"});
 						}
 				});
 			});
