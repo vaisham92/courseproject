@@ -41,10 +41,11 @@ exports.ConfirmLevel= function(request,response){
 exports.SaveAns = function(request,response){
 
 	var qsBank = {};	
-	qsBank.userId = request.body.userId; // modify to username
+	qsBank.username = request.body.username; // modify to username
 	qsBank.testId = request.body.testId;
 	qsBank.time = request.body.time;
 	qsBank.level = request.body.level;
+	qsBank.School = request.body.School;
 	qsBank.response = request.body.response;
 	var count = 0;
 	for(var i=0; i < request.body.response.length;i++){	  
@@ -234,7 +235,7 @@ exports.getScoreboard_level = function(request,response){
 	var options = {"sort": [['correctCount','desc'], ['time','asc']], "group":['level'] }
 	mongo.connect(mongoURL, function() {
 		var collection = mongo.collection('resultDirectory');
-		mongoDbHelper.read(collection,query,null,options,function(data) {
+		mongoDbHelper.readTopThree(collection,query,null,options,function(data) {
 			if(data==null){
 				console.log("No entry found");
 				response.send({"Status":500,
@@ -255,7 +256,7 @@ exports.getScoreboard_level = function(request,response){
 				if(index==-1)
 				   {
 					//// modify to username
-				     res[count] = ({"Userid: " : data[i].userId, "Best Score: " : data[i].correctCount, " Time : " : data[i].time });
+				     res[count] = ({"UserName" : data[i].username, "Score" : data[i].correctCount, "Time" : data[i].time, "School" : data[i].School });
 				     Arr[count] = temp;
 				         count++;
 			   }
