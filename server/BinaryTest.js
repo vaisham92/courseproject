@@ -3,11 +3,12 @@ var mongoURL = 'mongodb://localhost:27017/binaryGame';
 var mongoDbHelper = require('./mongo-db-helper');
 var mongodb = require('mongodb');
 
+
 exports.BinaryTest = function(request,response){	
 	var level = request.body.level;
 	mongo.connect(mongoURL, function() {
 		var qsDetails = mongo.collection('QuestionBank');
-		mongoDbHelper.readOne(qsDetails,{'level':level},null, function(data) {
+		mongoDbHelper.readTen(qsDetails,{'level':level},null, function(data) {
 				if(data==undefined){
 					response.send({"Status":500,
 						"Message": "No qs Exists"});
@@ -20,11 +21,27 @@ exports.BinaryTest = function(request,response){
 		});
 };
 
+exports.ConfirmLevel= function(request,response){	
+	var level = request.body.level;
+	mongo.connect(mongoURL, function() {
+		var qsDetails = mongo.collection('QuestionBank');
+		mongoDbHelper.readTen(qsDetails,{'level':level},null, function(data) {
+				if(data==undefined){
+					response.send({"Status":500,
+						"Message": "No qs Exists"});
+					}else{
+						var getQs = data.qs;
+						response.send({"Status":200,
+							"Message":"Qs fetched from db","qs is":getQs});
+					}
+			});
+		});
+};
 
 exports.SaveAns = function(request,response){
 
 	var qsBank = {};	
-	qsBank.userId = request.body.userId;
+	qsBank.userId = request.body.userId; // modify to username
 	qsBank.testId = request.body.testId;
 	qsBank.time = request.body.time;
 	qsBank.level = request.body.level;
@@ -43,10 +60,10 @@ exports.SaveAns = function(request,response){
 		mongodb.MongoClient.connect('mongodb://localhost:27017/binaryGame', function(error, db) {		
 			if(error){
 				response.send({"Status":500,
-					"Message": "Unable to create Quiz Qs"});
+					"Message": "Unable to save Ans"});
 				}else{
 					response.send({"Status":200,
-						"message":"Quiz Qs created Successfully"});
+						"message":"Ans saved Successfully"});
 				}
 		});
 	});
@@ -229,6 +246,7 @@ exports.getScoreboard_level = function(request,response){
 				var index = Arr.indexOf(temp);      
 				if(index==-1)
 				   {
+					//// modify to username
 				     res[count] = ({"Userid: " : data[i].userId, "Best Score: " : data[i].correctCount, " Time : " : data[i].time });
 				     Arr[count] = temp;
 				         count++;

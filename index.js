@@ -2,10 +2,16 @@ var express = require('express');
 var auth = require('./server/authentication');
 var test = require('./server/BinaryTest')
 var bodyParser = require('body-parser');
+
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var path = require('path');
 var app = express();
+
+
+//var lessen = require('./server/lessen')
+
+
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
@@ -27,6 +33,7 @@ app.use(session({resave: true, saveUninitialized: true, secret: 'BINARYAPP', coo
 app.post('/api/login',auth.login);
 app.post('/api/userRegister',auth.register);
 app.post('/api/BinaryTest' , test.BinaryTest);
+app.post('/api/COnfirmLevel' , test.ConfirmLevel);
 app.post('/api/CreateQs' , test.CreateQs);
 app.post('/api/addLevelToSession/:level',function(request,response){
 	var level = request.params.level;
@@ -48,10 +55,18 @@ app.get('/api/getScoreboard/:level',test.getScoreboard_level);
 app.get('/api/getUserRank/:testId/:level/:userId',test.getUserRank);
 app.get('/api/getHallOfFame',test.getHallOfFame);
 
+
 //app.use('/', function(request, response) {
 //	// Use response.sendfile, as it streams instead of reading the file into memory.
 //	response.sendfile(__dirname + '/public/index.html');
 //});
+
+//app.post('/api/SaveImage',test.SaveImage);
+
+
+//lessen
+//app.post('/api/BinaryTest' , lessen.BinaryTest);
+
 
 //app.post("/api/savedata", eligibility_core.add);
 /*

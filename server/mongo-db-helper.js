@@ -89,3 +89,32 @@ exports.read = function(collection, searchData, projection, options, success) {
 		}
 	}
 };
+
+
+exports.readTen = function(collection, searchData, projection, options, success) {
+	if(options !== null) {
+		if(projection !== null) {
+			collection.find(searchData, options).limit(10).toArray(function(err, data) {
+				success(data);
+			});
+		}
+		else {
+			collection.find(searchData, projection, options).limit(10).toArray(function(err, data) {
+				success(data);
+			});
+		}
+	}
+	else {
+		if(projection !== null) {
+			collection.find(searchData, projection).limit(10).toArray(function(err, data) {
+				success(data);
+			});
+		}
+		else {
+			collection.find(searchData).limit(10).toArray(function(err, data) {
+				console.log(data);
+				success(data);
+			});
+		}
+	}
+};
