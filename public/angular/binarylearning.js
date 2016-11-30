@@ -69,26 +69,30 @@ binary.controller('mainController', function ($scope, $http, $routeParams, $loca
         //alert("Ashna not asna");
     });
 
-    function getHallOfFame() {
-        $http({
-            method: 'GET',
-            url: '/api/getHallOfFame'
-        }).success(function (data) {
-            // checking the response data for statusCode
-            if (data.Status == 200) {
-                console.log("login success");
 
+    getHallOfFame();
 
-            } else if (data.Status == 401) {
-                $scope.inval_mess = data.Message;
-            }
-            else {
-                $scope.inval_mess = "An unexpected error occured. Try again.";
-            }
+    function getHallOfFame(){
+                $http({
+                                method: 'GET',
+                                url: '/api/getHallOfFame'
+                            }).success(function(data) {
+                                // checking the response data for statusCode
+                                if (data.Status == 200) {
+                                    console.log("hall of fame success");
+                                    console.log(data);
+                                    
+                                } else if (data.Status == 401){
+                                    $scope.inval_mess = data.Message;
+                                }
+                                else{
+                                    $scope.inval_mess = "An unexpected error occured. Try again.";
+                                }
 
-        }).error(function (error) {
-            $scope.inval_mess = "An unexpected error occured. Try again.";
-        });
+                            }).error(function(error) {
+                                    $scope.inval_mess = "An unexpected error occured. Try again.";
+                            });
+
     }
 
     $scope.doLogin = function () {
