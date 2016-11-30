@@ -23,7 +23,11 @@ binary.config(['$routeProvider', '$locationProvider',
             }).when('/levels', {
                 templateUrl: 'levels.html',
                 controller: 'levelController'
-            }).otherwise({
+            }).when('/tutorials', {
+                templateUrl: 'tutorials.html',
+                controller: 'tutorialController'
+            })
+            .otherwise({
                 templateUrl: '404.html',
                 controller: '404Controller'
             });
@@ -31,7 +35,7 @@ binary.config(['$routeProvider', '$locationProvider',
     }
 ]);
 
-binary.controller('mainController', function($scope, $http, $routeParams) {
+binary.controller('mainController', function($scope, $http, $routeParams, $location) {
     $scope.doLogin = function() {
         console.log("login");
             $http({
@@ -65,9 +69,15 @@ binary.controller('mainController', function($scope, $http, $routeParams) {
         //alert("Ashna not asna");
     });
 
+    $scope.hideSpinner = true;
+
+    $scope.closeModal = function() {
+        window.location = $location.absUrl();
+    };
+
     //alert("Ashna not asna");
     $scope.doLogin = function() {
-        alert("Ashna not asna");
+        $scope.hideSpinner = false;
         console.log("login");
             $http({
                 method: 'POST',

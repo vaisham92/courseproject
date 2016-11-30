@@ -17,13 +17,6 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(session({resave: true, saveUninitialized: true, secret: 'BINARYAPP', cookie: { maxAge: 60000 }}));
 
-
-//app.use('/', function(request, response) {
-//	// Use response.sendfile, as it streams instead of reading the file into memory.
-//	response.sendfile(__dirname + '/public/index.html');
-//});
-
-
 app.post('/api/login',auth.login);
 app.post('/api/userRegister',auth.register);
 app.post('/api/BinaryTest' , test.BinaryTest);
@@ -48,16 +41,11 @@ app.get('/api/getScoreboard/:level',test.getScoreboard_level);
 app.get('/api/getUserRank/:testId/:level/:userId',test.getUserRank);
 app.get('/api/getHallOfFame',test.getHallOfFame);
 
-//app.use('/', function(request, response) {
-//	// Use response.sendfile, as it streams instead of reading the file into memory.
-//	response.sendfile(__dirname + '/public/index.html');
-//});
+app.use('/', function(request, response) {
+	// Use response.sendfile, as it streams instead of reading the file into memory.
+	response.sendfile(__dirname + '/public/index.html');
+});
 
-//app.post("/api/savedata", eligibility_core.add);
-/*
- * app.get('/', function(request, response) { response.render('pages/index');
- * });
- */
 //app.post('/api/login',auth.login);
 //app.use('/', function(request, response) {
 //	// Use response.sendfile, as it streams instead of reading the file into memory.
