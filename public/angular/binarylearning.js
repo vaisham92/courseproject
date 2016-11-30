@@ -24,7 +24,7 @@ binary.config(['$routeProvider', '$locationProvider',
 ]);
 
 binary.controller('mainController', function($scope, $http, $routeParams) {
-
+    window.location = "/login";
 });
 
 
