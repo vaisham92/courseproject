@@ -17,7 +17,7 @@
                     </button>
                     <br>
                 </div>
-                <table class="bordered" style="width: 100% !important;max-width: 150px;padding-left:50px;padding-right: 50px">
+                <table class="bordered" style="">
                     <thead>
                     <tr>
                          <th style="color: #448aff" data-field="id"> #</th>
@@ -28,16 +28,16 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <div ng-repeat="player in scoreboard track by $index">
-                    <tr bgcolor="#e1f5fe">
-                        <td>{{$index}}</td>
-                        <td>{{UserName}}</td>
-                        <td style='color:#FFD700'><b>{{Score}}</b></td>
-                        <td style='color:#C0C0C0'><b>{{Time}}</b></td>
+                  
+                    <tr bgcolor="#e1f5fe" ng-repeat="player in easy_scoreboard track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{player.UserName}}</td>
+                        <td style='color:#FFD700'><b>{{player.Score}}</b></td>
+                        <td style='color:#C0C0C0'><b>{{player.Time}}</b></td>
                      
-                        <td>{{School}}</td>
+                        <td>{{player.School}}</td>
                     </tr>
-                    </div>
+                
                     
                    
                     </tbody>
@@ -52,41 +52,25 @@
                     </button>
                     <br>
                 </div>
-                <table class="bordered" style="width: 100% !important;max-width: 150px;">
+                <table class="bordered" style="">
                     <thead>
-                    <tr>
-                        <th style="color: #448aff" data-field="id"> #</th>
-                        <th style="color: #448aff" data-field="name">Name</th>
+                      <tr>
+                         <th style="color: #448aff" data-field="id"> #</th>
+                        <th style="color: #448aff" data-field="name" >Name</th>
                         <th style="color: #448aff" data-field="score">Score</th>
                         <th style="color: #448aff" data-field="time">Time</th>
                         <th style="color: #448aff" data-field="school">School</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr bgcolor="#e1f5fe">
-                        <td>1</td>
-                        <td>Alvin</td>
-                        <td style='color:#FFD700'><b>9</b></td>
-                        <td style='color:#C0C0C0'><b>9</b></td>
-
-
-                        <td>India</td>
-                    </tr>
-                    <tr bgcolor="#e1f5fe">
-                        <td>2</td>
-                        <td>Alan</td>
-                        <td style='color:#FFD700'><b>9</b></td>
-                        <td style='color:#C0C0C0'><b>9</b></td>
-
-                        <td>India</td>
-                    </tr>
-                    <tr bgcolor="#e1f5fe">
-                        <td>3</td>
-                        <td>Jonathan</td>
-                        <td style='color:#FFD700'><b>9</b></td>
-                        <td style='color:#C0C0C0'><b>9</b></td>
-
-                        <td>India</td>
+                  
+                     <tr bgcolor="#e1f5fe" ng-repeat="player in medium_scoreboard track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{player.UserName}}</td>
+                        <td style='color:#FFD700'><b>{{player.Score}}</b></td>
+                        <td style='color:#C0C0C0'><b>{{player.Time}}</b></td>
+                     
+                        <td>{{player.School}}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -100,40 +84,25 @@
                     </button>
                     <br>
                 </div>
-                <table class="bordered" style="width: 100% !important;max-width: 150px;">
+                <table class="bordered" style="">
                     <thead>
-                    <tr>
+                      <tr>
                          <th style="color: #448aff" data-field="id"> #</th>
-                        <th style="color: #448aff" data-field="name">Name</th>
+                        <th style="color: #448aff" data-field="name" >Name</th>
                         <th style="color: #448aff" data-field="score">Score</th>
                         <th style="color: #448aff" data-field="time">Time</th>
                         <th style="color: #448aff" data-field="school">School</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr bgcolor="#e1f5fe">
-                        <td>1</td>
-                        <td>Alvin</td>
-                        <td style='color:#FFD700'><b>9</b></td>
-                        <td style='color:#C0C0C0'><b>9</b></td>
+                  
+                     <tr bgcolor="#e1f5fe" ng-repeat="player in hard_scoreboard track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{player.UserName}}</td>
+                        <td style='color:#FFD700'><b>{{player.Score}}</b></td>
+                        <td style='color:#C0C0C0'><b>{{player.Time}}</b></td>
                      
-                        <td>India</td>
-                    </tr>
-                    <tr bgcolor="#e1f5fe">
-                        <td>2</td>
-                        <td>Alan</td>
-                        <td style='color:#FFD700'><b>9</b></td>
-                        <td style='color:#C0C0C0'><b>9</b></td>
-               
-                        <td>India</td>
-                    </tr>
-                    <tr bgcolor="#e1f5fe">
-                        <td>3</td>
-                        <td>Jonathan</td>
-                        <td style='color:#FFD700'><b>9</b></td>
-                        <td style='color:#C0C0C0'><b>9</b></td>
-              
-                        <td>India</td>
+                        <td>{{player.School}}</td>
                     </tr>
                     </tbody>
                 </table>

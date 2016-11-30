@@ -41,7 +41,30 @@ binary.controller('mainController', function($scope, $http, $routeParams,$route)
         //alert("Ashna not asna");
     });
 
-    //alert("Ashna not asna");
+    //getHallOfFame();
+
+    function getHallOfFame(){
+                $http({
+                                method: 'GET',
+                                url: '/api/getHallOfFame'
+                            }).success(function(data) {
+                                // checking the response data for statusCode
+                                if (data.Status == 200) {
+                                    console.log("login success");
+
+                                    
+                                } else if (data.Status == 401){
+                                    $scope.inval_mess = data.Message;
+                                }
+                                else{
+                                    $scope.inval_mess = "An unexpected error occured. Try again.";
+                                }
+
+                            }).error(function(error) {
+                                    $scope.inval_mess = "An unexpected error occured. Try again.";
+                            });
+    }
+
     $scope.doLogin = function() {
 
         console.log("login");
