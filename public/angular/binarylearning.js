@@ -17,16 +17,19 @@ binary.config(['$routeProvider', '$locationProvider',
             }).when('/login', {
             templateUrl: 'login.html',
             controller: 'loginController'
-        }).when('/register', {
-            templateUrl: 'register.html',
-            controller: 'registrationController'
-        }).when('/levels', {
-            templateUrl: 'levels.html',
-            controller: 'levelController'
-        }).when('/tutorials', {
-            templateUrl: 'tutorials.html',
-            controller: 'tutorialController'
-        })
+            }).when('/register', {
+                templateUrl: 'register.html',
+                controller: 'registrationController'
+            }).when('/levels', {
+                templateUrl: 'levels.html',
+                controller: 'levelController'
+            }).when('/tutorials', {
+                templateUrl: 'tutorials.html',
+                controller: 'tutorialsController'
+            }).when('/game', {
+                templateUrl: 'game.html',
+                controller: 'gameController'
+            })
             .otherwise({
                 templateUrl: '404.html',
                 controller: '404Controller'

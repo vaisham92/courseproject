@@ -4,130 +4,193 @@
     }
 </style>
 <div id="wrapper" class="row ng-scope bgimg">
-    <!-- <script type="text/javascript" src="angular/housingtrust.js"></script> -->
-    <script type="application/javascript">
-        function flip() {
-            $('.card').toggleClass('flipped');
-        }
-
-    </script>
     <style>
-        .container {
-            width: 100px;
-            height: 130px;
+        body {
+            background: #ccc;
+        }
+        .flip {
+            -webkit-perspective: 800;
+            width: 175px;
+            height: 200px;
             position: relative;
-            -webkit-perspective: 800px;
-            -moz-perspective: 800px;
-            -o-perspective: 800px;
-            perspective: 800px;
+            margin: 50px auto;
         }
-        .card {
+        .flip .card.flipped {
+            -webkit-transform: rotatex(-180deg);
+        }
+        .flip .card {
             width: 100%;
             height: 100%;
-            position: absolute;
-            -webkit-transition: -webkit-transform 1s;
-            -moz-transition: -moz-transform 1s;
-            -o-transition: -o-transform 1s;
-            transition: transform 1s;
             -webkit-transform-style: preserve-3d;
-            -moz-transform-style: preserve-3d;
-            -o-transform-style: preserve-3d;
-            transform-style: preserve-3d;
-            -webkit-transform-origin: 50% 50%;
+            -webkit-transition: 0.5s;
         }
-        .card div {
-            display: block;
-            height: 100%;
+        .flip .card .face {
             width: 100%;
-            line-height: 30px;
-            color: white;
-            text-align: center;
-            font-weight: bold;
-            font-size: 20px;
+            height: 100%;
             position: absolute;
-            -webkit-backface-visibility: hidden;
-            -moz-backface-visibility: hidden;
-            -o-backface-visibility: hidden;
-            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden ;
+            z-index: 2;
+            font-family: Georgia;
+            font-size: 3em;
+            text-align: center;
+            line-height: 200px;
         }
-        .card .front {
-            background: red;
-        }
-        .card .back {
+        .flip .card .front {
+            position: absolute;
+            z-index: 1;
             background: blue;
-            -webkit-transform: rotateY( 180deg );
-            -moz-transform: rotateY( 180deg );
-            -o-transform: rotateY( 180deg );
-            transform: rotateY( 180deg );
+            color: white;
+            cursor: pointer;
         }
-        .card.flipped {
-            -webkit-transform: rotateY( 180deg );
-            -moz-transform: rotateY( 180deg );
-            -o-transform: rotateY( 180deg );
-            transform: rotateY( 180deg );
+        .flip .card .back {
+            -webkit-transform: rotatex(-180deg);
+            background: blue;
+            background: white;
+            color: blue;
+            cursor: pointer;
         }
     </style>
     <br>
     <div class="row">
         <div class="row">
-            <div class="card-panel">
-                <blockquote>
-                    <b> Question 1: </b> Convert the number '36' to binary from decimal
-                </blockquote>
+            <div class="col s2"><p></p></div>
+            <div class="col s8">
+                <div class="card-panel">
+                    <blockquote>
+                        <b> Question 1: </b> Convert the number '36' to binary from decimal
+                    </blockquote>
+                </div>
             </div>
+            <div class="col s2"><p></p></div>
         </div>
-        <div class="col s12">
-            <div class="card-panel">
+        <div class="row">
+            <div class="col s6">
                 <div class="row">
-                    <div class = "col s2">
-                        <section class="container">
-                            <div class="card" onclick="flip()">
-                                <div class="front">0</div>
-                                <div class="back">1</div>
+                    <div class="col s3">
+                        <div class="flip">
+                            <div class="card" ng-class="{'flipped':isFlipped7}" ng-click="flip7()">
+                                <div class="face front">
+                                    1
+                                </div>
+                                <div class="face back">
+                                    0
+                                </div>
                             </div>
-                        </section>
+                        </div>
                     </div>
-                    <div class = "col s2">
-                        <section class="container">
-                            <div class="card" onclick="flip()">
-                                <div class="front">0</div>
-                                <div class="back">1</div>
+                    <div class="col s3">
+                        <div class="flip">
+                            <div class="card" ng-class="{'flipped':isFlipped6}" ng-click="flip6()">
+                                <div class="face front">
+                                    1
+                                </div>
+                                <div class="face back">
+                                    0
+                                </div>
                             </div>
-                        </section>
+                        </div>
                     </div>
-                    <div class = "col s2">
-                        <section class="container">
-                            <div class="card" onclick="flip()">
-                                <div class="front">0</div>
-                                <div class="back">1</div>
+                    <div class="col s3">
+                        <div class="flip">
+                            <div class="card" ng-class="{'flipped':isFlipped5}" ng-click="flip5()">
+                                <div class="face front">
+                                    1
+                                </div>
+                                <div class="face back">
+                                    0
+                                </div>
                             </div>
-                        </section>
+                        </div>
                     </div>
-                    <div class = "col s2">
-                        <section class="container">
-                            <div class="card" onclick="flip()">
-                                <div class="front">0</div>
-                                <div class="back">1</div>
+                    <div class="col s3">
+                        <div class="flip">
+                            <div class="card" ng-class="{'flipped':isFlipped4}" ng-click="flip4()">
+                                <div class="face front">
+                                    1
+                                </div>
+                                <div class="face back">
+                                    0
+                                </div>
                             </div>
-                        </section>
-                    </div>
-                    <div class = "col s2">
-                        <section class="container">
-                            <div class="card" onclick="flip()">
-                                <div class="front">0</div>
-                                <div class="back">1</div>
-                            </div>
-                        </section>
-                    </div>
-                    <div class = "col s2">
-                        <section class="container">
-                            <div class="card" onclick="flip()">
-                                <div class="front">0</div>
-                                <div class="back">1</div>
-                            </div>
-                        </section>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="col s6">
+                <div class="row">
+                    <div class="col s3">
+                        <div class="flip">
+                            <div class="card" ng-class="{'flipped':isFlipped3}" ng-click="flip3()">
+                                <div class="face front">
+                                    1
+                                </div>
+                                <div class="face back">
+                                    0
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s3">
+                        <div class="flip">
+                            <div class="card" ng-class="{'flipped':isFlipped2}" ng-click="flip2()">
+                                <div class="face front">
+                                    1
+                                </div>
+                                <div class="face back">
+                                    0
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s3">
+                        <div class="flip">
+                            <div class="card" ng-class="{'flipped':isFlipped1}" ng-click="flip1()">
+                                <div class="face front">
+                                    1
+                                </div>
+                                <div class="face back">
+                                    0
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s3">
+                        <div class="flip">
+                            <div class="card" ng-class="{'flipped':isFlipped0}" ng-click="flip0()">
+                                <div class="face front">
+                                    1
+                                </div>
+                                <div class="face back">
+                                    0
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s1">
+
+            </div>
+            <div class="col s1">
+
+            </div>
+            <div class="col s1">
+
+            </div>
+            <div class="col s1">
+
+            </div>
+            <div class="col s1">
+
+            </div>
+            <div class="col s1">
+
+            </div>
+            <div class="col s1">
+
+            </div>
+            <div class="col s1">
+
             </div>
         </div>
     </div>
