@@ -39,8 +39,39 @@ binary.controller('gameController', function ($scope, $http, $routeParams, $loca
         $scope.isFlipped7 = !$scope.isFlipped7;
     };
 
-    $scope.submitAnswers(){
+    getDetailsFromSession();
 
+    function startTest (level) {
+                    console.log(level);
+                    $http({
+                        method: 'POST',
+                        url: '/api/BinaryTest',
+                        data:{
+                            "level" : level
+                        }
+                    }).success(function(data) {
+                        // checking the response data for statusCode
+                        if (data.Status == 200) {
+                             //window.location.assign("/levels");
+                             //console.log(data);
+                            
+                        } else if (data.Status == 401){
+                            $scope.inval_mess = data.Message;
+                        }
+                        else{
+                            $scope.inval_mess = "An unexpected error occured. Try again.";
+                        }
+
+                    }).error(function(error) {
+                            $scope.inval_mess = "An unexpected error occured. Try again.";
+                    });
+                    
+                
+            };
+
+
+
+    $scope.submitAnswers(){
                     $http({
                         method: 'POST',
                         url: '/api/SubmitAns',
@@ -57,8 +88,8 @@ binary.controller('gameController', function ($scope, $http, $routeParams, $loca
                         // checking the response data for statusCode
                         if (data.Status == 200) {
                              //window.location.assign("/levels");
-                             console.log(data);
-                            
+                             console.log(data); 
+                             getRank();                        
                         } else if (data.Status == 401){
                             $scope.inval_mess = data.Message;
                         }
@@ -70,6 +101,7 @@ binary.controller('gameController', function ($scope, $http, $routeParams, $loca
                             $scope.inval_mess = "An unexpected error occured. Try again.";
                     });
     }
+
 
     function getRank(){
 
@@ -102,7 +134,7 @@ binary.controller('gameController', function ($scope, $http, $routeParams, $loca
                         // checking the response data for statusCode
                         if (data.Status == 200) {
                             $scope.session = data.message;
-                            
+                            startTest ($scope.session.level);
                         } 
                         else{
                             //window.assign.location("/");
