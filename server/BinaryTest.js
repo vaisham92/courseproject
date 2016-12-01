@@ -8,14 +8,39 @@ exports.BinaryTest = function(request,response){
 	var level = request.body.level;
 	mongo.connect(mongoURL, function() {
 		var qsDetails = mongo.collection('QuestionBank');
-		mongoDbHelper.readTen(qsDetails,{'level':level},null, function(data) {
+		var query ={'level':level};
+		mongoDbHelper.readTen(qsDetails,query,null,null,function(data) {
+		//mongoDbHelper.read(qsDetails,{'level':level},null, function(data) {
 				if(data==undefined){
 					response.send({"Status":500,
 						"Message": "No qs Exists"});
 					}else{
-						var getQs = data.qs;
-						response.send({"Status":200,
-							"Message":"Qs fetched from db","qs is":getQs});
+						
+						var Arr = new Array();
+						var res = new Array();
+						var count = 0;
+
+						for(var i=0 ; i < data.length;i++)
+						{
+
+							var temp = data[i].qs;    
+							var index = Arr.indexOf(temp);      
+							if(index==-1)
+							   {
+								
+							     res[count] = ({"Qs" : data[i].qs});//, "Score" : data[i].correctCount, "Time" : data[i].time, "School" : data[i].School });
+							     Arr[count] = temp;
+							         count++;
+						   }
+						}
+						
+						
+						console.log(Arr);
+						response.send({"Status":200,"qs":res});
+						
+						
+						
+						
 					}
 			});
 		});
@@ -92,6 +117,8 @@ exports.CreateQs = function(request,response){
 	});		
 };
 
+
+
 exports.getRank = function(request,response){
 	
 	var testId = parseInt(request.params.testId);
@@ -148,7 +175,6 @@ exports.getUserRank = function(request,response){
 					"Message": "Unable to get user rank"});
 			}
 			else
-				//response.send({"data":data});
 			for(var i=0 ; i < data.length;i++){
 				if(data[i].userId==userId){
 					rank = i+1;
@@ -235,11 +261,8 @@ exports.getHallOfFame = function(request,response){
 			res= ({"Easy":res_easy,"Medium":res_med,"Difficult":res_diff});
 			response.send({"Status":200,"HallOfFame":res});
 			
-			
 			});
-		});
-	
-	
+		});	
 };
 
 
@@ -260,7 +283,7 @@ exports.getScoreboard_level = function(request,response){
 				response.send({"Status":500,
 					"Message": "Unable to get Scoreboard for the level"});
 			}
-			else
+			else {
 				//response.send({"data":data});
 			
 			var Arr = new Array();
@@ -279,13 +302,11 @@ exports.getScoreboard_level = function(request,response){
 				     Arr[count] = temp;
 				         count++;
 			   }
-			}
-			
-			
-			console.log(Arr);
+			}						
+			//console.log(Arr);
 			response.send({"Status":200,"scoreboard":res});
 			
-		
+			}
 			});
 		});
 	
