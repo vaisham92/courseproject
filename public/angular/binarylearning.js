@@ -95,6 +95,7 @@ binary.controller('mainController', function ($scope, $http, $routeParams, $loca
                                     $scope.easy_scoreboard = data.HallOfFame.Easy;
                                     $scope.medium_scoreboard = data.HallOfFame.Medium;
                                     $scope.hard_scoreboard = data.HallOfFame.Difficult;
+                                    $('.preloader-background').fadeOut('slow');
                                     
                                 } else if (data.Status == 401){
                                     $scope.inval_mess = data.Message;

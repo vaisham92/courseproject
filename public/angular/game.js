@@ -73,18 +73,42 @@ binary.controller('gameController', function ($scope, $http, $routeParams, $loca
             cardFlip2.play()
     };
 
-    $scope.color = "#0000ff"
-    $('#demoTimer').polartimer({
-        timerSeconds: 60,
-        color: $scope.color,
-        opacity: 0.7,
-        callback: function () {
-            //alert('jquery.polartimer.js: done!');
-        }
-    });
+    var timer = function(){
+        var min = 10;
+        var seconds = 1;
+        var handler = function() {
+            seconds--;
+            if(min == 0 && seconds == 0) {
+                // timeout call the submit the answers
+            }
+            if (seconds == 0) {
+                seconds = 59;
+                min--;
+                //if (min == 0) min = 0;
+            }
+            document.getElementById("time").innerHTML = (min < 10 ? "0" + min : min) + ":" + (seconds < 10 ? "0" + seconds : seconds);
+        };
+        handler();
+        setInterval(handler, 1000);
 
-    // start the timer
-    $('#demoTimer').polartimer('start');
+        $scope.color = "#0000ff"
+        $('#demoTimer').polartimer({
+            timerSeconds: 600,
+            color: $scope.color,
+            opacity: 0.7,
+            callback: function () {
+                //alert('jquery.polartimer.js: done!');
+            }
+        });
+
+        // start the timer
+        $('#demoTimer').polartimer('start');
+    };
+
+    timer();
+
+
+
 
     getDetailsFromSession();
 

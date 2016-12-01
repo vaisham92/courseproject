@@ -4,52 +4,6 @@
     }
 </style>
 <div id="wrapper" class="row ng-scope bgimg">
-    <style>
-        body {
-            background: #ccc;
-        }
-        .flip {
-            -webkit-perspective: 800;
-            width: 140px;
-            height: 180px;
-            position: relative;
-            margin: 30px auto;
-        }
-        .flip .card.flipped {
-            -webkit-transform: rotatex(-180deg);
-        }
-        .flip .card {
-            width: 100%;
-            height: 100%;
-            -webkit-transform-style: preserve-3d;
-            -webkit-transition: 0.5s;
-        }
-        .flip .card .face {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            -webkit-backface-visibility: hidden ;
-            z-index: 2;
-            font-family: Georgia;
-            font-size: 2em;
-            text-align: center;
-            line-height: 200px;
-        }
-        .flip .card .front {
-            position: absolute;
-            z-index: 1;
-            background: blue;
-            color: white;
-            cursor: pointer;
-        }
-        .flip .card .back {
-            -webkit-transform: rotatex(-180deg);
-            background: blue;
-            background: white;
-            color: blue;
-            cursor: pointer;
-        }
-    </style>
     <br>
     <div class="row">
         <div class="row">
@@ -57,7 +11,7 @@
             <div class="col s8">
                 <div class="card-panel">
                     <div class="row">
-                        <div class="col s11">
+                        <div class="col s10">
                               <span class="blue-text">
                                     <blockquote>
                                         <h5><b> Question 1: </b> Convert the number '36' to binary from decimal</h5>
@@ -66,6 +20,10 @@
                         </div>
                         <div class="col s1">
                             <div id="demoTimer"></div>
+                        </div>
+                        <div class="col s1">
+                            <br><br>
+                            <div class="blue-text" id="time"></div>
                         </div>
                     </div>
                 </div>
@@ -179,11 +137,11 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col s3"><p></p></div>
-                <div class="col s6">
-                    <a class="waves-effect waves-light btn-large green">button</a>
+                <div class="col s5"><p></p></div>
+                <div class="col s2">
+                    <a class="waves-effect waves-light btn-large green">&nbsp&nbsp&nbsp&nbspSubmit&nbsp&nbsp&nbsp&nbsp&nbsp</a>
                 </div>
-                <div class="col s3"><p></p></div>
+                <div class="col s5"><p></p></div>
             </div>
     </div>
     <footer class="page-footer blue accent-2">
