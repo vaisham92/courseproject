@@ -199,31 +199,23 @@ binary.controller('mainController', function ($scope, $http, $routeParams, $loca
   }
     
     $scope.logout = function(){
-    	 console.log("register");
+    	 console.log("logout");
          $http({
              method: 'POST',
-             url: '/api/userRegister',
-             data: {
-                 "email": $scope.email,
-                 "password": $scope.password,
-                 "fname": $scope.first_name,
-                 "lname": $scope.last_name,
-                 "school": $scope.school
-             }
+             url: '/api/logout'
          }).success(function (data) {
              // checking the response data for statusCode
-             if (data.Status == 200) {
+             if (data.status == 200) {
+
+                 $scope.hideName = true;
                  window.location = $location.absUrl();
-                 $scope.hideName = false;
-             } else if (data.Status == 500) {
-                 $scope.inval_mess = data.Message;
-             }
+             } 
              else {
-                 $scope.inval_mess = "An unexpected error occured. Try again.";
+            	 $scope.hideName = false;
              }
 
          }).error(function (error) {
-             $scope.inval_mess = "An unexpected error occured. Try again.";
+        	 $scope.hideName = false;
          });
 
     }

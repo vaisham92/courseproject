@@ -31,7 +31,7 @@ exports.login = function(request,response){
 			});
 		});
 };
-exports.register = function(request,response){
+exports.logout = function(request,response){
 	request.session.destroy();
 	response.send({
 		"status":200,
