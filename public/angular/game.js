@@ -39,6 +39,19 @@ binary.controller('gameController', function ($scope, $http, $routeParams, $loca
         $scope.isFlipped7 = !$scope.isFlipped7;
     };
 
+    $scope.color = "#0000ff"
+    $('#demoTimer').polartimer({
+        timerSeconds: 60,
+        color: $scope.color,
+        opacity: 0.7,
+        callback: function () {
+            //alert('jquery.polartimer.js: done!');
+        }
+    });
+
+    // start the timer
+    $('#demoTimer').polartimer('start');
+
     getDetailsFromSession();
 
     function startTest (level) {

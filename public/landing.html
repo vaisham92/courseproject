@@ -1,124 +1,123 @@
 <style type="text/css">
     .bgimg {
-        background-image: url('images/background2.jpg');
+        background-image: url('images/background6.png');
     }
 </style>
 <div id="wrapper" class="row ng-scope bgimg">
-    <div class = "main">
+    <div class="main">
         <div class="row">
-            <div class = "col s1">
-                <p> </p>
+            <div class="col s1">
+                <p></p>
             </div>
-            <div class = "col s4">
-                <div class="card-panel z-depth-3">
-                    <div class="row">
-                        <a href="/tutorials" class="waves-effect waves-light btn-large blue"><h5><b>Tutorials</b></h5></a>
+            <div class="col s4">
+                <div class="row">
+                    <div class="card-panel z-depth-3">
+                        <div class="row">
+                            <a href="/levels" class="waves-effect waves-light btn-large blue"><h5><b>Practice</b></h5>
+                            </a>
+                        </div>
+                        <span class="blue-text">Practise here to get better at the game!!!</span>
                     </div>
-				   <span class="blue-text">I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-          </span>
                 </div>
-                <div class="card-panel z-depth-3">
-                    <div class="row">
-                        <a href="/levels" class="waves-effect waves-light btn-large blue"><h5><b>Challenge</b></h5></a>
-
+                <div class="row">
+                    <div class="card-panel z-depth-3">
+                        <div class="row">
+                            <a href="/tutorials" class="waves-effect waves-light btn-large blue"><h5><b>Tutorials</b>
+                            </h5></a>
+                        </div>
+                        <span class="blue-text">Tutorials to understand the decimal to binary conversion</span>
                     </div>
-				   <span class="blue-text">I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-          </span>
                 </div>
-                <div class="card-panel z-depth-3">
-                    <div class="row">
-                        <a class="waves-effect waves-light btn-large blue"><h5><b>Group Challenge</b></h5></a>
+                <div class="row">
+                    <div class="card-panel z-depth-3">
+                        <div class="row">
+                            <a href="/levels" class="waves-effect waves-light btn-large blue"><h5><b>Group Challenge</b>
+                            </h5></a>
+                        </div>
+                        <span class="blue-text">Challenge others by playing a scheduled game every 15 minutes</span>
                     </div>
-				   <span class="blue-text">I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-          </span>
                 </div>
             </div>
-            <div class = "col s1">
-                <p> </p>
+            <div class="col s1">
+                <p></p>
             </div>
-            <div class = "col s5">
+            <div class="col s5">
                 <div class="card-panel z-depth-3">
-                    <h2 class="center flow-text"><b>Hall of Fame</b></h2>
-
-                    <div class ="row" style="text-align:center; color:green;font-size:20px;"> EASY</div>
+                    <h2 class="center flow-text"><b><abc class="blue-text text-lighten-1">Hall of Fame</abc></b></h2>
+                    <h4 class="center flow-text"><b><abc class="red-text text-lighten-1">HARD</abc></b></h4>
                     <table class="bordered" style="">
+                        <thead>
+                        <tr>
+                            <th style="color: #448aff" data-field="id"> #</th>
+                            <th style="color: #448aff" data-field="name">Name</th>
+                            <th style="color: #448aff" data-field="score">Score</th>
+                            <th style="color: #448aff" data-field="time">Time</th>
+                            <th style="color: #448aff" data-field="school">School</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr bgcolor="#e1f5fe" ng-repeat="player in medium_scoreboard track by $index">
+                            <td>{{$index + 1}}</td>
+                            <td>{{player.UserName}}</td>
+                            <td style='color:#FFD700'><b>{{player.Score}}</b></td>
+                            <td style='color:#C0C0C0'><b>{{player.Time}}</b></td>
+                            <td>{{player.School}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-panel z-depth-3">
+                    <h4 class="center flow-text"><b><abc class="orange-text text-lighten-1">MEDIUM</abc></b></h4>
+                    <table class="bordered" style="">
+                        <thead>
+                        <tr>
+                            <th style="color: #448aff" data-field="id"> #</th>
+                            <th style="color: #448aff" data-field="name">Name</th>
+                            <th style="color: #448aff" data-field="score">Score</th>
+                            <th style="color: #448aff" data-field="time">Time</th>
+                            <th style="color: #448aff" data-field="school">School</th>
+                        </tr>
+                        </thead>
+                        <tbody>
 
-                    <thead>
-                      <tr>
-                         <th style="color: #448aff" data-field="id"> #</th>
-                        <th style="color: #448aff" data-field="name" >Name</th>
-                        <th style="color: #448aff" data-field="score">Score</th>
-                        <th style="color: #448aff" data-field="time">Time</th>
-                        <th style="color: #448aff" data-field="school">School</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                  
-                     <tr bgcolor="#e1f5fe" ng-repeat="player in medium_scoreboard track by $index">
-                        <td>{{$index + 1}}</td>
-                        <td>{{player.UserName}}</td>
-                        <td style='color:#FFD700'><b>{{player.Score}}</b></td>
-                        <td style='color:#C0C0C0'><b>{{player.Time}}</b></td>
-                     
-                        <td>{{player.School}}</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <div class="row" style="height:20px"></div>
-                <div class ="row" style="text-align:center; color:orange;font-size:20px;"> MEDIUM</div>
-                <table class="bordered" style="">
-                    <thead>
-                      <tr>
-                         <th style="color: #448aff" data-field="id"> #</th>
-                        <th style="color: #448aff" data-field="name" >Name</th>
-                        <th style="color: #448aff" data-field="score">Score</th>
-                        <th style="color: #448aff" data-field="time">Time</th>
-                        <th style="color: #448aff" data-field="school">School</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                  
-                     <tr bgcolor="#e1f5fe" ng-repeat="player in medium_scoreboard track by $index">
-                        <td>{{$index + 1}}</td>
-                        <td>{{player.UserName}}</td>
-                        <td style='color:#FFD700'><b>{{player.Score}}</b></td>
-                        <td style='color:#C0C0C0'><b>{{player.Time}}</b></td>
-                     
-                        <td>{{player.School}}</td>
-                    </tr>
-                    </tbody>
-                </table>
-                    <div class="row" style="height:20px"></div>
-                <div class ="row" style="text-align:center; color:red;font-size:20px;"> HARD</div>
-                <table class="bordered" style="">
-                    <thead>
-                      <tr>
-                         <th style="color: #448aff" data-field="id"> #</th>
-                        <th style="color: #448aff" data-field="name" >Name</th>
-                        <th style="color: #448aff" data-field="score">Score</th>
-                        <th style="color: #448aff" data-field="time">Time</th>
-                        <th style="color: #448aff" data-field="school">School</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                  
-                     <tr bgcolor="#e1f5fe" ng-repeat="player in medium_scoreboard track by $index">
-                        <td>{{$index + 1}}</td>
-                        <td>{{player.UserName}}</td>
-                        <td style='color:#FFD700'><b>{{player.Score}}</b></td>
-                        <td style='color:#C0C0C0'><b>{{player.Time}}</b></td>
-                     
-                        <td>{{player.School}}</td>
-                    </tr>
-                    </tbody>
-                </table>
+                        <tr bgcolor="#e1f5fe" ng-repeat="player in medium_scoreboard track by $index">
+                            <td>{{$index + 1}}</td>
+                            <td>{{player.UserName}}</td>
+                            <td style='color:#FFD700'><b>{{player.Score}}</b></td>
+                            <td style='color:#C0C0C0'><b>{{player.Time}}</b></td>
+
+                            <td>{{player.School}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-panel z-depth-3">
+                    <h4 class="center flow-text"><b><abc class="green-text text-lighten-1">EASY</abc></b></h4>
+                    <table class="bordered" style="">
+                        <thead>
+                        <tr>
+                            <th style="color: #448aff" data-field="id"> #</th>
+                            <th style="color: #448aff" data-field="name">Name</th>
+                            <th style="color: #448aff" data-field="score">Score</th>
+                            <th style="color: #448aff" data-field="time">Time</th>
+                            <th style="color: #448aff" data-field="school">School</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr bgcolor="#e1f5fe" ng-repeat="player in medium_scoreboard track by $index">
+                            <td>{{$index + 1}}</td>
+                            <td>{{player.UserName}}</td>
+                            <td style='color:#FFD700'><b>{{player.Score}}</b></td>
+                            <td style='color:#C0C0C0'><b>{{player.Time}}</b></td>
+                            <td>{{player.School}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            <div class = "col s1">
-                <p> </p>
+            <div class="col s1">
+                <p></p>
             </div>
         </div>
     </div>
@@ -127,7 +126,8 @@
             <div class="row">
                 <div class="col l6 s12">
                     <h5 class="white-text">Company Bio</h5>
-                    <p class="grey-text text-lighten-4">Vaishampayan, Ashna Sebastian, Vimal Muraleedharan Nair and Rakesh Datta</p>
+                    <p class="grey-text text-lighten-4">Vaishampayan, Ashna Sebastian, Vimal Muraleedharan Nair and
+                        Rakesh Datta</p>
                 </div>
                 <div class="col l2 s12">
                     &nbsp

@@ -1,7 +1,7 @@
 /**
  * Created by Vaishampayan on 11/29/2016.
  */
-var binary = angular.module('binary', ['ngRoute']);
+var binary = angular.module('binary', ['ngRoute', 'angular-svg-round-progressbar']);
 
 $(document).ready(function () {
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered

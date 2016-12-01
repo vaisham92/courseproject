@@ -1,6 +1,6 @@
 <style type="text/css">
     .bgimg {
-        background-image: url('images/background2.jpg');
+        background-image: url('images/background4.png');
     }
 </style>
 <div id="wrapper" class="row ng-scope bgimg">
@@ -10,10 +10,10 @@
         }
         .flip {
             -webkit-perspective: 800;
-            width: 175px;
-            height: 200px;
+            width: 140px;
+            height: 180px;
             position: relative;
-            margin: 50px auto;
+            margin: 30px auto;
         }
         .flip .card.flipped {
             -webkit-transform: rotatex(-180deg);
@@ -31,7 +31,7 @@
             -webkit-backface-visibility: hidden ;
             z-index: 2;
             font-family: Georgia;
-            font-size: 3em;
+            font-size: 2em;
             text-align: center;
             line-height: 200px;
         }
@@ -56,143 +56,135 @@
             <div class="col s2"><p></p></div>
             <div class="col s8">
                 <div class="card-panel">
-                    <blockquote>
-                        <b> Question 1: </b> Convert the number '36' to binary from decimal
-                    </blockquote>
+                    <div class="row">
+                        <div class="col s11">
+                              <span class="blue-text">
+                                    <blockquote>
+                                        <h5><b> Question 1: </b> Convert the number '36' to binary from decimal</h5>
+                                    </blockquote>
+                              </span>
+                        </div>
+                        <div class="col s1">
+                            <div id="demoTimer"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col s2"><p></p></div>
         </div>
-        <div class="row">
-            <div class="col s6">
-                <div class="row">
-                    <div class="col s3">
-                        <div class="flip">
-                            <div class="card" ng-class="{'flipped':isFlipped7}" ng-click="flip7()">
-                                <div class="face front">
-                                    1
+            <div class="row">
+                <div class="col s6">
+                    <div class="row">
+                        <div class="col s3">
+                            <div class="flip">
+                                <div class="card" ng-class="{'flipped':isFlipped7}" ng-click="flip7()">
+                                    <div class="face front">
+                                        1
+                                    </div>
+                                    <div class="face back">
+                                        0
+                                    </div>
                                 </div>
-                                <div class="face back">
-                                    0
+                            </div>
+                        </div>
+                        <div class="col s3">
+                            <div class="flip">
+                                <div class="card" ng-class="{'flipped':isFlipped6}" ng-click="flip6()">
+                                    <div class="face front">
+                                        1
+                                    </div>
+                                    <div class="face back">
+                                        0
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s3">
+                            <div class="flip">
+                                <div class="card" ng-class="{'flipped':isFlipped5}" ng-click="flip5()">
+                                    <div class="face front">
+                                        1
+                                    </div>
+                                    <div class="face back">
+                                        0
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s3">
+                            <div class="flip">
+                                <div class="card" ng-class="{'flipped':isFlipped4}" ng-click="flip4()">
+                                    <div class="face front">
+                                        1
+                                    </div>
+                                    <div class="face back">
+                                        0
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col s3">
-                        <div class="flip">
-                            <div class="card" ng-class="{'flipped':isFlipped6}" ng-click="flip6()">
-                                <div class="face front">
-                                    1
-                                </div>
-                                <div class="face back">
-                                    0
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col s3">
-                        <div class="flip">
-                            <div class="card" ng-class="{'flipped':isFlipped5}" ng-click="flip5()">
-                                <div class="face front">
-                                    1
-                                </div>
-                                <div class="face back">
-                                    0
+                </div>
+                <div class="col s6">
+                    <div class="row">
+                        <div class="col s3">
+                            <div class="flip">
+                                <div class="card" ng-class="{'flipped':isFlipped3}" ng-click="flip3()">
+                                    <div class="face front">
+                                        1
+                                    </div>
+                                    <div class="face back">
+                                        0
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col s3">
-                        <div class="flip">
-                            <div class="card" ng-class="{'flipped':isFlipped4}" ng-click="flip4()">
-                                <div class="face front">
-                                    1
+                        <div class="col s3">
+                            <div class="flip">
+                                <div class="card" ng-class="{'flipped':isFlipped2}" ng-click="flip2()">
+                                    <div class="face front">
+                                        1
+                                    </div>
+                                    <div class="face back">
+                                        0
+                                    </div>
                                 </div>
-                                <div class="face back">
-                                    0
+                            </div>
+                        </div>
+                        <div class="col s3">
+                            <div class="flip">
+                                <div class="card" ng-class="{'flipped':isFlipped1}" ng-click="flip1()">
+                                    <div class="face front">
+                                        1
+                                    </div>
+                                    <div class="face back">
+                                        0
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s3">
+                            <div class="flip">
+                                <div class="card" ng-class="{'flipped':isFlipped0}" ng-click="flip0()">
+                                    <div class="face front">
+                                        1
+                                    </div>
+                                    <div class="face back">
+                                        0
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col s6">
-                <div class="row">
-                    <div class="col s3">
-                        <div class="flip">
-                            <div class="card" ng-class="{'flipped':isFlipped3}" ng-click="flip3()">
-                                <div class="face front">
-                                    1
-                                </div>
-                                <div class="face back">
-                                    0
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col s3">
-                        <div class="flip">
-                            <div class="card" ng-class="{'flipped':isFlipped2}" ng-click="flip2()">
-                                <div class="face front">
-                                    1
-                                </div>
-                                <div class="face back">
-                                    0
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col s3">
-                        <div class="flip">
-                            <div class="card" ng-class="{'flipped':isFlipped1}" ng-click="flip1()">
-                                <div class="face front">
-                                    1
-                                </div>
-                                <div class="face back">
-                                    0
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col s3">
-                        <div class="flip">
-                            <div class="card" ng-class="{'flipped':isFlipped0}" ng-click="flip0()">
-                                <div class="face front">
-                                    1
-                                </div>
-                                <div class="face back">
-                                    0
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="row">
+                <div class="col s3"><p></p></div>
+                <div class="col s6">
+                    <a class="waves-effect waves-light btn-large green">button</a>
                 </div>
+                <div class="col s3"><p></p></div>
             </div>
-            <div class="col s1">
-
-            </div>
-            <div class="col s1">
-
-            </div>
-            <div class="col s1">
-
-            </div>
-            <div class="col s1">
-
-            </div>
-            <div class="col s1">
-
-            </div>
-            <div class="col s1">
-
-            </div>
-            <div class="col s1">
-
-            </div>
-            <div class="col s1">
-
-            </div>
-        </div>
     </div>
     <footer class="page-footer blue accent-2">
         <div class="container">
