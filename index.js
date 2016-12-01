@@ -23,20 +23,6 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(session({resave: true, saveUninitialized: true, secret: 'BINARYAPP', cookie: { maxAge: 60000 }}));
-
-<<<<<<< Updated upstream
-
-=======
-//<<<<<<< Updated upstream
-//=======
-
-//app.use('/', function(request, response) {
-//	// Use response.sendfile, as it streams instead of reading the file into memory.
-//	response.sendfile(__dirname + '/public/index.html');
-//});
-
-//>>>>>>> Stashed changes
->>>>>>> Stashed changes
 app.post('/api/login',auth.login);
 app.post('/api/logout',auth.logout);
 app.post('/api/userRegister',auth.register);
@@ -63,6 +49,8 @@ app.get('/api/getRank/:testId/:level',test.getRank);
 app.get('/api/getScoreboard/:level',test.getScoreboard_level);
 app.get('/api/getUserRank/:testId/:level/:userId',test.getUserRank);
 app.get('/api/getHallOfFame',test.getHallOfFame);
+app.get('/api/getCron',test.cronJob);
+app.get('/api/getCurrentTest',test.getCurrentTest);
 
 app.use('/', function(request, response) {
 	// Use response.sendfile, as it streams instead of reading the file into memory.

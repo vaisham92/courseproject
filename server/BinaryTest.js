@@ -2,7 +2,103 @@ var mongo = require("./mongo");
 var mongoURL = 'mongodb://localhost:27017/binaryGame';
 var mongoDbHelper = require('./mongo-db-helper');
 var mongodb = require('mongodb');
+var cron = require('node-cron');
 
+cron.schedule('*/15 * * * *', function(){
+	  console.log('running a task every one minutes');
+	  mongo.connect(mongoURL, function() {
+			var qsDetails = mongo.collection('QuestionBank');
+			var query ={'level':'easy'};
+			var message={};
+			message.testId = guid();
+			message.easy={};
+			message.medium = {};
+			message.hard = {};
+			mongoDbHelper.read(qsDetails,{'level':'easy'},null,null,function(data) {
+				message.easy = getRandom(data,10);
+				mongoDbHelper.read(qsDetails,{'level':'medium'},null,null,function(data) {
+					message.medium = getRandom(data,10);
+					mongoDbHelper.read(qsDetails,{'level':'hard'},null,null,function(data) {
+						message.hard = getRandom(data,10);
+						var ChallengeQuestions = mongo.collection('ChallengeQuestions');
+						mongoDbHelper.insertIntoCollection(ChallengeQuestions, message, function() {
+						mongodb.MongoClient.connect('mongodb://localhost:27017/binaryGame', function(error, db) {
+							console.log("Questions Pushed");
+						});
+						});
+					});
+				});
+			});
+	});
+});
+
+exports.getCurrentTest = function(request,response){
+
+	var options = {"sort": [['_id','desc']]};
+	mongo.connect(mongoURL, function() {
+		var collection = mongo.collection('ChallengeQuestions');
+		mongoDbHelper.readLastQuestion(collection,{},null,options,function(data) {
+			if(data==null){
+				console.log("No entry found");
+				response.send({"Status":500,
+					"Message": "Unable to get Questions"});
+			}
+			else
+				response.send(data);
+			});
+		});
+};
+
+exports.cronJob = function(request,response){
+		mongo.connect(mongoURL, function() {
+		var qsDetails = mongo.collection('QuestionBank');
+		var query ={'level':'easy'};
+		var message={};
+		message.testId = guid();
+		message.easy={};
+		message.medium = {};
+		message.hard = {};
+		mongoDbHelper.read(qsDetails,{'level':'easy'},null,null,function(data) {
+			message.easy = getRandom(data,10);
+			mongoDbHelper.read(qsDetails,{'level':'medium'},null,null,function(data) {
+				message.medium = getRandom(data,10);
+				mongoDbHelper.read(qsDetails,{'level':'hard'},null,null,function(data) {
+					message.hard = getRandom(data,10);
+					var ChallengeQuestions = mongo.collection('ChallengeQuestions');
+					mongoDbHelper.insertIntoCollection(ChallengeQuestions, message, function() {
+					mongodb.MongoClient.connect('mongodb://localhost:27017/binaryGame', function(error, db) {
+					response.send(message);
+					});
+					});
+				});
+			});
+		});
+});
+};
+
+function getRandom(arr, n) {
+    var result = new Array(n),
+        len = arr.length,
+        taken = new Array(len);
+    if (n > len)
+        throw new RangeError("getRandom: more elements taken than available");
+    while (n--) {
+        var x = Math.floor(Math.random() * len);
+        result[n] = arr[x in taken ? taken[x] : x];
+        taken[x] = --len;
+    }
+    return result;
+};
+
+function guid() {
+	  function s4() {
+	    return Math.floor((1 + Math.random()) * 0x10000)
+	      .toString(16)
+	      .substring(1);
+	  }
+	  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+	    s4() + '-' + s4() + s4() + s4();
+};
 
 exports.BinaryTest = function(request,response){	
 	var level = request.body.level;
