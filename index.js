@@ -3,6 +3,7 @@ var auth = require('./server/authentication');
 var test = require('./server/BinaryTest')
 var quiz = require('./server/TestDecorator')
 var bodyParser = require('body-parser');
+var userFactory = require('./server/userFactory');
 
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
@@ -23,11 +24,14 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(session({resave: true, saveUninitialized: true, secret: 'BINARYAPP', cookie: { maxAge: 60000 }}));
-
-
 app.post('/api/login',auth.login);
 app.post('/api/logout',auth.logout);
-app.post('/api/userRegister',auth.register);
+//app.post('/api/userRegister',auth.register);
+app.post('/api/userRegister', function(request, response) {
+                console.log("registering a new user");
+                userFactory.register(request, response, "registeredUser");
+                //response.send({"Status":200, "Message":"Registration Successfull"});
+        });
 app.post('/api/BinaryTest' , test.BinaryTest);
 app.post('/api/Quiz' , quiz.Quiz);
 app.post('/api/COnfirmLevel' , test.ConfirmLevel);
@@ -51,10 +55,12 @@ app.get('/api/getRank/:testId/:level',test.getRank);
 app.get('/api/getScoreboard/:level',test.getScoreboard_level);
 app.get('/api/getUserRank/:testId/:level/:userId',test.getUserRank);
 app.get('/api/getHallOfFame',test.getHallOfFame);
+app.get('/api/getCron',test.cronJob);
+app.get('/api/getCurrentTest',test.getCurrentTest);
 
 app.use('/', function(request, response) {
-	// Use response.sendfile, as it streams instead of reading the file into memory.
-	response.sendfile(__dirname + '/public/index.html');
+	console.log('creating a guest user');
+        userFactory.register(request, response, "guestUser");
 });
 
 //app.post('/api/login',auth.login);
