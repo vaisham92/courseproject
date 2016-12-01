@@ -84,6 +84,10 @@ binary.controller('mainController', function ($scope, $http, $routeParams, $loca
                                 if (data.Status == 200) {
                                     console.log("hall of fame success");
                                     console.log(data);
+                                    $scope.easy_scoreboard = [];
+                                    $scope.easy_scoreboard = data.HallOfFame.Easy;
+                                    $scope.medium_scoreboard = data.HallOfFame.Medium;
+                                    $scope.hard_scoreboard = data.HallOfFame.Difficult;
                                     
                                 } else if (data.Status == 401){
                                     $scope.inval_mess = data.Message;
@@ -112,7 +116,7 @@ binary.controller('mainController', function ($scope, $http, $routeParams, $loca
             if (data.Status == 200) {
                 console.log("login success");
 
-                window.location.assign("#/levels");
+                window.location.assign("/levels");
 
             } else if (data.Status == 401) {
                 $scope.inval_mess = data.Message;

@@ -153,6 +153,23 @@ binary.controller('levelController', function($scope, $http, $routeParams) {
 		        
 		    };
 
-	  
+	   function getDetailsFromSession(){
+	  		$http({
+		                method: 'GET',
+		                url: '/api/getDetailsFromSession'
+		            }).success(function(data) {
+						// checking the response data for statusCode
+						if (data.Status == 200) {
+							$scope.session = data.message;
+							
+						} 
+						else{
+							//window.assign.location("/");
+						}
+
+					}).error(function(error) {
+							//window.assign.location("/");
+					});
+	  }
 
 });
