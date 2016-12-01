@@ -108,8 +108,10 @@ binary.controller('levelController', function($scope, $http, $routeParams) {
 		                url: '/api/addLevelToSession/'+level
 		            }).success(function(data) {
 						// checking the response data for statusCode
-						if (data.Status == 200) {
-							 //window.location.assign("/confirmation");
+						console.log(data);
+						if (data.status == 200) {
+							console.log(data);
+							 window.location.assign("/confirmation");
 							 //console.log(data);
 							
 						} 
