@@ -3,6 +3,8 @@
  */
 
 binary.controller('gameController', function ($scope, $http, $routeParams, $location) {
+    var cardFlip1 = new Audio('sounds/minion_laugh_1.mp3');
+    var cardFlip2 = new Audio('sounds/minion_laugh_2.mp3');
     $scope.isFlipped0 = true;
     $scope.isFlipped1 = true;
     $scope.isFlipped2 = true;
@@ -15,28 +17,60 @@ binary.controller('gameController', function ($scope, $http, $routeParams, $loca
 
     $scope.flip0 = function () {
         $scope.isFlipped0 = !$scope.isFlipped0;
+        if($scope.isFlipped0)
+            cardFlip1.play();
+        else
+            cardFlip2.play()
     };
     $scope.flip1 = function () {
         $scope.isFlipped1 = !$scope.isFlipped1;
+        if($scope.isFlipped1)
+            cardFlip1.play();
+        else
+            cardFlip2.play()
     };
     $scope.flip2 = function () {
         $scope.isFlipped2 = !$scope.isFlipped2;
+        if($scope.isFlipped2)
+            cardFlip1.play();
+        else
+            cardFlip2.play()
     };
     $scope.flip3 = function () {
         $scope.isFlipped3 = !$scope.isFlipped3;
+        if($scope.isFlipped3)
+            cardFlip1.play();
+        else
+            cardFlip2.play()
     };
 
     $scope.flip4 = function () {
         $scope.isFlipped4 = !$scope.isFlipped4;
+        if($scope.isFlipped4)
+            cardFlip1.play();
+        else
+            cardFlip2.play()
     };
     $scope.flip5 = function () {
         $scope.isFlipped5 = !$scope.isFlipped5;
+        if($scope.isFlipped5)
+            cardFlip1.play();
+        else
+            cardFlip2.play()
     };
     $scope.flip6 = function () {
         $scope.isFlipped6 = !$scope.isFlipped6;
+        if($scope.isFlipped6)
+            cardFlip1.play();
+        else
+            cardFlip2.play()
     };
     $scope.flip7 = function () {
         $scope.isFlipped7 = !$scope.isFlipped7;
+        if($scope.isFlipped7)
+            cardFlip1.play();
+        else
+            cardFlip2.play()
     };
 
     $scope.color = "#0000ff"
