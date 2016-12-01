@@ -42,6 +42,10 @@ binary.config(['$routeProvider', '$locationProvider',
 ]);
 
 binary.controller('mainController', function ($scope, $http, $routeParams, $location) {
+	
+	getDetailsFromSession();
+	
+	$scope.hideName = true;
     $scope.doLogin = function () {
         console.log("login");
         $http({
@@ -118,8 +122,9 @@ binary.controller('mainController', function ($scope, $http, $routeParams, $loca
             // checking the response data for statusCode
             if (data.Status == 200) {
                 console.log("login success");
+            	$scope.hideName = false;
+                window.location = $location.absUrl();
 
-                window.location.assign("/levels");
 
             } else if (data.Status == 401) {
                 $scope.inval_mess = data.Message;
@@ -148,8 +153,8 @@ binary.controller('mainController', function ($scope, $http, $routeParams, $loca
         }).success(function (data) {
             // checking the response data for statusCode
             if (data.Status == 200) {
-                window.location.assign("/levels");
-
+                window.location = $location.absUrl();
+                $scope.hideName = false;
             } else if (data.Status == 500) {
                 $scope.inval_mess = data.Message;
             }
@@ -162,6 +167,66 @@ binary.controller('mainController', function ($scope, $http, $routeParams, $loca
         });
 
     };
+    
+    
+    function getDetailsFromSession(){
+        $http({
+                    method: 'GET',
+                    url: '/api/getDetailsFromSession'
+                }).success(function(data) {
+                    // checking the response data for statusCode
+                	console.log("get session");
+                	console.log(data);
+                    if (data.status == 200) {
+                    	
+                        $scope.session = data.message;
+                        console.log($scope.session);
+                        if($scope.session.user){
+                        	$scope.hideName = false;
+
+                        }
+                        else{
+                        	$scope.hideName = true;
+                        }
+                    } 
+                    else{
+                    	$scope.hideName = true;
+                    }
+
+                }).error(function(error) {
+                	$scope.hideName = true;
+                });
+  }
+    
+    $scope.logout = function(){
+    	 console.log("register");
+         $http({
+             method: 'POST',
+             url: '/api/userRegister',
+             data: {
+                 "email": $scope.email,
+                 "password": $scope.password,
+                 "fname": $scope.first_name,
+                 "lname": $scope.last_name,
+                 "school": $scope.school
+             }
+         }).success(function (data) {
+             // checking the response data for statusCode
+             if (data.Status == 200) {
+                 window.location = $location.absUrl();
+                 $scope.hideName = false;
+             } else if (data.Status == 500) {
+                 $scope.inval_mess = data.Message;
+             }
+             else {
+                 $scope.inval_mess = "An unexpected error occured. Try again.";
+             }
+
+         }).error(function (error) {
+             $scope.inval_mess = "An unexpected error occured. Try again.";
+         });
+
+    }
 });
 
 
