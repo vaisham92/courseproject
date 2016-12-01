@@ -71,7 +71,7 @@ binary.controller('gameController', function ($scope, $http, $routeParams, $loca
 
 
 
-    $scope.submitAnswers(){
+    $scope.submitAnswers = function(){
                     $http({
                         method: 'POST',
                         url: '/api/SubmitAns',
@@ -100,7 +100,7 @@ binary.controller('gameController', function ($scope, $http, $routeParams, $loca
                     }).error(function(error) {
                             $scope.inval_mess = "An unexpected error occured. Try again.";
                     });
-    }
+    };
 
 
     function getRank(){

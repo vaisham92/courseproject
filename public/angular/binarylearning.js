@@ -29,6 +29,9 @@ binary.config(['$routeProvider', '$locationProvider',
             }).when('/game', {
                 templateUrl: 'game.html',
                 controller: 'gameController'
+            }).when('/confirmation', {
+                templateUrl: 'confirmation.html',
+                controller: 'confirmationController'
             })
             .otherwise({
                 templateUrl: '404.html',
