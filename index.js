@@ -26,6 +26,7 @@ app.use(session({resave: true, saveUninitialized: true, secret: 'BINARYAPP', coo
 
 
 app.post('/api/login',auth.login);
+app.post('/api/logout',auth.logout);
 app.post('/api/userRegister',auth.register);
 app.post('/api/BinaryTest' , test.BinaryTest);
 app.post('/api/Quiz' , quiz.Quiz);

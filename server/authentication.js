@@ -31,6 +31,13 @@ exports.login = function(request,response){
 			});
 		});
 };
+exports.register = function(request,response){
+	request.session.destroy();
+	response.send({
+		"status":200,
+		"message":"User Logged out"
+	});
+}
 
 exports.register = function(request,response){
 	console.log("register");
