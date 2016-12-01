@@ -24,15 +24,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(session({resave: true, saveUninitialized: true, secret: 'BINARYAPP', cookie: { maxAge: 60000 }}));
 
-<<<<<<< Updated upstream
-=======
 
-//app.use('/', function(request, response) {
-//	// Use response.sendfile, as it streams instead of reading the file into memory.
-//	response.sendfile(__dirname + '/public/index.html');
-//});
-
->>>>>>> Stashed changes
 app.post('/api/login',auth.login);
 app.post('/api/userRegister',auth.register);
 app.post('/api/BinaryTest' , test.BinaryTest);
