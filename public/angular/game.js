@@ -110,21 +110,18 @@ binary.controller('gameController', function ($scope, $http, $routeParams, $loca
 
 
 
-    getDetailsFromSession();
+    getDetailsFromSessionBeforeGame();
 
     function startTest (level) {
                     console.log(level);
                     $http({
-                        method: 'POST',
-                        url: '/api/BinaryTest',
-                        data:{
-                            "level" : level
-                        }
+                        method: 'GET',
+                        url: '/api/getCurrentTest'
                     }).success(function(data) {
                         // checking the response data for statusCode
                         if (data.Status == 200) {
                              //window.location.assign("/levels");
-                             //console.log(data);
+                             console.log(data);
                             
                         } else if (data.Status == 401){
                             $scope.inval_mess = data.Message;
@@ -197,13 +194,16 @@ binary.controller('gameController', function ($scope, $http, $routeParams, $loca
                     });
     }
 
-     function getDetailsFromSession(){
+     function getDetailsFromSessionBeforeGame(){
+    	 console.log("get detail from session before game")
             $http({
                         method: 'GET',
                         url: '/api/getDetailsFromSession'
                     }).success(function(data) {
                         // checking the response data for statusCode
-                        if (data.Status == 200) {
+                    	console.log(data);
+                        if (data.status == 200) {
+
                             $scope.session = data.message;
                             startTest ($scope.session.level);
                         } 
