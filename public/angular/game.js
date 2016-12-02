@@ -106,10 +106,6 @@ binary.controller('gameController', function ($scope, $http, $routeParams, $loca
     };
 
     timer();
-
-
-
-
     getDetailsFromSessionBeforeGame();
 
     function startTest (level) {
