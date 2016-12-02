@@ -34,6 +34,7 @@ cron.schedule('*/15 * * * *', function(){
 
 exports.getCurrentTest = function(request,response){
 
+	var level =  request.session.level; 
 	var options = {"sort": [['_id','desc']]};
 	mongo.connect(mongoURL, function() {
 		var collection = mongo.collection('ChallengeQuestions');
@@ -44,7 +45,18 @@ exports.getCurrentTest = function(request,response){
 					"Message": "Unable to get Questions"});
 			}
 			else
-				response.send(data);
+				var result = {};
+				result.testId = data[0].testId;
+				result.challenge = {};
+				if(level == 'easy'){
+					result.challenge = data[0].easy;
+				}else if(level == 'medium'){
+					result.challenge = data[0].medium;
+				}else{
+					result.challenge = data[0].hard;
+				}
+				
+				response.send(result);
 			});
 		});
 };

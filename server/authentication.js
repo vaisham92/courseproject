@@ -39,6 +39,14 @@ exports.logout = function(request,response){
 	});
 }
 
+exports.logoutUserSession = function(request,response){
+	request.session.user ={};
+	response.send({
+		"status":200,
+		"message":"User session cleared"
+	})
+};
+
 exports.register = function(request,response){
 	console.log("register");
 	var user = {};

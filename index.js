@@ -57,6 +57,7 @@ app.get('/api/getUserRank/:testId/:level/:userId',test.getUserRank);
 app.get('/api/getHallOfFame',test.getHallOfFame);
 app.get('/api/getCron',test.cronJob);
 app.get('/api/getCurrentTest',test.getCurrentTest);
+app.post('/api/clearUserSession',auth.logoutUserSession);
 
 app.use('/', function(request, response) {
 	console.log('creating a guest user');
