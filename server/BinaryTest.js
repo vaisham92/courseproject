@@ -31,6 +31,74 @@ cron.schedule('*/15 * * * *', function () {
         });
     });
 });
+//Subject:START
+var Timer = function () {
+    this.handlers = []; //registering the observers
+};
+
+Timer.prototype = {
+    subscribeHandler: function (f) {
+        this.handlers.push(f);
+    },
+
+    unsubscribeHandler: function (fn) {
+        this.handlers = this.handlers.filter(
+            function (item) {
+                if (item !== fn) {
+                    return item;
+                }
+            }
+        );
+    },
+
+    startTimer: function () {
+        this.handlers.forEach(function (item) {
+            //item.call();
+            cron.schedule('*/2 * * * *', item);
+        });
+    }
+};
+
+var getGroupChallenge = function (timeout) {
+    var timer = new Timer(timerHandler);
+
+    //Observer
+    var timerHandler = function () {
+        console.log("Timed Out.. Creating a Group Challenge");
+        mongo.connect(mongoURL, function () {
+            var qsDetails = mongo.collection('QuestionBank');
+            var query = {'level': 'easy'};
+            var message = {};
+            message.testId = guid();
+            message.easy = {};
+            message.medium = {};
+            message.hard = {};
+            mongoDbHelper.read(qsDetails, {'level': 'easy'}, null, null, function (data) {
+                message.easy = getRandom(data, 10);
+                mongoDbHelper.read(qsDetails, {'level': 'medium'}, null, null, function (data) {
+                    message.medium = getRandom(data, 10);
+                    mongoDbHelper.read(qsDetails, {'level': 'hard'}, null, null, function (data) {
+                        message.hard = getRandom(data, 10);
+                        var ChallengeQuestions = mongo.collection('ChallengeQuestions');
+                        mongoDbHelper.insertIntoCollection(ChallengeQuestions, message, function () {
+                            mongodb.MongoClient.connect('mongodb://localhost:27017/binaryGame', function (error, db) {
+                                console.log("Questions Pushed");
+                            });
+                        });
+                    });
+                });
+            });
+        });
+    };
+
+    //Register the Observer in the subject
+    timer.subscribeHandler(timerHandler);
+
+    //Start the Subject
+    timer.startTimer();
+};
+
+getGroupChallenge();
 
 exports.getCurrentTest = function (request, response) {
     var level = request.session.level;
@@ -57,7 +125,7 @@ exports.getCurrentTest = function (request, response) {
                     result.challenge = data[0].hard;
                 }
                 var successResponse = {
-                    "status":200,
+                    "status": 200,
                     "message": "Successfully loaded Questions"
                 };
                 response.send(result);
@@ -105,7 +173,7 @@ function getRandom(arr, n) {
         taken[x] = --len;
     }
     return result;
-};
+}
 
 function guid() {
     function s4() {
@@ -116,7 +184,7 @@ function guid() {
 
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
         s4() + '-' + s4() + s4() + s4();
-};
+}
 
 exports.BinaryTest = function (request, response) {
     var level = request.body.level;
@@ -273,14 +341,14 @@ exports.addToSesssion = function (request, response) {
         "status": 200,
         "message": request.session.level
     });
-}
+};
 
 exports.getFromSession = function (request, response) {
     response.send({
         "status": 200,
         "message": request.session
     });
-}
+};
 
 exports.getUserRank = function (request, response) {
 
@@ -290,7 +358,7 @@ exports.getUserRank = function (request, response) {
     var query = {'testId': testId, 'level': level};
     console.log(query);
     var rank = 0;
-    var options = {"sort": [['correctCount', 'desc'], ['time', 'asc']]}
+    var options = {"sort": [['correctCount', 'desc'], ['time', 'asc']]};
     mongo.connect(mongoURL, function () {
         var collection = mongo.collection('resultDirectory');
         mongoDbHelper.read(collection, query, null, options, function (data) {
@@ -310,13 +378,11 @@ exports.getUserRank = function (request, response) {
             response.send({"Status": 200, "User Rank": rank});
         });
     });
-
-
 };
 
 exports.getHallOfFame = function (request, response) {
 
-    var options = {"sort": [['correctCount', 'desc'], ['time', 'asc']], "group": ['level']}
+    var options = {"sort": [['correctCount', 'desc'], ['time', 'asc']], "group": ['level']};
     mongo.connect(mongoURL, function () {
         var collection = mongo.collection('resultDirectory');
         mongoDbHelper.read(collection, null, null, null, function (data) {
@@ -404,142 +470,143 @@ exports.getHallOfFame = function (request, response) {
     });
 };
 
-exports.getScoreboard_level = function (request, response) {
+    exports.getScoreboard_level = function (request, response) {
 
-    var level = request.params.level;
-    var query = {'level': level};
-    var rank = 0;
-    var options = {"sort": [['correctCount', 'desc'], ['time', 'asc']], "group": ['level']}
-    mongo.connect(mongoURL, function () {
-        var collection = mongo.collection('resultDirectory');
-        mongoDbHelper.readTopThree(collection, query, null, options, function (data) {
-            if (data == null) {
-                console.log("No entry found");
-                response.send({
-                    "Status": 500,
-                    "Message": "Unable to get Scoreboard for the level"
-                });
-            }
-            else {
-                //response.send({"data":data});
-
-                var Arr = new Array();
-                var res = new Array();
-                var count = 0;
-
-                for (var i = 0; i < data.length; i++) {
-
-                    var temp = data[i].username;
-                    var index = Arr.indexOf(temp);
-                    if (index == -1) {
-                        res[count] = ({
-                            "UserName": data[i].username,
-                            "Score": data[i].correctCount,
-                            "Time": data[i].time,
-                            "School": data[i].School
-                        });
-                        Arr[count] = temp;
-                        count++;
-                    }
-                }
-                //console.log(Arr);
-                response.send({"Status": 200, "scoreboard": res});
-
-            }
-        });
-    });
-
-
-};
-
-exports.createTest = function(request,response) {
-    var level = request.params.level;
-    request.session.challenge = new Object();
-    request.session.level = level;
-    if(request.session.challenge == undefined)
-        request.session.challenge = {};
-    var options = {"sort": [['_id', 'desc']]};
-    mongo.connect(mongoURL, function () {
-        var collection = mongo.collection('ChallengeQuestions');
-        mongoDbHelper.readLastQuestion(collection, {}, null, options, function (data) {
-            request.session.testId = data[0].testId;
-            var testId = data[0].testId;
-            if (level == 'easy') {
-                console.log("setQuiz");
-                request.session.challenge.questions = data[0].easy;
-            } else if (level == 'medium') {
-                request.session.challenge.questions = data[0].medium;
-            } else {
-                request.session.challenge.questions = data[0].hard;
-            }
-            request.session.challenge.start = (new Date()).valueOf();
-            request.session.challenge.questionsAnswered = [];
-            request.session.challenge.currentQID = 1;
-            response.send({
-                "status": 200,
-                "message": request.session.level
-            })
-        });
-    });
-};
-
-exports.postAnswer = function (request, response) {
-    var testId = request.params.testId;
-    request.session.challenge.questionsAnswered.append(request.body);
-    request.session.challenge.end = (new Date()).valueOf();
-    response.send({
-        "status": 200,
-        "message": "successfully posted"
-    })
-};
-
-exports.getNextQuestion = function (request, response) {
-    var testId = request.session.testId;
-    console.log("questions: \n\n\n\n");
-    console.log(request.session.challenge);
-    var question = request.session.challenge.questions[request.session.challenge.currentQID - 1];
-    request.session.challenge.currentQID += 1;
-    response.send({
-        "status" : 200,
-        "questionId" : request.session.challenge.currentQID - 1,
-        "question" : question
-    });
-};
-
-exports.submitTest = function(request, response) {
-    var qsBank = {};
-    qsBank.username = request.session.user.email;
-    qsBank.testId = request.session.testId;
-    qsBank.time = request.session.challenge.end - request.session.challenge.start;
-    qsBank.level = request.session.level;
-    qsBank.School = request.session.user.School;
-    qsBank.response = request.session.challenge.questionsAnswered;
-    var count = 0;
-    for (var i = 0; i < request.body.response.length; i++) {
-        if (request.body.response[i].question.toString(2) == request.body.response[i].answer) {
-            count++;
-        }
-    }
-    qsBank.correctCount = count;
-    mongo.connect(mongoURL, function () {
-        var qsDetails = mongo.collection('resultDirectory');
-        mongoDbHelper.insertIntoCollection(qsDetails, qsBank, function () {
-            mongodb.MongoClient.connect('mongodb://localhost:27017/binaryGame', function (error, db) {
-                if (error) {
+        var level = request.params.level;
+        var query = {'level': level};
+        var rank = 0;
+        var options = {"sort": [['correctCount', 'desc'], ['time', 'asc']], "group": ['level']}
+        mongo.connect(mongoURL, function () {
+            var collection = mongo.collection('resultDirectory');
+            mongoDbHelper.readTopThree(collection, query, null, options, function (data) {
+                if (data == null) {
+                    console.log("No entry found");
                     response.send({
                         "Status": 500,
-                        "Message": "Unable to save Ans"
+                        "Message": "Unable to get Scoreboard for the level"
                     });
-                } else {
-                    response.send({
-                        "Status": 200,
-                        "message": "Ans saved Successfully"
-                    });
+                }
+                else {
+                    //response.send({"data":data});
+
+                    var Arr = new Array();
+                    var res = new Array();
+                    var count = 0;
+
+                    for (var i = 0; i < data.length; i++) {
+
+                        var temp = data[i].username;
+                        var index = Arr.indexOf(temp);
+                        if (index == -1) {
+                            res[count] = ({
+                                "UserName": data[i].username,
+                                "Score": data[i].correctCount,
+                                "Time": data[i].time,
+                                "School": data[i].School
+                            });
+                            Arr[count] = temp;
+                            count++;
+                        }
+                    }
+                    //console.log(Arr);
+                    response.send({"Status": 200, "scoreboard": res});
+
                 }
             });
         });
-    });
-};
+
+
+    };
+
+    exports.createTest = function (request, response) {
+        var level = request.params.level;
+        request.session.challenge = new Object();
+        request.session.level = level;
+        if (request.session.challenge == undefined)
+            request.session.challenge = {};
+        var options = {"sort": [['_id', 'desc']]};
+        mongo.connect(mongoURL, function () {
+            var collection = mongo.collection('ChallengeQuestions');
+            mongoDbHelper.readLastQuestion(collection, {}, null, options, function (data) {
+                request.session.testId = data[0].testId;
+                var testId = data[0].testId;
+                if (level == 'easy') {
+                    console.log("setQuiz");
+                    request.session.challenge.questions = data[0].easy;
+                } else if (level == 'medium') {
+                    request.session.challenge.questions = data[0].medium;
+                } else {
+                    request.session.challenge.questions = data[0].hard;
+                }
+                request.session.challenge.start = (new Date()).valueOf();
+                request.session.challenge.questionsAnswered = [];
+                request.session.challenge.currentQID = 1;
+                response.send({
+                    "status": 200,
+                    "message": request.session.level
+                })
+            });
+        });
+    };
+
+    exports.postAnswer = function (request, response) {
+        var testId = request.params.testId;
+        request.session.challenge.questionsAnswered.append(request.body);
+        request.session.challenge.end = (new Date()).valueOf();
+        response.send({
+            "status": 200,
+            "message": "successfully posted"
+        })
+    };
+
+    exports.getNextQuestion = function (request, response) {
+        var testId = request.session.testId;
+        console.log("questions: \n\n\n\n");
+        console.log(request.session.challenge);
+        var question = request.session.challenge.questions[request.session.challenge.currentQID - 1];
+        request.session.challenge.currentQID += 1;
+        response.send({
+            "status": 200,
+            "questionId": request.session.challenge.currentQID - 1,
+            "question": question
+        });
+    };
+
+    exports.submitTest = function (request, response) {
+        var qsBank = {};
+        qsBank.username = request.session.user.email;
+        qsBank.testId = request.session.testId;
+        qsBank.time = request.session.challenge.end - request.session.challenge.start;
+        qsBank.level = request.session.level;
+        qsBank.School = request.session.user.School;
+        qsBank.response = request.session.challenge.questionsAnswered;
+        var count = 0;
+        for (var i = 0; i < request.body.response.length; i++) {
+            if (request.body.response[i].question.toString(2) == request.body.response[i].answer) {
+                count++;
+            }
+        }
+        qsBank.correctCount = count;
+        mongo.connect(mongoURL, function () {
+            var qsDetails = mongo.collection('resultDirectory');
+            mongoDbHelper.insertIntoCollection(qsDetails, qsBank, function () {
+                mongodb.MongoClient.connect('mongodb://localhost:27017/binaryGame', function (error, db) {
+                    if (error) {
+                        response.send({
+                            "Status": 500,
+                            "Message": "Unable to save Ans"
+                        });
+                    } else {
+                        response.send({
+                            "Status": 200,
+                            "message": "Ans saved Successfully"
+                        });
+                    }
+                });
+            });
+        });
+    };
+
 
 
 

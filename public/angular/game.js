@@ -24,8 +24,8 @@ binary.controller('gameController', function ($scope, $http, $routeParams, $loca
         });
     }
 
-    var cardFlip1 = new Audio('sounds/minion_laugh_1.mp3');
-    var cardFlip2 = new Audio('sounds/minion_laugh_2.mp3');
+    var cardFlip1 = new Audio('sounds/cardflip1.mp3');
+    var cardFlip2 = new Audio('sounds/cardflip1.mp3');
     $scope.isFlipped0 = true;
     $scope.isFlipped1 = true;
     $scope.isFlipped2 = true;

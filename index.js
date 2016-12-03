@@ -2,6 +2,7 @@ var express = require('express');
 var auth = require('./server/authentication');
 var test = require('./server/BinaryTest')
 var quiz = require('./server/TestDecorator')
+var observer = require('./server/ScoreboardObserver')
 var bodyParser = require('body-parser');
 var userFactory = require('./server/userFactory');
 
@@ -37,16 +38,28 @@ app.post('/api/Quiz' , quiz.Quiz);
 app.post('/api/COnfirmLevel' , test.ConfirmLevel);
 app.post('/api/CreateQs' , test.CreateQs);
 app.post('/api/addLevelToSession/:level',test.createTest);
+app.post('/api/SubmitAns', test.submitTest);
+app.post('/api/SubmitAns' ,test.SaveAns);
+app.post('/api/SubmitAnsObserver', observer.SaveAns);
+app.post('/api/addLevelToSession/:level',function(request,response){
+	var level = request.params.level;
+	request.session.level = level;
+	response.send({
+		"status":200,
+		"message":request.session.level
+	})
+});
 app.get('/api/getDetailsFromSession',function(request,response){
 	response.send({
 		"status":200,
 		"message":request.session
 	});
 });
-app.post('/api/SubmitAns', test.submitTest);
+
+//app.post('/api/SubmitAns', test.SaveAns);
 app.get('/api/getRank/:testId/:level',test.getRank);
 app.get('/api/getScoreboard/:level',test.getScoreboard_level);
-app.get('/api/getUserRank/:testId/:level/:userId',test.getUserRank);
+app.get('/api/getUserRank/:testId/:level/:username',test.getUserRank);
 app.get('/api/getHallOfFame',test.getHallOfFame);
 app.get('/api/getCron',test.cronJob);
 app.get('/api/getCurrentTest',test.getCurrentTest);
