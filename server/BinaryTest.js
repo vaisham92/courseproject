@@ -269,7 +269,7 @@ exports.getUserRank = function(request,response){
 	
 	var testId = parseInt(request.params.testId);
 	var level =  request.params.level;
-	var userId = parseInt(request.params.userId);
+	var username = request.params.username;
 	var query = {'testId': testId,'level':level};
 	console.log(query);
 	var rank = 0;
@@ -284,7 +284,7 @@ exports.getUserRank = function(request,response){
 			}
 			else
 			for(var i=0 ; i < data.length;i++){
-				if(data[i].userId==userId){
+				if(data[i].username==username){
 					rank = i+1;
 				}
 			}
