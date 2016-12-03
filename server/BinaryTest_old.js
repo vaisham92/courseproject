@@ -4,76 +4,33 @@ var mongoDbHelper = require('./mongo-db-helper');
 var mongodb = require('mongodb');
 var cron = require('node-cron');
 
-//Subject:START
-var Timer = function () {
-	this.handlers = []; //registering the observers
-}
-
-Timer.prototype = {
-	subscribeHandler: function(f) {
-		this.handlers.push(f);
-	},
-
-	unsubscribeHandler: function(fn) {
-        	this.handlers = this.handlers.filter(
-            		function(item) {
-                		if (item !== fn) {
-                    			return item;
-                		}
-            		}
-        	);
-    	},
-
-	startTimer : function() {
-		this.handlers.forEach(function(item) {
-			//item.call();
-			cron.schedule('*/2 * * * *',item);
-		});
-	}
-}
-//Subject:END
-
-var getGroupChallenge = function(timeout) {
-	var timer = new Timer(timerHandler);	
-
-	//Observer
-	var timerHandler = function() {
-		console.log("Timed Out.. Creating a Group Challenge");
-          	mongo.connect(mongoURL, function() {
-                        	var qsDetails = mongo.collection('QuestionBank');
-                        	var query ={'level':'easy'};
-                        	var message={};
-                        	message.testId = guid();
-                        	message.easy={};
-                        	message.medium = {};
-                        	message.hard = {};
-                        	mongoDbHelper.read(qsDetails,{'level':'easy'},null,null,function(data) {
-                                	message.easy = getRandom(data,10);
-                                	mongoDbHelper.read(qsDetails,{'level':'medium'},null,null,function(data) {
-                                        	message.medium = getRandom(data,10);
-                                        	mongoDbHelper.read(qsDetails,{'level':'hard'},null,null,function(data) {
-                                                	message.hard = getRandom(data,10);
-                                                	var ChallengeQuestions = mongo.collection('ChallengeQuestions');
-                                                	mongoDbHelper.insertIntoCollection(ChallengeQuestions, message, function() {
-                                                		mongodb.MongoClient.connect('mongodb://localhost:27017/binaryGame', function(error, db) {
-                                                        		console.log("Questions Pushed");
-                                                		});
-                                                	});
-                                        	});
-                                	});
-                        	});
-        	});
-	};
-
-	//Register the Observer in the subject
- 	timer.subscribeHandler(timerHandler);
-
-	//Start the Subject
-	timer.startTimer();		
-}
-
-getGroupChallenge();
-	
+cron.schedule('*/15 * * * *', function(){
+	  console.log('running a task every one minutes');
+	  mongo.connect(mongoURL, function() {
+			var qsDetails = mongo.collection('QuestionBank');
+			var query ={'level':'easy'};
+			var message={};
+			message.testId = guid();
+			message.easy={};
+			message.medium = {};
+			message.hard = {};
+			mongoDbHelper.read(qsDetails,{'level':'easy'},null,null,function(data) {
+				message.easy = getRandom(data,10);
+				mongoDbHelper.read(qsDetails,{'level':'medium'},null,null,function(data) {
+					message.medium = getRandom(data,10);
+					mongoDbHelper.read(qsDetails,{'level':'hard'},null,null,function(data) {
+						message.hard = getRandom(data,10);
+						var ChallengeQuestions = mongo.collection('ChallengeQuestions');
+						mongoDbHelper.insertIntoCollection(ChallengeQuestions, message, function() {
+						mongodb.MongoClient.connect('mongodb://localhost:27017/binaryGame', function(error, db) {
+							console.log("Questions Pushed");
+						});
+						});
+					});
+				});
+			});
+	});
+});
 
 exports.getCurrentTest = function(request,response){
 
