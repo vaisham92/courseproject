@@ -2,6 +2,7 @@ var express = require('express');
 var auth = require('./server/authentication');
 var test = require('./server/BinaryTest')
 var quiz = require('./server/TestDecorator')
+var observer = require('./server/ScoreboardObserver')
 var bodyParser = require('body-parser');
 var userFactory = require('./server/userFactory');
 
@@ -24,6 +25,15 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(session({resave: true, saveUninitialized: true, secret: 'BINARYAPP', cookie: { maxAge: 60000 }}));
+<<<<<<< Updated upstream
+=======
+
+//app.use('/', function(request, response) {
+//	// Use response.sendfile, as it streams instead of reading the file into memory.
+//	response.sendfile(__dirname + '/public/index.html');
+//});
+
+>>>>>>> Stashed changes
 app.post('/api/login',auth.login);
 app.post('/api/logout',auth.logout);
 //app.post('/api/userRegister',auth.register);
@@ -36,6 +46,8 @@ app.post('/api/BinaryTest' , test.BinaryTest);
 app.post('/api/Quiz' , quiz.Quiz);
 app.post('/api/COnfirmLevel' , test.ConfirmLevel);
 app.post('/api/CreateQs' , test.CreateQs);
+app.post('/api/SubmitAns' ,test.SaveAns);
+app.post('/api/SubmitAnsObserver', observer.SaveAns);
 app.post('/api/addLevelToSession/:level',function(request,response){
 	var level = request.params.level;
 	request.session.level = level;
@@ -50,10 +62,10 @@ app.get('/api/getDetailsFromSession',function(request,response){
 		"message":request.session
 	});
 });
-app.post('/api/SubmitAns', test.SaveAns);
+//app.post('/api/SubmitAns', test.SaveAns);
 app.get('/api/getRank/:testId/:level',test.getRank);
 app.get('/api/getScoreboard/:level',test.getScoreboard_level);
-app.get('/api/getUserRank/:testId/:level/:userId',test.getUserRank);
+app.get('/api/getUserRank/:testId/:level/:username',test.getUserRank);
 app.get('/api/getHallOfFame',test.getHallOfFame);
 app.get('/api/getCron',test.cronJob);
 app.get('/api/getCurrentTest',test.getCurrentTest);

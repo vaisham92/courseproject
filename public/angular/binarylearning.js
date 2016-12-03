@@ -32,6 +32,9 @@ binary.config(['$routeProvider', '$locationProvider',
             }).when('/confirmation', {
                 templateUrl: 'confirmation.html',
                 controller: 'confirmationController'
+            }).when('/results', {
+                templateUrl: 'results.html',
+                controller: 'resultsController'
             })
             .otherwise({
                 templateUrl: '404.html',
@@ -123,9 +126,9 @@ binary.controller('mainController', function ($scope, $http, $routeParams, $loca
             // checking the response data for statusCode
             if (data.Status == 200) {
                 console.log("login success");
-            	$scope.hideName = false;
+            	
                 window.location = $location.absUrl();
-
+                $scope.hideName = false;
 
             } else if (data.Status == 401) {
                 $scope.inval_mess = data.Message;
@@ -201,6 +204,7 @@ binary.controller('mainController', function ($scope, $http, $routeParams, $loca
     
     $scope.logout = function(){
     	 console.log("logout");
+    	 var location = $location.absUrl();
          $http({
              method: 'POST',
              url: '/api/logout'
@@ -209,7 +213,8 @@ binary.controller('mainController', function ($scope, $http, $routeParams, $loca
              if (data.status == 200) {
 
                  $scope.hideName = true;
-                 window.location = $location.absUrl();
+                 console.log($location.absUrl());
+                 window.location = location;
              } 
              else {
             	 $scope.hideName = false;
