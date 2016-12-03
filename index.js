@@ -36,21 +36,14 @@ app.post('/api/BinaryTest' , test.BinaryTest);
 app.post('/api/Quiz' , quiz.Quiz);
 app.post('/api/COnfirmLevel' , test.ConfirmLevel);
 app.post('/api/CreateQs' , test.CreateQs);
-app.post('/api/addLevelToSession/:level',function(request,response){
-	var level = request.params.level;
-	request.session.level = level;
-	response.send({
-		"status":200,
-		"message":request.session.level
-	})
-});
+app.post('/api/addLevelToSession/:level',test.createTest);
 app.get('/api/getDetailsFromSession',function(request,response){
 	response.send({
 		"status":200,
 		"message":request.session
 	});
 });
-app.post('/api/SubmitAns', test.SaveAns);
+app.post('/api/SubmitAns', test.submitTest);
 app.get('/api/getRank/:testId/:level',test.getRank);
 app.get('/api/getScoreboard/:level',test.getScoreboard_level);
 app.get('/api/getUserRank/:testId/:level/:userId',test.getUserRank);
@@ -58,11 +51,15 @@ app.get('/api/getHallOfFame',test.getHallOfFame);
 app.get('/api/getCron',test.cronJob);
 app.get('/api/getCurrentTest',test.getCurrentTest);
 app.post('/api/clearUserSession',auth.logoutUserSession);
+app.get('/api/getNextQ', test.getNextQuestion);
+app.post('/api/postAns', test.postAnswer);
+app.post('/api/postAnswer/:testId', test.postAnswer);
 
 app.use('/', function(request, response) {
 	console.log('creating a guest user');
         userFactory.register(request, response, "guestUser");
 });
+
 
 //app.post('/api/login',auth.login);
 //app.use('/', function(request, response) {
