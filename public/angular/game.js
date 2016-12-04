@@ -195,13 +195,14 @@ binary.controller('gameController', function ($scope, $http, $routeParams, $loca
         $scope.isFlipped7 = true;
     };
 
-    $scope.completeTest = function() {
+    $scope.completeTest = function(success) {
         $http({
             method: 'POST',
-            url: '/api/SubmitAns',
+            url: '/api/SubmitAnsObserver',
             data: {
             }
         }).success(function (data) {
+            success(data);
         }).error(function (error) {
             $scope.inval_mess = "An unexpected error occured. Try again.";
         });
@@ -214,9 +215,11 @@ binary.controller('gameController', function ($scope, $http, $routeParams, $loca
             fetchTheBinaryNumber(function(binaryAns) {
                 postAnswer(binaryAns);
                 resetFlip();
-                $scope.completeTest();
-                $('.preloader-background').fadeOut('slow');
-                window.location = "/results";
+                $scope.completeTest(function(data) {
+                    $('.preloader-background').fadeOut('slow');
+                    alert(data);
+                    //window.location = "/results";
+                });
             });
         }
         else {

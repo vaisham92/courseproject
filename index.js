@@ -49,9 +49,9 @@ app.post('/api/Quiz' , quiz.Quiz);
 app.post('/api/COnfirmLevel' , test.ConfirmLevel);
 app.post('/api/CreateQs' , test.CreateQs);
 app.post('/api/addLevelToSession/:level',test.createTest);
-app.post('/api/SubmitAns', test.submitTest);
-app.post('/api/SubmitAns' ,test.SaveAns);
-app.post('/api/SubmitAnsObserver', observer.SaveAns);
+//app.post('/api/SubmitAns', test.submitTest);
+//app.post('/api/SubmitAns' ,test.SaveAns);
+app.post('/api/SubmitAnsObserver', observer.submitTest);
 app.post('/api/addLevelToSession/:level',function(request,response){
 	var level = request.params.level;
 	request.session.level = level;
