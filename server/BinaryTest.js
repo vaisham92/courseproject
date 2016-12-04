@@ -4,33 +4,7 @@ var mongoDbHelper = require('./mongo-db-helper');
 var mongodb = require('mongodb');
 var cron = require('node-cron');
 
-cron.schedule('*/15 * * * *', function () {
-    console.log('running a task every one minutes');
-    mongo.connect(mongoURL, function () {
-        var qsDetails = mongo.collection('QuestionBank');
-        var query = {'level': 'easy'};
-        var message = {};
-        message.testId = guid();
-        message.easy = {};
-        message.medium = {};
-        message.hard = {};
-        mongoDbHelper.read(qsDetails, {'level': 'easy'}, null, null, function (data) {
-            message.easy = getRandom(data, 10);
-            mongoDbHelper.read(qsDetails, {'level': 'medium'}, null, null, function (data) {
-                message.medium = getRandom(data, 10);
-                mongoDbHelper.read(qsDetails, {'level': 'hard'}, null, null, function (data) {
-                    message.hard = getRandom(data, 10);
-                    var ChallengeQuestions = mongo.collection('ChallengeQuestions');
-                    mongoDbHelper.insertIntoCollection(ChallengeQuestions, message, function () {
-                        mongodb.MongoClient.connect('mongodb://localhost:27017/binaryGame', function (error, db) {
-                            console.log("Questions Pushed");
-                        });
-                    });
-                });
-            });
-        });
-    });
-});
+
 //Subject:START
 var Timer = function () {
     this.handlers = []; //registering the observers
@@ -54,8 +28,8 @@ Timer.prototype = {
 
     startTimer: function () {
         this.handlers.forEach(function (item) {
-            //item.call();
-            cron.schedule('*/2 * * * *', item);
+            
+            cron.schedule('*/15 * * * *', item);
         });
     }
 }
