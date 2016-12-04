@@ -97,53 +97,53 @@ binary.controller('gameController', function ($scope, $http, $routeParams, $loca
     var fetchTheBinaryNumber = function(success) {
         var binary = "";
         if($scope.isFlipped7) {
-            binary += "1";
+            binary += "0";
         }
         else if(!$scope.isFlipped7) {
-            binary += "0";
+            binary += "1";
         }
         if($scope.isFlipped6) {
-            binary += "1";
+            binary += "0";
         }
         else if(!$scope.isFlipped6) {
-            binary += "0";
+            binary += "1";
         }
         if($scope.isFlipped5) {
-            binary += "1";
+            binary += "0";
         }
         else if(!$scope.isFlipped5) {
-            binary += "0";
+            binary += "1";
         }
         if($scope.isFlipped4) {
-            binary += "1";
+            binary += "0";
         }
         else if(!$scope.isFlipped4) {
-            binary += "0";
+            binary += "1";
         }
         if($scope.isFlipped3) {
-            binary += "1";
+            binary += "0";
         }
         else if(!$scope.isFlipped3) {
-            binary += "0";
+            binary += "1";
         }
         if($scope.isFlipped2) {
-            binary += "1";
+            binary += "0";
         }
         else if(!$scope.isFlipped2) {
-            binary += "0";
+            binary += "1";
         }
         if($scope.isFlipped1) {
-            binary += "1";
-        }
-        else if(!$scope.isFlipped1) {
             binary += "0";
         }
-        if($scope.isFlipped0) {
+        else if(!$scope.isFlipped1) {
             binary += "1";
+        }
+        if($scope.isFlipped0) {
+            binary += "0";
             success(binary);
         }
         else if(!$scope.isFlipped0) {
-            binary += "0";
+            binary += "1";
             success(binary);
         }
 
@@ -174,7 +174,7 @@ binary.controller('gameController', function ($scope, $http, $routeParams, $loca
             url: '/api/postAns',
             data: {
                 "question": $scope.currentQ,
-                "answer": $scope.answer
+                "answer": answer
             }
         }).success(function (data) {
 
@@ -254,6 +254,10 @@ binary.controller('gameController', function ($scope, $http, $routeParams, $loca
             callback: function () {
                 //alert('jquery.polartimer.js: done!');
                 // done with the quiz
+                fetchTheBinaryNumber(function(binaryAns) {
+                    postAnswer(binaryAns);
+                    $scope.completeTest();
+                });
             }
         });
         // start the timer
