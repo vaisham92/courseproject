@@ -554,7 +554,7 @@ exports.getHallOfFame = function (request, response) {
         request.session.challenge = new Object();
         request.session.level = level;
         if (request.session.challenge == undefined)
-            request.session.challenge = {};
+            request.session.challenge = new Object();
         var options = {"sort": [['_id', 'desc']]};
         mongo.connect(mongoURL, function () {
             var collection = mongo.collection('ChallengeQuestions');
@@ -607,15 +607,21 @@ exports.getHallOfFame = function (request, response) {
 
     exports.submitTest = function (request, response) {
         var qsBank = {};
-        qsBank.username = request.session.user.email;
+        if(request.session.user != undefined)
+            qsBank.username = request.session.user.email;
+        else
+            qsBank.username = "vaisham92@gmail.com"
         qsBank.testId = request.session.testId;
         qsBank.time = request.session.challenge.end - request.session.challenge.start;
         qsBank.level = request.session.level;
-        qsBank.School = request.session.user.School;
+        if(request.session.user != undefined)
+            qsBank.School = request.session.user.School;
+        else
+            qsBank.School = "SJSU";
         qsBank.response = request.session.challenge.questionsAnswered;
         var count = 0;
-        for (var i = 0; i < request.body.response.length; i++) {
-            if (request.body.response[i].question.toString(2) == request.body.response[i].answer) {
+        for (var i = 0; i < request.session.challenge.questionsAnswered.length; i++) {
+            if (request.session.challenge.questionsAnswered[i].question.toString(2) == request.session.challenge.questionsAnswered[i].answer) {
                 count++;
             }
         }

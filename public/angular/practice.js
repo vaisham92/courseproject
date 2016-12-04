@@ -148,18 +148,22 @@ binary.controller('practiceController', function ($scope, $http, $routeParams) {
         var randomNumber = generateRandomNumber();
         $scope.currentQ = randomNumber;
         resetFlip();
+        $('.preloader-background').fadeOut('slow');
     };
     firstLoad();
     $scope.submit = function() {
+        $('.preloader-background').fadeIn('slow');
         fetchTheBinaryNumber(function(binaryAns) {
             if($scope.currentQ == parseInt( binaryAns, 2 )) {
                 //alert("yes");
                 var randomNumber = generateRandomNumber();
                 $scope.currentQ = randomNumber;
                 resetFlip();
+                $('.preloader-background').fadeOut('slow');
             }
             else {
-                //alert("no");
+                alert("no");
+                $('.preloader-background').fadeOut('slow');
             }
         });
 
