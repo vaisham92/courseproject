@@ -582,8 +582,10 @@ exports.getHallOfFame = function (request, response) {
 
     exports.postAnswer = function (request, response) {
         var testId = request.params.testId;
+        console.log(request.body);
         request.session.challenge.questionsAnswered.append(request.body);
         request.session.challenge.end = (new Date()).valueOf();
+        console.log(request.session);
         response.send({
             "status": 200,
             "message": "successfully posted"

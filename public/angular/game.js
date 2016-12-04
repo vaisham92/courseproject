@@ -168,6 +168,7 @@ binary.controller('gameController', function ($scope, $http, $routeParams, $loca
     fetchNextQuestion();
 
     var postAnswer = function(answer) {
+    	console.log($scope.answer);
         $http({
             method: 'POST',
             url: '/api/postAns',

@@ -1,7 +1,7 @@
 /**
  * Created by Vaishampayan on 11/29/2016.
  */
-var binary = angular.module('binary', ['ngRoute', 'angular-svg-round-progressbar']);
+var binary = angular.module('binary', ['ngRoute', 'angular-svg-round-progressbar','ngAnimate']);
 
 $(document).ready(function () {
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
@@ -35,6 +35,9 @@ binary.config(['$routeProvider', '$locationProvider',
             }).when('/results', {
                 templateUrl: 'results.html',
                 controller: 'resultsController'
+            }).when('/practice', {
+                templateUrl: 'practice.html',
+                controller: 'practiceController'
             })
             .otherwise({
                 templateUrl: '404.html',
