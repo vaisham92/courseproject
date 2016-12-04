@@ -4,7 +4,7 @@ var mongoDbHelper = require('./mongo-db-helper');
 var mongodb = require('mongodb');
 var cron = require('node-cron');
 
-cron.schedule('*/15 * * * *', function(){
+cron.schedule('*/150 * * * *', function(){
 	  console.log('running a task every one minutes');
 	  mongo.connect(mongoURL, function() {
 			var qsDetails = mongo.collection('QuestionBank');

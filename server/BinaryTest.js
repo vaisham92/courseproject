@@ -41,6 +41,7 @@ Timer.prototype = {
         this.handlers.push(f);
     },
 
+
     unsubscribeHandler: function (fn) {
         this.handlers = this.handlers.filter(
             function (item) {
@@ -57,6 +58,36 @@ Timer.prototype = {
             cron.schedule('*/2 * * * *', item);
         });
     }
+}
+
+exports.getCurrentTest = function(request,response){
+
+	var level =  request.session.level; 
+	var options = {"sort": [['_id','desc']]};
+	mongo.connect(mongoURL, function() {
+		var collection = mongo.collection('ChallengeQuestions');
+		mongoDbHelper.readLastQuestion(collection,{},null,options,function(data) {
+			if(data==null){
+				console.log("No entry found");
+				response.send({"Status":500,
+					"Message": "Unable to get Questions"});
+			}
+			else
+				var result = {};
+				result.testId = data[0].testId;
+				result.challenge = {};
+				if(level == 'easy'){
+					result.challenge = data[0].easy;
+				}else if(level == 'medium'){
+					result.challenge = data[0].medium;
+				}else{
+					result.challenge = data[0].hard;
+				}
+				request.session.testId=data[0].testId;
+				response.send(result);
+			});
+		});
+
 };
 
 var getGroupChallenge = function (timeout) {
@@ -351,7 +382,7 @@ exports.getFromSession = function (request, response) {
 };
 
 exports.getUserRank = function (request, response) {
-
+	
     var testId = parseInt(request.params.testId);
     var level = request.params.level;
     var userId = parseInt(request.params.userId);
