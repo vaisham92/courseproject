@@ -208,6 +208,20 @@ binary.controller('gameController', function ($scope, $http, $routeParams, $loca
         });
     };
 
+    $scope.finishTest = function() {
+        $http({
+            method: 'POST',
+            url: '/api/SubmitAnsObserver',
+            data: {
+            }
+        }).success(function (data) {
+            $('.preloader-background').fadeOut('slow');
+            window.location = "/results";
+        }).error(function (error) {
+            $scope.inval_mess = "An unexpected error occured. Try again.";
+        });
+    };
+
     $scope.sumbitAns = function() {
         $('.preloader-background').fadeIn('slow');
         if($scope.currentQID == 10) {
