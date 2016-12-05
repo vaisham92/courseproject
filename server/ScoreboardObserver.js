@@ -97,7 +97,7 @@ exports.submitTest = function (request, response) {
                     //"message":"Ans saved Successfully","QuizSubmitted":"Yes"});
 
                     //call observer to fetch User rank and update Scoreboard
-                    var obs = new Observer(response, qsBank.level, qsBank.email, qsBank.testId);
+                    var obs = new Observer(request, response, qsBank.level, qsBank.email, qsBank.testId);
                     obs.UpdateUserRank();
                 }
             });
@@ -106,7 +106,7 @@ exports.submitTest = function (request, response) {
 };
 
 
-var Observer = function (response, level, email, testId) {
+var Observer = function (request, response, level, email, testId) {
     this.name = "Observer";
     console.log("in observer");
     this.level = level;
@@ -150,7 +150,7 @@ var Observer = function (response, level, email, testId) {
 
     var UpdateScoreboard = function () {
         //UpdateUserRank();
-        var query = {'level': level};
+        var query = {'level': level, 'testId' : testId};
         console.log("UpdateScoreboard called");
         var options = {"sort": [['correctCount', 'desc'], ['time', 'asc']]}
         mongo.connect(mongoURL, function () {
@@ -185,6 +185,10 @@ var Observer = function (response, level, email, testId) {
                         }
                     }
                 }
+                request.session.resultF = {
+                    "rank" : this.rank,
+                    "scoreboard": res
+                };
                 response.send({"Status": 200, "Your Rank is": this.rank, "Scoreboard": res});
             });
         });

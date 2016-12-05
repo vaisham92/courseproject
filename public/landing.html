@@ -74,9 +74,9 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr bgcolor="#e1f5fe" ng-repeat="player in medium_scoreboard track by $index">
+                        <tr bgcolor="#e1f5fe" ng-repeat="player in hard_scoreboard track by $index">
                             <td>{{$index + 1}}</td>
-                            <td>{{player.UserName}}</td>
+                            <td>{{player.email}}</td>
                             <td style='color:#FFD700'><b>{{player.Score}}</b></td>
                             <td style='color:#C0C0C0'><b>{{player.Time}}</b></td>
                             <td>{{player.School}}</td>
@@ -100,7 +100,7 @@
 
                         <tr bgcolor="#e1f5fe" ng-repeat="player in medium_scoreboard track by $index">
                             <td>{{$index + 1}}</td>
-                            <td>{{player.UserName}}</td>
+                            <td>{{player.email}}</td>
                             <td style='color:#FFD700'><b>{{player.Score}}</b></td>
                             <td style='color:#C0C0C0'><b>{{player.Time}}</b></td>
 
@@ -123,9 +123,9 @@
                         </thead>
                         <tbody>
 
-                        <tr bgcolor="#e1f5fe" ng-repeat="player in medium_scoreboard track by $index">
+                        <tr bgcolor="#e1f5fe" ng-repeat="player in easy_scoreboard track by $index">
                             <td>{{$index + 1}}</td>
-                            <td>{{player.UserName}}</td>
+                            <td>{{player.email}}</td>
                             <td style='color:#FFD700'><b>{{player.Score}}</b></td>
                             <td style='color:#C0C0C0'><b>{{player.Time}}</b></td>
                             <td>{{player.School}}</td>

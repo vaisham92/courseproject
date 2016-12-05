@@ -7,18 +7,15 @@
     <div class ="row"></div>
     <div class ="row"></div>
     <div class ="row"></div>
-    <div class = "row"  >
-
-
-		<div class="col s4" style="padding-left: 50px; padding-right: 50px">
-			<div class="card-panel"
-				style="background-color: white; width: 100% !important; max-width: 350px;">
-				<div class="row"
-					style="text-align: center; color: green; font-size: 20px;">
-					EASY</div>
-				<div style="padding-left: 50px; padding-right: 50px">
+    <div class = "row">
+        <div class="col s1"><p>&nbsp</p></div>
+		<div class="col s3" align="center">
+			<div class="card-panel">
+				<div class="row">
+					<h5 class="green-text">EASY</h5></div>
+				<div>
 					<button class="btn-large waves-effect waves-light" type="submit"
-						name="action" ng-click="setLevel('easy');">Start
+						name="action" ng-click="setLevel('easy');" align="center">Start
 						Challenge</button>
 					<br>
 				</div>
@@ -37,7 +34,7 @@
 						<tr bgcolor="#e1f5fe"
 							ng-repeat="player in easy_scoreboard track by $index">
 							<td>{{$index + 1}}</td>
-							<td>{{player.UserName}}</td>
+							<td>{{player.email}}</td>
 							<td style='color: #FFD700'><b>{{player.Score}}</b></td>
 							<td style='color: #C0C0C0'><b>{{player.Time}}</b></td>
 
@@ -47,11 +44,13 @@
 				</table>
 			</div>
 		</div>
-		<div class = "col s4" >
-
-            <div class="card-panel" style ="background-color:white ;width: 100% !important;max-width: 350px;">
-                <div class ="row" style="text-align:center; color:orange;font-size:20px;"> MEDIUM</div>
-                <div style="padding-left:50px;">
+        <div class="col s1"><p>&nbsp</p></div>
+		<div class = "col s3" align="center">
+            <div class="card-panel">
+                <div class ="row">
+                    <h5 class="orange-text">MEDIUM</h5>
+                </div>
+                <div>
                     <button class="btn-large orange waves-effect waves-light"   ng-click="setLevel('medium');">Start Challenge
                     </button>
                     <br>
@@ -70,7 +69,7 @@
                   
                      <tr bgcolor="#e1f5fe" ng-repeat="player in medium_scoreboard track by $index">
                         <td>{{$index + 1}}</td>
-                        <td>{{player.UserName}}</td>
+                        <td>{{player.email}}</td>
                         <td style='color:#FFD700'><b>{{player.Score}}</b></td>
                         <td style='color:#C0C0C0'><b>{{player.Time}}</b></td>
                      
@@ -80,10 +79,13 @@
                 </table>
             </div>
         </div>
-        <div class = "col s4" style="padding-right:50px">
-            <div class="card-panel" style ="background-color:white ;width: 100% !important;max-width: 350px;">
-                <div class ="row" style="text-align:center; color:red;font-size:20px;"> HARD</div>
-                <div style="padding-left:50px">
+        <div class="col s1"><p>&nbsp</p></div>
+        <div class = "col s3" align="center">
+            <div class="card-panel">
+                <div class ="row">
+                    <h5 class="red-text">HARD</h5>
+                </div>
+                <div>
                     <button class="btn-large red waves-effect waves-light" type="submit" name="action" ng-click="setLevel('difficult');">Start Challenge
                     </button>
                     <br>
@@ -102,7 +104,7 @@
                   
                      <tr bgcolor="#e1f5fe" ng-repeat="player in hard_scoreboard track by $index">
                         <td>{{$index + 1}}</td>
-                        <td>{{player.UserName}}</td>
+                        <td>{{player.email}}</td>
                         <td style='color:#FFD700'><b>{{player.Score}}</b></td>
                         <td style='color:#C0C0C0'><b>{{player.Time}}</b></td>
                      

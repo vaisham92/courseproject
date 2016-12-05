@@ -195,14 +195,14 @@ binary.controller('gameController', function ($scope, $http, $routeParams, $loca
         $scope.isFlipped7 = true;
     };
 
-    $scope.completeTest = function(success) {
+    $scope.completeTest = function(successCallBack) {
         $http({
             method: 'POST',
             url: '/api/SubmitAnsObserver',
             data: {
             }
         }).success(function (data) {
-            success(data);
+            successCallBack(data);
         }).error(function (error) {
             $scope.inval_mess = "An unexpected error occured. Try again.";
         });
@@ -217,8 +217,8 @@ binary.controller('gameController', function ($scope, $http, $routeParams, $loca
                 resetFlip();
                 $scope.completeTest(function(data) {
                     $('.preloader-background').fadeOut('slow');
-                    alert(data);
-                    //window.location = "/results";
+                    //alert(data);
+                    window.location = "/results";
                 });
             });
         }

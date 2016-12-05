@@ -24,7 +24,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(session({resave: true, saveUninitialized: true, secret: 'BINARYAPP', cookie: { maxAge: 60000 }}));
+app.use(session({resave: true, saveUninitialized: true, secret: 'BINARYAPP', cookie: { maxAge: 600000 }}));
 
 
 //<<<<<<< Updated upstream
@@ -78,7 +78,9 @@ app.post('/api/clearUserSession',auth.logoutUserSession);
 app.get('/api/getNextQ', test.getNextQuestion);
 app.post('/api/postAns', test.postAnswer);
 app.post('/api/postAnswer/:testId', test.postAnswer);
-
+app.get('/api/getResultF', function(request, response){
+	response.send(request.session.resultF);
+});
 app.use('/', function(request, response) {
 	console.log('creating a guest user');
         userFactory.register(request, response, "guestUser");

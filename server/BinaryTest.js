@@ -417,12 +417,12 @@ exports.getHallOfFame = function (request, response) {
                 for (var i = 0; i < data.length; i++) {
                     var level = data[i].level;
                     if (level === "easy" && count < 3) {
-                        var temp = data[i].username;
+                        var temp = data[i].email;
                         var index = Arr_easy.indexOf(temp);
 
                         if (index == -1) {
                             res_easy[count] = ({
-                                "UserName": data[i].username,
+                                "email": data[i].email,
                                 "Score": data[i].correctCount,
                                 "Time": data[i].time,
                                 "School": data[i].School
@@ -435,12 +435,12 @@ exports.getHallOfFame = function (request, response) {
                     }
 
                     else if (level === "medium" && count_med < 3) {
-                        var temp = data[i].username;
+                        var temp = data[i].email;
                         var index = Arr_med.indexOf(temp);
 
                         if (index == -1) {
                             res_med[count_med] = ({
-                                "UserName": data[i].username,
+                                "email": data[i].email,
                                 "Score": data[i].correctCount,
                                 "Time": data[i].time,
                                 "School": data[i].School
@@ -452,12 +452,12 @@ exports.getHallOfFame = function (request, response) {
 
                     }
                     else if (level === "difficult" && count_diff < 3) {
-                        var temp = data[i].username;
+                        var temp = data[i].email;
                         var index = Arr_diff.indexOf(temp);
 
                         if (index == -1) {
                             res_diff[count_diff] = ({
-                                "UserName": data[i].username,
+                                "email": data[i].email,
                                 "Score": data[i].correctCount,
                                 "Time": data[i].time,
                                 "School": data[i].School
@@ -502,11 +502,11 @@ exports.getScoreboard_level = function (request, response) {
 
                 for (var i = 0; i < data.length; i++) {
 
-                    var temp = data[i].username;
+                    var temp = data[i].email;
                     var index = Arr.indexOf(temp);
                     if (index == -1) {
                         res[count] = ({
-                            "UserName": data[i].username,
+                            "email": data[i].email,
                             "Score": data[i].correctCount,
                             "Time": data[i].time,
                             "School": data[i].School
