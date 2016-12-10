@@ -1,4 +1,4 @@
-binary.controller('practiceController', function ($scope, $http, $routeParams) {
+binary.controller('practiceController', function ($scope, $http, $routeParams, $timeout) {
 
     $scope.pageClass = 'page-about';
 
@@ -173,7 +173,8 @@ binary.controller('practiceController', function ($scope, $http, $routeParams) {
     var generateRandomNumber = function() {
         return Math.floor((Math.random() * 100) + 1);
     };
-
+    $scope.isJerry = true;
+    $scope.isEvil = true;
     var firstLoad = function() {
         var randomNumber = generateRandomNumber();
         $scope.currentQ = randomNumber;
@@ -182,21 +183,52 @@ binary.controller('practiceController', function ($scope, $http, $routeParams) {
     };
     firstLoad();
     $scope.submit = function() {
-        $('.preloader-background').fadeIn('slow');
+        //$('.preloader-background').fadeIn('slow');
         fetchTheBinaryNumber(function(binaryAns) {
             if($scope.currentQ == parseInt(binaryAns, 2)) {
+                var yay = new Audio('sounds/yay.mp3');
+                yay.play();
                 //alert("yes");
-                var randomNumber = generateRandomNumber();
-                $scope.currentQ = randomNumber;
-                resetFlip();
-                $('.preloader-background').fadeOut('slow');
+                $scope.isJerry = false;
+                $('#myJerry').addClass('animated bounceInLeft');
+                $('#myJerry').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+                    $timeout(function () {
+                        $scope.spinner = true;
+                        $('#myJerry').addClass('animated bounceOutLeft');
+                        $('#myJerry').removeClass('animated bounceInLeft');
+                        $('#myJerry').removeClass('animated bounceOutLeft');
+                        var randomNumber = generateRandomNumber();
+                        $scope.currentQ = randomNumber;
+                        resetFlip();
+                        $scope.isJerry = true;
+                        $scope.total = 0;
+                    }, 2500);
+                });
+                //$('.preloader-background').fadeOut('slow');
             }
             else {
-                alert("no");
+                //alert("no");
+                var buzzer = new Audio('sounds/buzzer.mp3');
+                buzzer.play();
+                $('#submitBtn').addClass('animated wobble');
+                $scope.isEvil = false;
+                $('#myEvil').addClass('animated bounceInRight');
+                $('#submitBtn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+                    $('#submitBtn').removeClass('animated wobble');
+                });
+                $('#myEvil').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+
+                    $('#myEvil').addClass('animated bounceOutRight');
+                    $('#myEvil').removeClass('animated bounceInRight');
+                    $('#myEvil').removeClass('animated bounceOutRight');
+                    //alert("true");
+                });
+                $timeout(function () {
+                    $scope.isEvil = true;
+                }, 2000);
+                //
                 $('.preloader-background').fadeOut('slow');
             }
         });
-
-        
     };
 });

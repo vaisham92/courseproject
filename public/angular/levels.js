@@ -1,6 +1,6 @@
 
 binary.controller('levelController', function($scope, $http, $routeParams) {
-
+	$scope.pageClass = 'page-home';
 		getEasyScoreboard();
 		getMediumScoreboard();
 		getHardScoreboard();

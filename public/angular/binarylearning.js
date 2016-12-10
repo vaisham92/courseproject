@@ -9,7 +9,7 @@ $(document).ready(function () {
 });
 
 binary.config(['$routeProvider', '$locationProvider',
-    function ($routeProvider, $locationProvider, $routeParams) {
+    function ($routeProvider, $locationProvider, $routeParams, $timeout) {
         $routeProvider
             .when('/', {
                 templateUrl: 'landing.html',

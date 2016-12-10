@@ -1,5 +1,7 @@
 binary.controller('resultsController', function($scope, $http, $routeParams) {
     $scope.pageClass = 'page-about';
+    var clapping = new Audio('sounds/clapping.mp3');
+    clapping.play();
 	function getRank () {
         $http({
             method: 'GET',
