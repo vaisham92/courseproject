@@ -3,6 +3,7 @@
  */
 
 binary.controller('tutorialsController', function ($scope, $http, $routeParams, $location) {
+    $scope.pageClass = 'page-about';
     $scope.isFlipped0 = true;
     $scope.isFlipped1 = true;
     $scope.isFlipped2 = true;

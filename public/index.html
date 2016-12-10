@@ -11,6 +11,10 @@
           media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="css/extras.css"
           media="screen,projection"/>
+
+
+    <link type="text/css" rel="stylesheet" href="stylesheets/style.css"
+          media="screen,projection"/>
     <script
             src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.js"></script>
     <script
@@ -38,6 +42,7 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.3/angular-sanitize.min.js"></script>
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js"></script>
 
     <script type="text/javascript" src="angular/binarylearning.js"></script>
     <script type="text/javascript" src="angular/login.js"></script>
@@ -175,10 +180,7 @@
         </div>
     </div>
 </div>
-<div ng-view>
-    <div ui-view="">
-        <div id="wrapper" class=""></div>
-    </div>
+<div class="page {{ pageClass }}" ng-view>
 </div>
 <div class="hiddendiv common"></div>
 <div class="drag-target"

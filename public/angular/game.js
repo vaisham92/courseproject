@@ -3,6 +3,9 @@
  */
 
 binary.controller('gameController', function ($scope, $http, $routeParams, $location) {
+
+    $scope.pageClass = 'page-home';
+    
     getDetailsFromSessionBeforeGame();
     function getDetailsFromSessionBeforeGame() {
         console.log("get detail from session before game")

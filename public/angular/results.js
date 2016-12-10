@@ -1,4 +1,5 @@
 binary.controller('resultsController', function($scope, $http, $routeParams) {
+    $scope.pageClass = 'page-about';
 	function getRank () {
         $http({
             method: 'GET',

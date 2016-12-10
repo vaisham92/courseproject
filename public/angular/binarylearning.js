@@ -48,7 +48,7 @@ binary.config(['$routeProvider', '$locationProvider',
 ]);
 
 binary.controller('mainController', function ($scope, $http, $routeParams, $location) {
-	
+    $scope.pageClass = 'page-home';
 	getDetailsFromSession();
 	
 	$scope.hideName = true;

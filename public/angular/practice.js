@@ -1,5 +1,7 @@
 binary.controller('practiceController', function ($scope, $http, $routeParams) {
 
+    $scope.pageClass = 'page-about';
+
     var cardFlip1 = new Audio('sounds/minion_laugh_1.mp3');
     var cardFlip2 = new Audio('sounds/minion_laugh_2.mp3');
 
