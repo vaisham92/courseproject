@@ -10,8 +10,7 @@ CMPE 202 Course Project - CSUnplugged Fall 2016
 Game introduction 
 -----------------
 Binary digit is the fundamental unit of information. BLA (aka Binary Learning Application) is a simple yet interesting application which  helps school children learn binary numbers.
-The application also tests your knowledge of how fast you can convert a decimal  number into binary. Group challenges facilities a common ground for students	to compete among  themselves	
-and find out their performance. BLA also maintains a hall of fame scoreboard which shows the students with good  scores in terms of accuracy and calculation time.
+The application also tests your knowledge of how fast you can convert a decimal  number into binary. Group challenges facilities a common ground for students	to compete among  themselves and find out their performance. BLA also maintains a hall of fame scoreboard which shows the students with good  scores in terms of accuracy and calculation time.
 
 
 ### Steps of Intallation :
