@@ -1,0 +1,324 @@
+<!--<style>-->
+<!--.container {-->
+<!--width: 100px;-->
+<!--height: 100px;-->
+
+<!--position: relative;-->
+
+<!--/* Standard syntax */-->
+<!--animation-name: example;-->
+<!--animation-duration: 3s;-->
+<!--animation-timing-function: linear;-->
+<!--animation-delay: 1s;-->
+<!--animation-iteration-count: infinite;-->
+<!--animation-direction: alternate;-->
+<!--}-->
+
+<!--/* Standard syntax */-->
+<!--@keyframes example {-->
+<!--0% {-->
+<!--left: 0px;-->
+<!--top: 0px;-->
+<!--}-->
+<!--25% {-->
+<!--left: 200px;-->
+<!--top: 0px;-->
+<!--}-->
+<!--50% {-->
+<!--left: 200px;-->
+<!--top: 200px;-->
+<!--}-->
+<!--75% {-->
+<!--left: 0px;-->
+<!--top: 200px;-->
+<!--}-->
+<!--100% {-->
+<!--left: 0px;-->
+<!--top: 0px;-->
+<!--}-->
+<!--}-->
+<!--</style>-->
+
+<!--<div class="container" ng-animate="'animate'">-->
+<!--<div class="jerry">-->
+<!--<div class="lights">-->
+<!--<span class="white_light"></span> <span class="dark_light"></span>-->
+<!--</div>-->
+<!--<div class="jerry_hair">-->
+<!--<ul>-->
+<!--<li class="h1"></li>-->
+<!--<li class="h2"></li>-->
+<!--<li class="h3"></li>-->
+<!--<li class="h4"></li>-->
+<!--<li class="h5"></li>-->
+<!--<li class="h6"></li>-->
+<!--<li class="h7"></li>-->
+<!--<li class="h8"></li>-->
+<!--<li class="h9"></li>-->
+<!--<li class="h10"></li>-->
+<!--<li class="h11"></li>-->
+<!--<li class="h12"></li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--<div class="eyes1">-->
+<!--<div class="eye_animate"></div>-->
+<!--<div class="glasses"></div>-->
+<!--<div class="white_part">-->
+<!--<div class="brown_eye">-->
+<!--<span class="black_part"></span>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="eyes2">-->
+<!--<div class="eye_animate"></div>-->
+<!--<div class="glasses"></div>-->
+<!--<div class="white_part">-->
+<!--<div class="brown_eye">-->
+<!--<span class="black_part"></span>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="jerry_hand">-->
+<!--<div class="jerry_lh"></div>-->
+<!--<div class="animated_lh">-->
+<!--<span class="gloves_lh"></span> <span class="gloves_lh2"></span>-->
+<!--</div>-->
+<!--<div class="jerry_rh"></div>-->
+<!--<span class="gloves_rh"></span>-->
+<!--</div>-->
+<!--<div class="black_tie">-->
+<!--<span class="right_tie">-->
+<!--<div class="top_tie"></div>-->
+<!--<div class="down_tie"></div>-->
+<!--</span> <span class="left_tie">-->
+<!--<div class="top_tie"></div>-->
+<!--<div class="down_tie"></div>-->
+<!--</span>-->
+<!--</div>-->
+<!--<div class="jerry_smile">-->
+<!--<span class="teeth1"></span> <span class="teeth2"></span>-->
+<!--</div>-->
+<!--<div class="curves">-->
+<!--<span class="jerry_curve1"></span> <span-->
+<!--class="jerry_curve1 jerry_left_curve"></span> <span-->
+<!--class="jerry_curve2"></span>-->
+<!--</div>-->
+<!--<div class="clothes">-->
+<!--<div class="main_jerry"></div>-->
+<!--<div class="right_shirt jerry_right_shirt"></div>-->
+<!--<div class="right_shirt jerry_left_shirt"></div>-->
+<!--<div class="jerry_bottom"></div>-->
+<!--</div>-->
+<!--<div class="pocket">-->
+<!--<div class="logo"></div>-->
+<!--<span class="lines"></span>-->
+<!--</div>-->
+<!--<div class="legs">-->
+<!--<div class="jerry_shoes">-->
+<!--<span class="jerry_small_shoes"></span>-->
+<!--</div>-->
+<!--<div class="jerry_shoes jerry_left_shoes">-->
+<!--<span class="jerry_small_shoes"></span>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<style type="text/css">
+    .bgimg {
+        background-image: url('images/background4.png');
+    }
+</style>
+<div class="preloader-background">
+    <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue-only">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+<div id="wrapper" class="row ng-scope bgimg">
+    <br>
+    <div class="row">
+        <div class="col s2"><p>&nbsp</p>
+            <div id="myJerry" ng-hide="isJerry">
+                <img src="images/happy.png" style="height: 150px; width: 150px"/>
+            </div>
+        </div>
+        <div class="col s8">
+            <div class="card-panel">
+                <div class="row">
+                    <div class="col s10">
+                              <span class="blue-text">
+                                    <blockquote>
+                                        <h5><b> Question : </b> Convert the number '{{currentQ}}' to binary from decimal</h5>
+                                    </blockquote>
+                              </span>
+                    </div>
+                    <div class="col s2">
+                        <b><h5 class="{{numClass}}"> {{total}}</h5></b>
+                        <b><h5 class="amber-text">Total</h5></b>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s2"><p>&nbsp</p>
+            <div id="myEvil" ng-hide="isEvil">
+                <img src="images/evil.png" style="height: 150px; width: 150px"/>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s6">
+            <div class="row">
+                <div class="col s3">
+                    <div class="flip">
+                        <div class="card" ng-class="{'flipped':isFlipped7}" ng-click="flip7()">
+                            <div class="face front">
+                                1
+                            </div>
+                            <div class="face back">
+                                0
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s3">
+                    <div class="flip">
+                        <div class="card" ng-class="{'flipped':isFlipped6}" ng-click="flip6()">
+                            <div class="face front">
+                                1
+                            </div>
+                            <div class="face back">
+                                0
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s3">
+                    <div class="flip">
+                        <div class="card" ng-class="{'flipped':isFlipped5}" ng-click="flip5()">
+                            <div class="face front">
+                                1
+                            </div>
+                            <div class="face back">
+                                0
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s3">
+                    <div class="flip">
+                        <div class="card" ng-class="{'flipped':isFlipped4}" ng-click="flip4()">
+                            <div class="face front">
+                                1
+                            </div>
+                            <div class="face back">
+                                0
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s6">
+            <div class="row">
+                <div class="col s3">
+                    <div class="flip">
+                        <div class="card" ng-class="{'flipped':isFlipped3}" ng-click="flip3()">
+                            <div class="face front">
+                                1
+                            </div>
+                            <div class="face back">
+                                0
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s3">
+                    <div class="flip">
+                        <div class="card" ng-class="{'flipped':isFlipped2}" ng-click="flip2()">
+                            <div class="face front">
+                                1
+                            </div>
+                            <div class="face back">
+                                0
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s3">
+                    <div class="flip">
+                        <div class="card" ng-class="{'flipped':isFlipped1}" ng-click="flip1()">
+                            <div class="face front">
+                                1
+                            </div>
+                            <div class="face back">
+                                0
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s3">
+                    <div class="flip">
+                        <div class="card" ng-class="{'flipped':isFlipped0}" ng-click="flip0()">
+                            <div class="face front">
+                                1
+                            </div>
+                            <div class="face back">
+                                0
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s2"><p>&nbsp</p></div>
+        <div class="col s3">
+            <p>&nbsp</p>
+        </div>
+        <div class="col s2">
+            <a id="submitBtn" class="col s12 waves-effect waves-light btn-large green"
+               ng-click="submit()">Submit</a>
+        </div>
+        <div class="col s5"><p>&nbsp</p></div>
+    </div>
+    <footer class="page-footer blue accent-2">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Company Bio</h5>
+                    <p class="grey-text text-lighten-4">Vaishampayan Reddy, Ashna Sebastian, Vimal Muraleedharan
+                        Nair, Rakesh Datta and Neha</p>
+                </div>
+                <div class="col l2 s12">
+                    &nbsp
+                </div>
+                <div class="col l4 s12">
+                    <h5 class="white-text">Quick Links</h5>
+                    <ul>
+                        <li><a class="white-text" href="/levels">Levels</a></li>
+                        <li><a class="white-text" href="/register">Regiter</a></li>
+                        <li><a class="white-text" href="/login">Login</a></li>
+                        <li><a class="white-text" href="/faq">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                Made by <a class="brown-text text-lighten-3"
+                           href="http://materializecss.com">Materialize</a>
+            </div>
+        </div>
+    </footer>
+</div>

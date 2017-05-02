@@ -1,0 +1,9 @@
+We met with the team after our 202 class and discussed on the progress done by other team members. I also got my doubts clarified which I was stuck when implementing the backend code. I continued to work on developing services for Binary Test. 
+1. Creating a collection with questions for quiz for a particular difficulty level.
+2. Fetching the questions of a particular difficulty like medium from database and presenting it to user in Binary Test. 
+3. Also, capturing the response from user and saving value in database. 
+4. Once the all the responses for a test/quiz is captured, the users score is calculated based on correct responses. 
+5. After calculating the score, rank is calculated and if his scores falls in best 10 scores, his score and username is displayed on Score board.
+
+Other team members are working on integration of UI and backend code, we have also started working on Documentation like Sequence diagram, since we have almost completed the backend code. 
+I believe that we are on track of the work we anticipated because we stick to the idea of meeting all requirements which is the main idea of XP core value Simplicity – Develop a simple application which meets all the client requirements and then add more advanced functionalities on top of it.

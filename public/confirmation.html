@@ -1,0 +1,187 @@
+<style type="text/css">
+    .bgimg {
+        background-image: url('images/background12.png');
+    }
+</style>
+<div id="wrapper" class="row ng-scope bgimg">
+
+    <div class="row"></div>
+    <div class="row"></div>
+    <div class="row">
+        <div class="col s3">&nbsp</div>
+        <div class="col s6 ">
+            <div class="card-panel light-green lighten-3">
+                <div class="row" align="center">
+                    <h5><b class="">Terms and Conditions</b></h5>
+                </div>
+                <div class="row">
+                    PLEASE READ THESE TERMS AND CONDITIONS CAREFULLY, AND IF YOU ARE
+                    UNDER THE AGE OF MAJORITY (AS DEFINED BELOW) IN YOUR JURISDICTION,
+                    MAKE SURE THAT YOUR PARENT OR LEGAL GUARDIAN READS AND AGREES WITH
+                    THIS AGREEMENT ON YOUR BEHALF. IF YOU DO NOT AGREE TO BE BOUND BY
+                    ALL OF THE TERMS AND CONDITIONS, YOU ARE NOT PERMITTED TO USE OR
+                    ACCESS THIS WEBSITE. PLEASE PRINT A COPY OF THESE TERMS AND
+                    CONDITIONS FOR YOUR RECORDS.
+                </div>
+            </div>
+        </div>
+        <div class="col s3">&nbsp</div>
+    </div>
+    <div class="row" ng-hide="hideLogin">
+        <div class="col s1">&nbsp</div>
+        <div class="col s4">
+            <div class="row center">
+                <a class="waves-effect waves-light blue lighten-1 btn modal-trigger" href="#loginmodal"><b>Login</b></a></a>
+            </div>
+            <div class="row center">
+                <b>or</b>
+            </div>
+            <div class="row center">
+                <a class="waves-effect waves-light blue lighten-1 btn modal-trigger" href="#registermodal"><b>Register</b></a>
+            </div>
+        </div>
+        <div class="col s2">
+            <div class="row center">&nbsp</div>
+            <div class="row center">
+                <b style="font-size: 20px;">OR</b>
+            </div>
+        </div>
+        <div class="col s4">
+        
+            <div class="card-panel yellow lighten-2">
+    
+                <div class="row center">You can also continue as a guest but
+                    the results will not be saved.
+                </div>
+
+            </div>
+        </div>
+        <div class="col s1">&nbsp</div>
+    </div>
+    <div class="row">
+        <div class="col s2">&nbsp</div>
+        <div class="col s8 center">
+            <div>
+                <button class="btn-large waves-effect waves-light" type="submit"
+                        name="action" ng-click="startChallenge();">Start Challenge
+                </button>
+                <br>
+            </div>
+        </div>
+        <div class="col s2">&nbsp</div>
+    </div>
+    <!-- Modal Structure -->
+    <div id="loginmodal" class="modal">
+        <div class="modal-content">
+            <h5 align="center">Login</h5>
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="email" type="email" class="validate" ng-model="email">
+                        <label for="email">Email</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="password" type="password" class="validate" ng-model="password">
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <a class="modal-action modal-close waves-effect waves-light red btn">Cancel</a>
+                    </div>
+                    <div class="input-field col s6">
+                        <a class="waves-effect waves-light green btn" ng-click="doLogin();">Login</a>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <div id="registermodal" class="modal">
+        <div class="modal-content">
+            <h5 align="center">Register</h5>
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="first_name" type="text" class="validate" ng-model="first_name" maxlength="128"
+                               required>
+                        <label for="first_name">First Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="last_name" type="text" class="validate" ng-model="last_name" maxlength="128"
+                               required>
+                        <label for="last_name">Last Name</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="remail" type="email" class="validate" ng-model="email" maxlength="50" required>
+                        <label for="remail">Email</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="rpassword" type="password" class="validate" ng-model="password" maxlength="128"
+                               required>
+                        <label for="rpassword">Password</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="icon_telephone" type="tel" class="validate" maxlength="12" ng-model="school">
+                        <label for="icon_telephone">School</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <a class="modal-action modal-close waves-effect waves-light red btn">Cancel</a>
+                    </div>
+                    <div class="input-field col s6">
+                        <a class="waves-effect waves-light green btn" ng-click="doSignUp()">Register</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br>
+    <br><br><br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+    <footer class="page-footer blue accent-2">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Company Bio</h5>
+                    <p class="grey-text text-lighten-4">Vaishampayan Reddy, Ashna Sebastian, Vimal Muraleedharan Nair, Rakesh Datta and Neha</p>
+                </div>
+                <div class="col l2 s12">&nbsp</div>
+                <div class="col l4 s12">
+                    <h5 class="white-text">Quick Links</h5>
+                    <ul>
+                        <li><a class="white-text" href="/levels">Levels</a></li>
+                        <li><a class="white-text" href="/register">Regiter</a></li>
+                        <li><a class="white-text" href="/login">Login</a></li>
+                        <li><a class="white-text" href="/faq">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                Made by <a class="brown-text text-lighten-3"
+                           href="http://materializecss.com">Materialize</a>
+            </div>
+        </div>
+    </footer>
+</div>

@@ -1,0 +1,32 @@
+UPDATES:
+
+After 1st sprint's brainstorming and wireframe creations, this week we started getting 
+out hands dirty on the real feature implementations. I have picked up the single-sign-on
+module which will allow users sign-in with any of their existing login credentials (google,
+facebppk, twitter etc.). This will give a user friendly feel to theusers of this game who
+does not want to create a seperate login for this app, but then again wants to store their game
+scores historically. For the implementation of this features I have divided the user story into
+multiple tasks. To start with I am creating a basing authentication module. Thereafter I will 
+intergrate it with passport.sj to give the SSO functionality.
+
+Although login in a required to store the scores historically, users might just want to try this
+game without login. The are one time users and for them it does not matter about historical scores
+etc. To implement that I have also started working in a guest login module, which will allow the users
+play the game without authentication.
+
+Along with this we also need to implement session management. I have started reating template functions 
+of that.
+
+
+XP Value (Feedback):
+
+This week we have taken longer features hence we have to raised many peer reviews. However, we have been
+meeting at least once per week to discuss the progress and the plan ahead. Also we are discussing
+if we have any blocker. This discussion is not only helping us know the status of the project but also
+helping us share innovative ideas to solve a certaion problem. Although the tasks are owned by the individual
+owners, the whole team brainstorms on that and comes up with a much sophisticated and rigorous solution.
+
+This week I have jus raisedone peer review for the team to review and approve my approach if imeplementin the
+single-sign-on. We brainstormed on passport.js and multiple other options. Team gave me the feedback on my ideas
+and finally we decided to go ahead with passport.js. This feedback session really helped lots of man-hours
+and shows the true spirit of collaboration.

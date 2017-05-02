@@ -1,0 +1,258 @@
+.myspinner {
+   position: relative; //Added this
+   background-color: #FFFFFF;
+   opacity: 0.50;
+}
+
+#divLoading
+{
+    display : none;
+}
+#divLoading.show
+{
+    display : block;
+    position : fixed;
+    z-index: 100;
+    background-image : url('http://loadinggif.com/images/image-selection/3.gif');
+    background-color:#666;
+    opacity : 0.4;
+    background-repeat : no-repeat;
+    background-position : center;
+    left : 0;
+    bottom : 0;
+    right : 0;
+    top : 0;
+}
+#loadinggif.show
+{
+    left : 50%;
+    top : 50%;
+    position : absolute;
+    z-index : 101;
+    width : 32px;
+    height : 32px;
+    margin-left : -16px;
+    margin-top : -16px;
+}
+
+.border-bottom {
+    /* border-bottom: 1px solid #ddd; */
+}
+
+.border-right {
+    /* border-right: 1px solid #ddd; */
+}
+
+.borders {
+    /* border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd; */
+}
+.border-left {
+    /* border-left: 1px solid #ddd; */
+}
+
+.nameclass:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.nameclass:active {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#replyclass {
+   background-image: url('reply.png');
+   height: 28px;
+   width: 25px;
+   cursor: pointer;
+}
+
+#replyclass:hover {
+	background-image: url('reply-hover.png');
+	cursor: pointer;
+}
+
+#replyclass:active {
+	background-image: url('reply-hover.png');
+	cursor: pointer;
+}
+
+#retweetclass {
+	background-image: url('retweet.png');
+	height: 29px;
+	width: 30px;
+	cursor: pointer;
+}
+
+#retweetclass:hover {
+	background-image: url('retweet-hover.png');
+	cursor: pointer;
+}
+
+#retweetclass:active {
+	background-image: url('retweet-hover.png');
+	cursor: pointer;
+}
+
+#favoriteclass {
+	background-image: url('favorite.png');
+	height: 29px;
+	width: 22px;
+	cursor: pointer;
+}
+
+#favoriteclass:hover {
+	background-image: url('favorite-hover.png');
+	cursor: pointer;
+}
+
+#favoriteclass:active {
+	background-image: url('favorite-hover.png');
+	cursor: pointer;
+}
+
+
+/* style.css */
+/* BASE STYLES
+============================================================================= */
+
+/* PAGES
+============================================================================= */
+.page-home 		/*{ background:#00D0BC; color:#00907c; }*/
+.page-about 	/*{ background:#E59400; color:#a55400; }*/
+.page-contact 	/*{ background:#ffa6bb; color:#9e0000; }*/
+
+/* ANIMATIONS
+============================================================================= */
+
+.page.ng-leave 	{ z-index:9999; }
+.page.ng-enter 	{ z-index:8888; }
+
+/* page specific animations ------------------------ */
+
+/* home -------------------------- */
+.page-home.ng-leave         {
+    -webkit-transform-origin: 0% 0%;
+    -webkit-animation: rotateFall 1s both ease-in;
+    -moz-transform-origin: 0% 0%;
+    -moz-animation: rotateFall 1s both ease-in;
+    transform-origin: 0% 0%;
+    animation: rotateFall 1s both ease-in;
+}
+.page-home.ng-enter 		{
+    -webkit-animation:scaleUp 0.5s both ease-in;
+    -moz-animation:scaleUp 0.5s both ease-in;
+    animation:scaleUp 0.5s both ease-in;
+}
+
+/* about ------------------------ */
+.page-about.ng-leave        {
+    -webkit-animation:slideOutLeft 0.5s both ease-in;
+    -moz-animation:slideOutLeft 0.5s both ease-in;
+    animation:slideOutLeft 0.5s both ease-in;
+}
+.page-about.ng-enter 		{
+    -webkit-animation:slideInRight 0.5s both ease-in;
+    -moz-animation:slideInRight 0.5s both ease-in;
+    animation:slideInRight 0.5s both ease-in;
+}
+
+/* contact ---------------------- */
+.page-contact.ng-leave      {
+    -webkit-transform-origin: 50% 50%;
+    -webkit-animation: rotateOutNewspaper .5s both ease-in;
+    -moz-transform-origin: 50% 50%;
+    -moz-animation: rotateOutNewspaper .5s both ease-in;
+    transform-origin: 50% 50%;
+    animation: rotateOutNewspaper .5s both ease-in;
+}
+.page-contact.ng-enter 		{
+    -webkit-animation:slideInUp 0.5s both ease-in;
+    -moz-animation:slideInUp 0.5s both ease-in;
+    animation:slideInUp 0.5s both ease-in;
+}
+
+/* rotate and fall */
+@-webkit-keyframes rotateFall {
+    0% { -webkit-transform: rotateZ(0deg); }
+    20% { -webkit-transform: rotateZ(10deg); -webkit-animation-timing-function: ease-out; }
+    40% { -webkit-transform: rotateZ(17deg); }
+    60% { -webkit-transform: rotateZ(16deg); }
+    100% { -webkit-transform: translateY(100%) rotateZ(17deg); }
+}
+@-moz-keyframes rotateFall {
+    0% { -moz-transform: rotateZ(0deg); }
+    20% { -moz-transform: rotateZ(10deg); -moz-animation-timing-function: ease-out; }
+    40% { -moz-transform: rotateZ(17deg); }
+    60% { -moz-transform: rotateZ(16deg); }
+    100% { -moz-transform: translateY(100%) rotateZ(17deg); }
+}
+@keyframes rotateFall {
+    0% { transform: rotateZ(0deg); }
+    20% { transform: rotateZ(10deg); animation-timing-function: ease-out; }
+    40% { transform: rotateZ(17deg); }
+    60% { transform: rotateZ(16deg); }
+    100% { transform: translateY(100%) rotateZ(17deg); }
+}
+
+/* scale up */
+@keyframes scaleUp {
+    from 		{ opacity: 0.3; transform: scale(0.8); }
+}
+@-moz-keyframes scaleUp {
+    from 		{ opacity: 0.3; -moz-transform: scale(0.8); }
+}
+@-webkit-keyframes scaleUp {
+    from 		{ opacity: 0.3; -webkit-transform: scale(0.8); }
+}
+
+/* slide in from the right */
+@keyframes slideInRight {
+    from 	{ transform:translateX(100%); }
+    to 		{ transform: translateX(0); }
+}
+@-moz-keyframes slideInRight {
+    from 	{ -moz-transform:translateX(100%); }
+    to 		{ -moz-transform: translateX(0); }
+}
+@-webkit-keyframes slideInRight {
+    from 	{ -webkit-transform:translateX(100%); }
+    to 		{ -webkit-transform: translateX(0); }
+}
+
+/* slide in from the bottom */
+@keyframes slideInUp {
+    from 	{ transform:translateY(100%); }
+    to 		{ transform: translateY(0); }
+}
+@-moz-keyframes slideInUp {
+    from 	{ -moz-transform:translateY(100%); }
+    to 		{ -moz-transform: translateY(0); }
+}
+@-webkit-keyframes slideInUp {
+    from 	{ -webkit-transform:translateY(100%); }
+    to 		{ -webkit-transform: translateY(0); }
+}
+
+/* slide in from the bottom */
+@keyframes slideOutLeft {
+    to 		{ transform: translateX(-100%); }
+}
+@-moz-keyframes slideOutLeft {
+    to 		{ -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes slideOutLeft {
+    to 		{ -webkit-transform: translateX(-100%); }
+}
+
+/* rotate out newspaper */
+@-webkit-keyframes rotateOutNewspaper {
+    to { -webkit-transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
+}
+@-moz-keyframes rotateOutNewspaper {
+    to { -moz-transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
+}
+@keyframes rotateOutNewspaper {
+    to { transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
+}

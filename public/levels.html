@@ -1,0 +1,160 @@
+<style type="text/css">
+    .bgimg {
+        background-image: url('images/background12.png');
+    }
+</style>
+<div id="wrapper" class="row ng-scope bgimg">
+    <div class ="row"></div>
+    <div class ="row"></div>
+    <div class ="row"></div>
+    <div class = "row">
+        <div class="col s1"><p>&nbsp</p></div>
+		<div class="col s3" align="center">
+			<div class="card-panel">
+				<div class="row">
+					<h5 class="green-text">EASY</h5></div>
+				<div>
+					<button class="btn-large waves-effect waves-light" type="submit"
+						name="action" ng-click="setLevel('easy');" align="center">Start
+						Challenge</button>
+					<br>
+				</div>
+				<table class="bordered wrap" style="">
+					<thead>
+						<tr>
+							<th style="color: #448aff" data-field="id">#</th>
+							<th style="color: #448aff" data-field="name">Name</th>
+							<th style="color: #448aff" data-field="score">Score</th>
+							<th style="color: #448aff" data-field="time">Time</th>
+							<th style="color: #448aff" data-field="school">School</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						<tr bgcolor="#e1f5fe"
+							ng-repeat="player in easy_scoreboard track by $index">
+							<td>{{$index + 1}}</td>
+							<td>{{player.email}}</td>
+							<td style='color: #FFD700'><b>{{player.Score}}</b></td>
+							<td style='color: #C0C0C0'><b>{{player.Time}}</b></td>
+
+							<td>{{player.School}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+        <div class="col s1"><p>&nbsp</p></div>
+		<div class = "col s3" align="center">
+            <div class="card-panel">
+                <div class ="row">
+                    <h5 class="orange-text">MEDIUM</h5>
+                </div>
+                <div>
+                    <button class="btn-large orange waves-effect waves-light"   ng-click="setLevel('medium');">Start Challenge
+                    </button>
+                    <br>
+                </div>
+                <table class="bordered" style="">
+                    <thead>
+                      <tr>
+                         <th style="color: #448aff" data-field="id"> #</th>
+                        <th style="color: #448aff" data-field="name" >Name</th>
+                        <th style="color: #448aff" data-field="score">Score</th>
+                        <th style="color: #448aff" data-field="time">Time</th>
+                        <th style="color: #448aff" data-field="school">School</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                  
+                     <tr bgcolor="#e1f5fe" ng-repeat="player in medium_scoreboard track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{player.email}}</td>
+                        <td style='color:#FFD700'><b>{{player.Score}}</b></td>
+                        <td style='color:#C0C0C0'><b>{{player.Time}}</b></td>
+                     
+                        <td>{{player.School}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col s1"><p>&nbsp</p></div>
+        <div class = "col s3" align="center">
+            <div class="card-panel">
+                <div class ="row">
+                    <h5 class="red-text">HARD</h5>
+                </div>
+                <div>
+                    <button class="btn-large red waves-effect waves-light" type="submit" name="action" ng-click="setLevel('difficult');">Start Challenge
+                    </button>
+                    <br>
+                </div>
+                <table class="bordered" style="">
+                    <thead>
+                      <tr>
+                         <th style="color: #448aff" data-field="id"> #</th>
+                        <th style="color: #448aff" data-field="name" >Name</th>
+                        <th style="color: #448aff" data-field="score">Score</th>
+                        <th style="color: #448aff" data-field="time">Time</th>
+                        <th style="color: #448aff" data-field="school">School</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                  
+                     <tr bgcolor="#e1f5fe" ng-repeat="player in hard_scoreboard track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td>{{player.email}}</td>
+                        <td style='color:#FFD700'><b>{{player.Score}}</b></td>
+                        <td style='color:#C0C0C0'><b>{{player.Time}}</b></td>
+                     
+                        <td>{{player.School}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row"><p></p></div>
+        <div class="row"><p></p></div>
+        <div class="row"><p></p></div>
+        <div class="row"><p></p></div>
+        <div class="row"><p></p></div>
+        <div class="row"><p></p></div>
+        <div class="row"><p></p></div>
+        <div class="row"><p></p></div>
+    </div><br>
+    <br>
+    <br>
+    <br><br>
+
+
+    <br>
+    <footer class="page-footer blue accent-2">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Company Bio</h5>
+                    <p class="grey-text text-lighten-4">Vaishampayan Reddy, Ashna Sebastian, Vimal Muraleedharan Nair, Rakesh Datta and Neha</p>
+                </div>
+                <div class="col l2 s12">
+                    &nbsp
+                </div>
+                <div class="col l4 s12">
+                    <h5 class="white-text">Quick Links</h5>
+                    <ul>
+                        <li><a class="white-text" href="/levels">Levels</a></li>
+                        <li><a class="white-text" href="/register">Regiter</a></li>
+                        <li><a class="white-text" href="/login">Login</a></li>
+                        <li><a class="white-text" href="/faq">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                Made by <a class="brown-text text-lighten-3"
+                           href="http://materializecss.com">Materialize</a>
+            </div>
+        </div>
+    </footer>
+</div>

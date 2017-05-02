@@ -1,0 +1,17 @@
+
+This week we met to integrate all the work we have done. This was pretty busy week, since we had all the integration to do and complete the documentation to be submitted as part of deliverable.
+Like always, we distributed the documentation work and started preparing presentation to be showed during project demo. I have worked on implementing the class diagram which mostly invoked the backend code. Creating a class diagram gives an overview of the complete project. It can be shown to anyone, and while looking at it anyone can get an idea of the project and how task is segregated in different classes. 
+
+Design pattern used was:
+1. Factory – For creating diffrent services, we have different services like login, binarytest, scoreboard and depending on the UI click, service, or particular class object is created
+2. Observer: This was required to be used for Scoreboard, whenever a user submits his BinaryTest, the observer module keeps checking if there is new score submitted and if there is any new score, it updates the scoreboard, if there is any change in order of scoreboard.
+
+After completing the integration and documentation, We have come to an end of the project. 
+In the coming weeks, we have decided to teach Binary learning using our game to non Computer Science background people and also to the kids in the library/nearby schools.
+This will not only prepare us for the project demo but also if there are any changes, 
+we can also take care of that before our actual presentation.
+
+XP core value: Simplicity
+By following the XP core value Simplicity, we have not only completed the project on time but have also made sure that we have also met
+all the client requirements. We have successfully created the game for Binary Learning as part of CS Uplugged activities.  I hope that we will be able to make it to the next level during presentation.
+

@@ -1,0 +1,39 @@
+UPDATES:
+=======
+This week I have finished the develeopment of the single sign on module. 
+It consists if the below features.
+ 1. The home page of the webapp hast the login button. user may choose to login here and then 
+    it goes to step 4
+ 2. user does not login and selects a multi-player game. user is prompted for a page 
+    which says 'login or continue as a guest'.If user chooses the option of login, he is prompted to step 4
+ 3. Guest login creates a dummy user and uses this login to log in the score temporarily. 
+    This score is not persistent.
+ 4. When user decides to login a page with certain options are rendered. It has a login 
+    (with user name and password)text field and a Sign Up(with email, password, confirm password, 
+    first name and last name) portion. It also has a 'login with google, login with facebook' option at the 
+    lower side of teh page, which invokes single sign-on. This will allow the user avoid creating a 
+    new login credential, instead use an existing gmail or facebook credential.
+ 
+To design and implement this whole feature I have used node.js, passport.js, express.js 
+and bootstrap.The node module create in last iteration, called gamelogin, is improved.
+And more features are integrated to the module. All the different types of login strategies, vis-a-vis local
+login, facebook logn and gmail login are enabled through this module. In case local login is used
+mongodb is used to store the credentials as well as associated historical score statistics. In case
+oother identity verifiers like google ot facebook is used, the user name is stored in the mongo db 
+and also the associated historical score statistics. 
+
+XP Value (Feedback):
+===================
+Last week we have continuously worked together. Since this is teh final weeek of the project, we have decided
+to sit together and finish rest of the project. As deadlines were approaching and there are lots 
+to integrate, collaborate and test, we met everyday and worked together. The contract that all the 
+team member agreed to is everybody will show a working demo at the end of the day and while working
+everybody will continuously seek suggestion and feedbacks from the other team-mates. At the end of the day
+all the team-mates have got feedbacks about what went well and what went wrong. This viewpoints helped
+all the members plan their next day much better. This was week we noticed the highest amount of delivery
+just because of this continuous review and feedback model. This made sure that man-hours are not wasted
+and all the team members are on the right track. We learned how the mechansim of sitting together 
+as a team and working together increases the delivery manifold. Continuous review and feedback is key
+to the fast delivery. By adopting this mechanism in thsis week we are able to increase our confidence, 
+reduce confusion, increase the deliverables and produce a quality product. According to me this is a 
+great exhibition of the XP core value 'feedback'.

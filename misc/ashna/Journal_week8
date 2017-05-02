@@ -1,0 +1,14 @@
+CMPE 202
+Journal week 8
+
+
+Core Value: Communication
+
+This is the last week for Class Project. Communication has played an important role in improving the efficiency of the team. The primary way of communication is by having meetings where we can openly express our ideas and come to a single opinion. Communication plays a vital role in building respect and trust among team members and it creates a platform to resolve the differences in our opinions or for clearing our doubts or even for sharing knowledge. Our team decided to have two meetings every week for status discussion and another meeting for demo and planning for next week. During the first 4 weeks we followed Kanban and now we are following Scrum. The Sprint Planning meeting, the Daily Scrum meeting, Sprint review meeting and the Sprint Retrospective meeting are all mandatory in a Scrum.
+
+This week the first meeting was conducted on Tuesday and the second meeting on Thursday. During the first meeting we went through the initial requirement list we had made during the first two weeks. This helped us in understanding some of the minor requirements which we missed. During the second meeting we integrated the rest services and the angular scripts and conducted integration testing. During testing we identified a few bugs. Some of the bugs required code fixing in node js part and some required code fixing in angular js. We also made sure that all the design patterns are implemented. To be specific, me and Vaish completed the html pages for the online binary learning game. We also wrote the angular js scripts for all the html pages which completed all the AJAX calls to the backend server. Some of the bugs which were identified during integration testing was resolved by us. One issue was that the user profile data which was send from backend REST service as a json had different parameter names which we expected. After discussion we agreed that it should be corrected from front-end as the correction in back end would be complicated. Also during the meeting many suggestions regarding the pages we created were given by the other team members some of which we will be implementing. Overall we are following the plan we initially created and we can complete the project in the next week.
+
+
+
+
+
